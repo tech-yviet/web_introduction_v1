@@ -24,4 +24,14 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .bg-mobile-gradient {
+    background: linear-gradient(
+      180deg,
+      #90e0ef 0%,
+      #0ca9c9 21.67%,
+      #0096c7 61.5%,
+      #023e8a 91.5%
+    );
+  }
 }
