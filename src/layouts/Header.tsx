@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export const Header = () => {
   return (
-    <div className="flex items-center justify-between w-full px-[9px] py-[7.5px] h-[40px]">
+    <div className="flex items-center justify-between w-full px-[9px] py-[7.5px] h-[40px] max-w-[375px] mx-auto">
       <button className="flex items-center gap-[3px]">
         <Image src="/svg/logo-header.svg" alt="logo" width={30} height={30} />
-        <div className="text-[#1B63DE] font-extrabold capitalize">Y Viet</div>
+        <div className="text-[#1B63DE] font-extrabold uppercase">Y Viet</div>
       </button>
 
       <div className="flex items-center gap-3">
