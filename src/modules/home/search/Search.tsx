@@ -1,8 +1,14 @@
 import Image from "next/image";
 
-const Search = () => {
+interface SearchProps {
+  className?: string;
+  inputClassName?: string;
+  placeholder?: string;
+}
+
+const Search = ({ className, inputClassName, placeholder }: SearchProps) => {
   return (
-    <div className="mt-[11px] p-3 flex items-center bg-white rounded-[40px] w-[359px] mx-auto h-[48px]">
+    <div className={className}>
       <div className="mr-[8px]">
         <Image
           src="/svg/proicons_search.svg"
@@ -15,8 +21,8 @@ const Search = () => {
       <div className="flex-1">
         <input
           type="text"
-          placeholder="Tìm thuốc, dịch vụ, Bác sĩ, Phòng k..."
-          className="bg-transparent outline-none w-full text-sm font-normal leading-[22px] w-[227px]"
+          placeholder={placeholder}
+          className={inputClassName}
         />
       </div>
 

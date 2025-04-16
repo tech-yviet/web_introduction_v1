@@ -53,9 +53,17 @@ body {
     background: linear-gradient(90deg, #4ecaff 0%, #0274ff 100%);
   }
 
+  .bg-button-gradient-3 {
+    background: linear-gradient(270deg, #0274ff 0%, #4ecaff 100%);
+  }
+
   .box-shadow-button-gradient {
     box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1),
       0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  }
+
+  .box-shadow-button-gradient-2 {
+    box-shadow: 0px 8.358px 12.537px 0px rgba(1, 115, 153, 0.2);
   }
 
   .bg-button-hover {
@@ -73,5 +81,9 @@ body {
 
   .bg-hero-banner-2 {
     background: linear-gradient(180deg, #3ec5ff 0%, #2257f8 100%);
+  }
+
+  .bg-hero-banner-3 {
+    background: linear-gradient(180deg, #fafaff 0%, #afe2ff 100%);
   }
 }

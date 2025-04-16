@@ -7,7 +7,11 @@ const HomeFeature = () => {
       <Hero />
 
       <div className="md:hidden">
-        <Search />
+        <Search
+          placeholder="Tìm thuốc, dịch vụ, Bác sĩ, Phòng k..."
+          inputClassName="bg-transparent outline-none w-full text-sm font-normal leading-[22px] w-[227px]"
+          className="mt-[11px] p-3 flex items-center bg-white rounded-[40px] w-[359px] mx-auto h-[48px]"
+        />
       </div>
 
       <div>Categories</div>

@@ -47,7 +47,7 @@ const HeaderDesktop = () => {
             />
           </button>
 
-          <button className="px-4 py-2 text-center border border-white rounded-md bg-button text-[15px] font-medium leading-5">
+          <button className="px-4 py-2 text-center border border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px]">
             Mở ứng dụng
           </button>
         </div>
