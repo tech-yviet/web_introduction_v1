@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HeaderDesktop = () => {
   return (
-    <div className="hidden md:flex items-center justify-between">
+    <div className="hidden md:flex items-center justify-between md:px-[28px]">
       <div>
         <button className="flex items-center gap-3">
           <Image src="/svg/logo-pc.svg" alt="logo" width={50} height={50} />
