@@ -4,25 +4,25 @@ const categories = [
   {
     id: "1",
     title: "Bác sĩ \n điều dưỡng",
-    image: "/img/categories/category-1.png",
+    image: "/svg/categories/category-1.svg",
     desc: "Kết nối Bác sĩ để được \n tư vấn sức khỏe",
   },
   {
     id: "2",
     title: "Bệnh viện \n phòng khám",
-    image: "/img/categories/category-2.png",
+    image: "/svg/categories/category-2.svg",
     desc: "Tra cứu nhanh chóng \n Đặt khám dễ dàng",
   },
   {
     id: "3",
     title: "Trung tâm \n xét nghiệm",
-    image: "/img/categories/category-4.png",
+    image: "/svg/categories/category-3.svg",
     desc: "Xét nghiệm tổng quát \n và chuyên sâu",
   },
   {
     id: "4",
     title: "Nhà thuốc \n cửa hàng",
-    image: "/img/categories/category-3.png",
+    image: "/svg/categories/category-4.svg",
     desc: "Tìm thuốc tiện lợi \n với <b>Bo AI</b>",
   },
 ];
