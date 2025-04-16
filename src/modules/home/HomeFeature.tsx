@@ -1,9 +1,10 @@
+import Image from "next/image";
 import Hero from "./hero/Hero";
 import Search from "./search/Search";
 
 const HomeFeature = () => {
   return (
-    <div className="max-w-[375px] mx-auto md:min-w-[1200px] lg:max-w-full">
+    <div className="max-w-[375px] mx-auto md:min-w-[1200px] lg:max-w-full relative">
       <Hero />
 
       <div className="md:hidden">
@@ -18,6 +19,16 @@ const HomeFeature = () => {
       <div>Kết nối cùng Y Viet</div>
       <div>Hướng Dẫn tạo tài khoản</div>
       <div>Future Applications</div>
+
+      <div className="fixed bottom-10 right-10">
+        <Image
+          src="/gif/mascot.gif"
+          alt="Y VIET Mascot"
+          width={80.622}
+          height={77}
+          className="w-[120px] h-[115px]"
+        />
+      </div>
     </div>
   );
 };
