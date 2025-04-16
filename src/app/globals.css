@@ -33,9 +33,9 @@ body {
     background: linear-gradient(
       180deg,
       #90e0ef 0%,
-      #0ca9c9 21.67%,
-      #0096c7 61.5%,
-      #023e8a 91.5%
+      #0ca9c9 14.42%,
+      #0096c7 43.75%,
+      #023e8a 75.48%
     );
   }
 
@@ -68,6 +68,10 @@ body {
 
   .bg-button-hover {
     background: rgba(217, 217, 217, 0.35);
+  }
+
+  .bg-button-hover-2 {
+    background: linear-gradient(90deg, #0274ff 0%, #38b6ff 100%);
   }
 
   .bg-hero-banner {
