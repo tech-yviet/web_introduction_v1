@@ -52,12 +52,12 @@ const Categories = () => {
                 />
               </div>
 
-              <div className="text-[8.5px] font-bold text-center uppercase mt-[5.98px] group-hover:text-[#0180AA] whitespace-pre-line md:mt-5 md:text-2xl">
+              <div className="text-[8.5px] font-inter font-bold text-center uppercase mt-[5.98px] group-hover:text-[#0180AA] whitespace-pre-line md:mt-5 md:text-2xl">
                 {c.title}
               </div>
 
               <div
-                className="mt-[6.38px] text-[6px] font-medium text-center whitespace-pre-line group-hover:text-[#0180AA] md:mt-5 md:text-base"
+                className="mt-[6.38px] text-[6px] font-inter font-medium text-center whitespace-pre-line group-hover:text-[#0180AA] md:mt-5 md:text-base"
                 dangerouslySetInnerHTML={{ __html: c.desc }}
               ></div>
 

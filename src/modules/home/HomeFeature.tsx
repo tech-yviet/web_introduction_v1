@@ -29,7 +29,7 @@ const HomeFeature = () => {
           alt="Y VIET Mascot"
           width={80.622}
           height={77}
-          className="w-[120px] h-[115px]"
+          className="md:w-[120px] md:h-[115px]"
         />
       </div>
 
