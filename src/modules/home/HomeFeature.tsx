@@ -2,6 +2,7 @@ import Image from "next/image";
 import Hero from "./hero/Hero";
 import Search from "./search/Search";
 import Categories from "./category/Categories";
+import Branding from "./branding/Branding";
 
 const HomeFeature = () => {
   return (
@@ -17,8 +18,8 @@ const HomeFeature = () => {
       </div>
 
       <Categories />
+      <Branding />
 
-      <div>Kết nối cùng Y Viet</div>
       <div>Hướng Dẫn tạo tài khoản</div>
       <div>Future Applications</div>
 
