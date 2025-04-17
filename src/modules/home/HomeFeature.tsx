@@ -3,6 +3,7 @@ import Hero from "./hero/Hero";
 import Search from "./search/Search";
 import Categories from "./category/Categories";
 import Branding from "./branding/Branding";
+import Introduction from "./introduction/Introduction";
 
 const HomeFeature = () => {
   return (
@@ -19,6 +20,7 @@ const HomeFeature = () => {
 
       <Categories />
       <Branding />
+      <Introduction />
 
       <div className="mt-40">Hướng Dẫn tạo tài khoản</div>
       <div>Future Applications</div>
@@ -33,7 +35,7 @@ const HomeFeature = () => {
         />
       </div>
 
-      <div className="absolute top-[302px] -left-[175px] bg-[url('/svg/wave-pattern-mobile.svg')]  w-[582.317px] h-[475.346px]"></div>
+      <div className="absolute top-[302px] -left-[175px] bg-[url('/svg/wave-pattern-mobile.svg')]  w-[582.317px] h-[475.346px] md:bg-[url('/svg/wave-pattern-desktop.svg')] md:w-[1909.376px] md:h-[1629.617px] md:top-[815px] md:-left-[188px]"></div>
     </div>
   );
 };
