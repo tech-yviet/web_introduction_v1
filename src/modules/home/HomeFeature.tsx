@@ -23,7 +23,7 @@ const HomeFeature = () => {
       <div className="mt-40">Hướng Dẫn tạo tài khoản</div>
       <div>Future Applications</div>
 
-      <div className="fixed bottom-10 right-10">
+      <div className="fixed bottom-10 right-2 md:right-10">
         <Image
           src="/gif/mascot.gif"
           alt="Y VIET Mascot"
