@@ -6,7 +6,7 @@ import Branding from "./branding/Branding";
 
 const HomeFeature = () => {
   return (
-    <div className="max-w-[375px] mx-auto md:min-w-[1200px] lg:max-w-full relative">
+    <div className="max-w-[375px] mx-auto md:min-w-[1200px] lg:max-w-full relative overflow-hidden">
       <Hero />
 
       <div className="md:hidden">
@@ -20,7 +20,7 @@ const HomeFeature = () => {
       <Categories />
       <Branding />
 
-      <div>Hướng Dẫn tạo tài khoản</div>
+      <div className="mt-40">Hướng Dẫn tạo tài khoản</div>
       <div>Future Applications</div>
 
       <div className="fixed bottom-10 right-10">
@@ -32,6 +32,8 @@ const HomeFeature = () => {
           className="w-[120px] h-[115px]"
         />
       </div>
+
+      <div className="absolute top-[302px] -left-[175px] bg-[url('/svg/wave-pattern-mobile.svg')]  w-[582.317px] h-[475.346px]"></div>
     </div>
   );
 };
