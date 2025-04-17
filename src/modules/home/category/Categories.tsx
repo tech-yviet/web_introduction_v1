@@ -29,7 +29,7 @@ const categories = [
 
 const Categories = () => {
   return (
-    <div className="mt-[29px] px-[7px] md:max-w-[1200px] md:mx-auto md:px-[29px]">
+    <div className="mt-[29px] px-[7px] md:max-w-[1200px] md:mx-auto md:px-[29px] relative z-10">
       <div className="flex items-center gap-[5.12px] md:gap-4 ">
         {categories?.map((c, index) => {
           const isEven = index % 2 === 0;

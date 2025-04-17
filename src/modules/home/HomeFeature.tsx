@@ -7,7 +7,7 @@ import Introduction from "./introduction/Introduction";
 
 const HomeFeature = () => {
   return (
-    <div className="max-w-[375px] mx-auto md:min-w-[1200px] lg:max-w-full relative overflow-hidden">
+    <div className="max-w-[375px] h-full mx-auto md:min-w-[1200px] lg:max-w-full relative overflow-hidden ">
       <Hero />
 
       <div className="md:hidden">
