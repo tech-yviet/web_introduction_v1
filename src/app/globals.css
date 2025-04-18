@@ -21,6 +21,16 @@ body {
 }
 
 @layer utilities {
+  .text-stroke {
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 1.61px;
+  }
+
+  .text-stroke-5 {
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 5px;
+  }
+
   .text-balance {
     text-wrap: balance;
   }

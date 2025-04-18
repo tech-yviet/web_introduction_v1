@@ -17,13 +17,7 @@ const Branding = () => {
           className="absolute  top-[40%] left-[51%] -translate-x-1/2 -translate-y-1/2 object-cover md:w-[600px] md:h-[600px] md:left-[52%]"
         />
 
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[65px] text-center font-black leading-[65px] tracking-[1.3px] z-10 text-transparent flex items-center font-inter md:text-[202px]"
-          style={{
-            WebkitTextStrokeWidth: "1.61px",
-            WebkitTextStrokeColor: "#FFFFFF",
-          }}
-        >
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[65px] text-center font-black leading-[65px] tracking-[1.3px] z-10 flex items-center font-inter md:text-[202px] text-transparent text-stroke md:text-stroke-5">
           YVIET
           <div
             className="inline-block w-[15px] h-[15px] rounded-full  relative top-[17px] md:w-[40px] md:h-[40px] md:top-[59px]"
