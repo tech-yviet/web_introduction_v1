@@ -2,14 +2,16 @@ import Image from "next/image";
 
 const Future = () => {
   return (
-    <div className="mt-[65px] font-inter px-[20px] text-white relative md:max-w-[1200px] md:mx-auto md:mt-[180px] md:px-[270px]">
-      <div className="text-[28px] font-bold leading-[110%] w-[176px] text-right md:w-[408px] md:text-[65px]">
-        Future <br />
-        Applications
-      </div>
+    <div className="mt-[65px] font-inter px-[20px] text-white relative md:max-w-[1200px] md:mx-auto md:mt-[180px] md:pl-[270px] md:pr-[20px]">
+      <div>
+        <div className="text-[28px] font-bold leading-[110%] w-[176px] text-right md:w-[408px] md:text-[65px]">
+          Future <br />
+          Applications
+        </div>
 
-      <div className="bg-[rgba(255,255,255,0.20)] mt-[13px] ml-[78.37px] px-[5.08px] py-1 rounded-[11.292px] w-[112px]  text-[6px] text-center font-medium md:mt-[32.07px] md:rounded-[26.829px] md:w-[253.203px] md:h-[46.113px] md:text-[13px] md:flex md:items-center md:justify-center md:ml-[169.03px]">
-        Prepare for the New Age of Health
+        <div className="bg-[rgba(255,255,255,0.20)] mt-[13px] ml-[78.37px] px-[5.08px] py-1 rounded-[11.292px] w-[112px]  text-[6px] text-center font-medium md:mt-[32.07px] md:rounded-[26.829px] md:w-[253.203px] md:h-[46.113px] md:text-[13px] md:flex md:items-center md:justify-center md:ml-[169.03px]">
+          Prepare for the New Age of Health
+        </div>
       </div>
 
       <div className="mt-[82px] md:mt-[196px]">
