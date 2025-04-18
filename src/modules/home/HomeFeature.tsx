@@ -1,9 +1,10 @@
 import Image from "next/image";
-import Hero from "./hero/Hero";
-import Search from "./search/Search";
-import Categories from "./category/Categories";
-import Branding from "./branding/Branding";
-import Introduction from "./introduction/Introduction";
+import Hero from "./components/Hero";
+import Search from "./components/Search";
+import Categories from "./components/Categories";
+import Branding from "./components/Branding";
+import Introduction from "./components/Introduction";
+import Future from "./components/Future";
 
 const HomeFeature = () => {
   return (
@@ -21,9 +22,7 @@ const HomeFeature = () => {
       <Categories />
       <Branding />
       <Introduction />
-
-      <div className="mt-40">Hướng Dẫn tạo tài khoản</div>
-      <div>Future Applications</div>
+      <Future />
 
       <div className="fixed bottom-10 right-2 md:right-10">
         <Image

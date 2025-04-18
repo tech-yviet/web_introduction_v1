@@ -1,6 +1,6 @@
 import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import Image from "next/image";
-import Search from "../search/Search";
+import Search from "../components/Search";
 
 const data = [
   {
