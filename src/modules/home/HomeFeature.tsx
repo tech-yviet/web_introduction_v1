@@ -24,7 +24,7 @@ const HomeFeature = () => {
       <Introduction />
       <Future />
 
-      <div className="fixed bottom-10 right-2 md:right-10">
+      <div className="fixed bottom-10 right-2 md:right-10 z-20">
         <Image
           src="/gif/mascot.gif"
           alt="Y VIET Mascot"
