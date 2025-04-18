@@ -5,6 +5,7 @@ import Categories from "./components/Categories";
 import Branding from "./components/Branding";
 import Introduction from "./components/Introduction";
 import Future from "./components/Future";
+import Footer from "@/layouts/Footer";
 
 const HomeFeature = () => {
   return (
@@ -23,6 +24,8 @@ const HomeFeature = () => {
       <Branding />
       <Introduction />
       <Future />
+
+      <Footer />
 
       <div className="fixed bottom-10 right-2 md:right-10 z-20">
         <Image

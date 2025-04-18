@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Future = () => {
   return (
-    <div className="mt-[60px] font-inter px-[20px] text-white relative md:max-w-[1200px] md:mx-auto md:mt-[180px] md:px-[270px]">
+    <div className="mt-[65px] font-inter px-[20px] text-white relative md:max-w-[1200px] md:mx-auto md:mt-[180px] md:px-[270px]">
       <div className="text-[28px] font-bold leading-[110%] w-[176px] text-right md:w-[408px] md:text-[65px]">
         Future <br />
         Applications

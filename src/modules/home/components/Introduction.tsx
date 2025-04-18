@@ -47,7 +47,7 @@ const Introduction = () => {
         </div>
       </div>
 
-      <div className="mt-[30px] px-[10px] text-white font-inter md:mt-[87px] md:px-[50px]">
+      <div className="mt-[40px] px-[10px] text-white font-inter md:mt-[87px] md:px-[50px]">
         <div className="flex gap-5 md:px-[54px] md:justify-between md:gap-[58px]">
           <div className="relative pl-[39px] pt-[21px] md:pl-[95px] md:pt-[67px]">
             <div className="absolute top-0 left-0 text-[47px] text-white font-bold leading-[47.231px] opacity-[0.1] md:text-[150px] md:leading-[151.67px]">

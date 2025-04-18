@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Branding = () => {
   return (
-    <div className="flex flex-col items-center mt-[30px] md:max-w-[1200px] md:mx-auto">
+    <div className="flex flex-col items-center mt-[60px] md:max-w-[1200px] md:mx-auto">
       <div className="w-[193px] h-[168px] mx-auto flex items-center justify-center relative text-white md:w-[790px] md:h-[600px]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  text-[65px] text-center font-black tracking-[1.3px] leading-[65px] flex items-center font-inter md:text-[202px]">
           <p>YVIET</p>
