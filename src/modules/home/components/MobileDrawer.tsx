@@ -53,7 +53,7 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
-          <Drawer.Content className="w-[290px] pt-[15px] font-inter bg-[rgba(255,255,255,0.97)]">
+          <Drawer.Content className="w-[290px] pt-[15px] font-inter bg-[rgba(255,255,255,0.97)] rounded-tl-[16px] rounded-bl-[16px]">
             <Drawer.Body className="px-[18px]">
               <div>
                 <div className="flex justify-end">
@@ -68,7 +68,7 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
                 </div>
 
                 <div>
-                  <Button className="flex items-center gap-1">
+                  <Button className="flex items-center gap-2">
                     <Image
                       src="/svg/y-viet.svg"
                       alt="logo"
@@ -138,13 +138,13 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
                     </Accordion.Item>
                   </Accordion.Root>
 
-                  <div className="flex items-start gap-[10px] px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group">
+                  <div className="flex items-center gap-[10px] px-3 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group">
                     <div>
                       <Image
                         src="/svg/icons/dangkydoitac.svg"
                         alt="dang ky doi tac"
-                        width={18}
-                        height={18}
+                        width={24}
+                        height={24}
                       />
                     </div>
                     <div className="font-roboto text-sm font-semibold text-[#1F2A37]  group-hover:text-[#0A6DFD]">
