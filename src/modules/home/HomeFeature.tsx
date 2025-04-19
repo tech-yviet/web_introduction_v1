@@ -6,6 +6,7 @@ import Branding from "./components/Branding";
 import Introduction from "./components/Introduction";
 import Future from "./components/Future";
 import Footer from "@/layouts/Footer";
+import FooterDesktop from "@/layouts/components/FooterDesktop";
 
 const HomeFeature = () => {
   return (
@@ -26,6 +27,7 @@ const HomeFeature = () => {
       <Future />
 
       <Footer />
+      <FooterDesktop />
 
       <div className="fixed bottom-10 right-2 md:right-10 z-20">
         <Image

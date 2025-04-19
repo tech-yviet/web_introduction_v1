@@ -127,6 +127,10 @@ body {
     background: linear-gradient(180deg, #fafaff 0%, #afe2ff 100%);
   }
 
+  .bg-footer {
+    background: linear-gradient(180deg, #eff9ff 0%, #c6eaff 100%);
+  }
+
   .text-shadow {
     text-shadow: 0px 7.785px 15.57px rgba(0, 0, 0, 0.25);
   }
