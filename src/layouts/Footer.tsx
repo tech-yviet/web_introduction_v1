@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <div className="h-[510px] bg-white mt-[41px] pt-[20px] pb-[12.29px]  bg-footer rounded-t-[20px] font-inter md:hidden">
       <div className="pl-[26px] pr-[21.89px]">
-        <div className="flex items-center gap-[3px]">
+        <div className="flex items-center gap-[10px]">
           <Image src={"/svg/y-viet.svg"} alt="y-viet" width={52} height={52} />
           <div className="text-[20px] font-extrabold text-[#0152B5]">
             Y VIET
@@ -85,7 +85,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-[18px] border-t-[0.8px] border-white pl-[31px] pr-[21.88px] pt-[9.24px]  flex items-center justify-between">
+      <div className="mt-[18px] border-t-[0.8px] border-white pl-[41px] pr-[21.88px] pt-[9.24px]  flex items-center justify-between">
         <div className="font-roboto text-xs text-[#4B4B4B]">
           Y Viet 2025 © All Rights Reserved
         </div>
