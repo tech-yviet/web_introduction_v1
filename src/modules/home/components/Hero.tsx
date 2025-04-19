@@ -1,6 +1,17 @@
-import HeaderDesktop from "@/layouts/components/HeaderDesktop";
+"use client";
+
+import { useState } from "react";
+
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import Search from "../components/Search";
+import { Button } from "@chakra-ui/react";
+
+const LazyMobileDrawer = dynamic(() => import("./MobileDrawer"), {
+  ssr: false,
+});
 
 const data = [
   {
@@ -24,6 +35,12 @@ const data = [
 ];
 
 const Hero = () => {
+  const [isOpenMobileDrawer, setIsOpenMobileDrawer] = useState(false);
+
+  const handleToggleMobileDrawer = () => {
+    setIsOpenMobileDrawer((prev) => !prev);
+  };
+
   return (
     <div className="bg-[url('/img/hero-baner.jpg')] bg-cover bg-center bg-no-repeat h-[170px] md:w-full md:h-[639px]">
       <div className="bg-hero-banner h-full w-full pl-5 pr-2.5 pb-[15px] pt-[9px] text-white flex flex-col gap-4">
@@ -46,14 +63,17 @@ const Hero = () => {
               </div>
             </div>
 
-            <button className="absolute top-0 right-0 md:hidden">
+            <Button
+              className="absolute top-0 right-0 md:hidden"
+              onClick={handleToggleMobileDrawer}
+            >
               <Image
                 src="/svg/collapse.svg"
                 alt="search"
                 width={32}
                 height={32}
               />
-            </button>
+            </Button>
 
             <div className="hidden md:flex md:mt-[33px] items-center gap-8">
               <Search
@@ -167,6 +187,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <LazyMobileDrawer
+        isOpen={isOpenMobileDrawer}
+        onClose={() => setIsOpenMobileDrawer(false)}
+      />
     </div>
   );
 };
