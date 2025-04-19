@@ -3,7 +3,7 @@ import Hero from "./components/Hero";
 import Search from "./components/Search";
 import Categories from "./components/Categories";
 import Branding from "./components/Branding";
-import Introduction from "./components/Introduction";
+import Introduction from "./components/Introduction/Introduction";
 import Future from "./components/Future";
 import Footer from "@/layouts/Footer";
 import FooterDesktop from "@/layouts/components/FooterDesktop";
