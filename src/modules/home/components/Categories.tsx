@@ -42,7 +42,7 @@ const Categories = () => {
     if (!abcRef.current) return;
 
     const rect = (abcRef.current as HTMLDivElement).getBoundingClientRect();
-    const isNearTop = rect.top <= 70;
+    const isNearTop = rect.top <= 120;
 
     setIsNearTop(isNearTop);
   };
