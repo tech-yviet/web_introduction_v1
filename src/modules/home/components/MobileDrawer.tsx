@@ -2,6 +2,7 @@
 
 import { Button, Drawer, Portal, Accordion } from "@chakra-ui/react";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -48,6 +49,20 @@ const items = [
 ];
 
 const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
+  const [isNearTop, setIsNearTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = document.documentElement.scrollTop;
+      if (!isNearTop && scrollTop === 0) {
+        setIsNearTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isNearTop]);
+
   return (
     <Drawer.Root open={isOpen} onOpenChange={onClose}>
       <Portal>

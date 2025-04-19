@@ -93,6 +93,10 @@ body {
     background: radial-gradient(50% 50% at 50% 50%, #baeff8 0%, #95d5fa 100%);
   }
 
+  .bg-gradient-6 {
+    background: linear-gradient(90deg, #02b3ff 0%, #143392 100%);
+  }
+
   .box-shadow-button-gradient {
     box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1),
       0px 1px 3px 0px rgba(0, 0, 0, 0.1);

@@ -4,9 +4,15 @@ interface SearchProps {
   className?: string;
   inputClassName?: string;
   placeholder?: string;
+  widthIcon?: number;
 }
 
-const Search = ({ className, inputClassName, placeholder }: SearchProps) => {
+const Search = ({
+  className,
+  inputClassName,
+  placeholder,
+  widthIcon,
+}: SearchProps) => {
   return (
     <div className={className}>
       <div className="mr-[8px]">
@@ -27,7 +33,12 @@ const Search = ({ className, inputClassName, placeholder }: SearchProps) => {
       </div>
 
       <div className="ml-[11px]">
-        <Image src="/svg/Microphone.svg" alt="filter" width={24} height={24} />
+        <Image
+          src="/svg/Microphone.svg"
+          alt="filter"
+          width={!!widthIcon ? widthIcon : 24}
+          height={!!widthIcon ? widthIcon : 24}
+        />
       </div>
 
       <div className="mx-[10px]">
@@ -40,7 +51,12 @@ const Search = ({ className, inputClassName, placeholder }: SearchProps) => {
       </div>
 
       <div>
-        <Image src="/svg/gallery-add.svg" alt="filter" width={24} height={24} />
+        <Image
+          src="/svg/gallery-add.svg"
+          alt="filter"
+          width={!!widthIcon ? widthIcon : 24}
+          height={!!widthIcon ? widthIcon : 24}
+        />
       </div>
     </div>
   );
