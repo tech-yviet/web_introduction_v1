@@ -42,7 +42,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="bg-[url('/img/hero-baner.jpg')] bg-cover bg-center bg-no-repeat h-[170px] md:w-full md:h-[639px]">
+    <div className="bg-[url('/img/hero-baner.jpg')] bg-cover bg-center bg-no-repeat h-[170px] md:w-full md:h-[639px] mt-[40px] md:mt-0">
       <div className="bg-hero-banner h-full w-full pl-5 pr-2.5 pb-[15px] pt-[9px] text-white flex flex-col gap-4">
         <div className="w-full md:max-w-[1200px] h-full mx-auto ">
           <HeaderDesktop />

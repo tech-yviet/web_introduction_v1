@@ -57,7 +57,10 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
             <Drawer.Body className="px-[18px]">
               <div>
                 <div className="flex justify-end">
-                  <Button className="rounded-xl border border-[rgba(2,116,255,0.50)] hover:opacity-70" onClick={onClose}>
+                  <Button
+                    className="rounded-xl border border-[rgba(2,116,255,0.50)] hover:opacity-70"
+                    onClick={onClose}
+                  >
                     <Image
                       src="/svg/icons/eva_close-outline.svg"
                       alt="logo"
@@ -138,13 +141,13 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
                     </Accordion.Item>
                   </Accordion.Root>
 
-                  <div className="flex items-center gap-[10px] px-3 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group">
+                  <div className="flex items-center gap-[10px] px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group">
                     <div>
                       <Image
                         src="/svg/icons/dangkydoitac.svg"
                         alt="dang ky doi tac"
-                        width={24}
-                        height={24}
+                        width={18}
+                        height={18}
                       />
                     </div>
                     <div className="font-roboto text-sm font-semibold text-[#1F2A37]  group-hover:text-[#0A6DFD]">
