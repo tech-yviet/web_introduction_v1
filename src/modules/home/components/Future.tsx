@@ -58,7 +58,7 @@ const Future = () => {
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
-        delay: 1.4,
+        delay: 1,
         ease: "easeOut",
       },
     };
@@ -73,7 +73,7 @@ const Future = () => {
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
-        delay: 1.6,
+        delay: 1,
         ease: "easeOut",
       },
     };
@@ -88,7 +88,7 @@ const Future = () => {
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
-        delay: 1.8,
+        delay: 1,
         ease: "easeOut",
       },
     };
@@ -103,7 +103,7 @@ const Future = () => {
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
-        delay: 1.9,
+        delay: 1,
         ease: "easeOut",
       },
     };
