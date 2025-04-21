@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import IntroductionDoctor from "./IntroductionDoctor";
 import IntroductionMedicine from "./IntroductionMedicine";
@@ -8,6 +8,14 @@ import { motion } from "framer-motion";
 
 const Introduction = () => {
   const [isFindDoctor, setIsFindDoctor] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFindDoctor((prev) => !prev);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleChangeFindDoctor = () => {
     setIsFindDoctor(true);
