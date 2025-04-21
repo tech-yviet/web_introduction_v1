@@ -69,6 +69,7 @@ const Categories = () => {
         <div className="flex items-center gap-[5.12px] md:gap-4 ">
           {categories?.map((c, index) => {
             const isEven = index % 2 === 0;
+
             return (
               <motion.div
                 key={c.id}
@@ -77,7 +78,7 @@ const Categories = () => {
                 transition={{
                   duration: 0.5,
                   delay: index * 0.1,
-                  ease: "easeOut"
+                  ease: "easeOut",
                 }}
                 className={`w-[24%] bg-[rgba(255,255,255,0.21)] hover:bg-[rgba(255,255,255,0.7)] rounded-xl px-[3px] pt-[10px] pb-[13.48px] text-white flex flex-col items-center transition-all duration-300 hover:cursor-pointer group md:rounded-[40px] md:pt-[30px] md:pb-[37px] md:px-[12px] md:min-h-[453px] ${
                   !!isEven
@@ -91,7 +92,7 @@ const Categories = () => {
                   transition={{
                     duration: 0.5,
                     delay: index * 0.1 + 0.2,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
                 >
                   <Image
@@ -109,7 +110,7 @@ const Categories = () => {
                   transition={{
                     duration: 0.5,
                     delay: index * 0.1 + 0.3,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
                   className="text-[8.5px] font-inter font-bold text-center uppercase mt-[5.98px] group-hover:text-[#0180AA] whitespace-pre-line md:mt-5 md:text-2xl"
                 >
@@ -122,7 +123,7 @@ const Categories = () => {
                   transition={{
                     duration: 0.5,
                     delay: index * 0.1 + 0.4,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
                   className="mt-[6.38px] text-[6px] font-inter font-medium text-center whitespace-pre-line group-hover:text-[#0180AA] md:mt-5 md:text-base"
                   dangerouslySetInnerHTML={{ __html: c.desc }}
@@ -134,7 +135,7 @@ const Categories = () => {
                   transition={{
                     duration: 0.5,
                     delay: index * 0.1 + 0.5,
-                    ease: "easeOut"
+                    ease: "easeOut",
                   }}
                   className="mt-[7.23px] bg-[#E9EBED] rounded-[37.5px] py-[3px] px-[9px] h-[15px] text-[5.625px] font-roboto font-medium text-[#4B4B4B] md:mt-[30px] md:w-[154px] md:h-[48px] md:text-base md:font-semibold group-hover:bg-button-hover-2 group-hover:text-white"
                 >

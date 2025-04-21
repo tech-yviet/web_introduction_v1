@@ -14,6 +14,15 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+      },
+      animation: {
+        float: "float 4s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
