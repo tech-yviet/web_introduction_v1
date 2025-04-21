@@ -11,7 +11,7 @@ const Future = () => {
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
           className="text-[28px] font-bold leading-[110%] w-[176px] text-right md:w-[408px] md:text-[65px]"
         >
           Future <br />
@@ -22,7 +22,7 @@ const Future = () => {
           initial={{ y: 10, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.7 }}
           className="bg-[rgba(255,255,255,0.20)] mt-[13px] ml-[78.37px] px-[5.08px] py-1 rounded-[11.292px] w-[112px]  text-[6px] text-center font-medium md:mt-[32.07px] md:rounded-[26.829px] md:w-[253.203px] md:h-[46.113px] md:text-[13px] md:flex md:items-center md:justify-center md:ml-[169.03px]"
         >
           Prepare for the New Age of Health
@@ -30,9 +30,9 @@ const Future = () => {
       </div>
 
       <motion.div
-        initial={{ y: 20, opacity: 0 }}
+        initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="mt-[82px] md:mt-[196px]">
@@ -49,7 +49,7 @@ const Future = () => {
         initial={{ x: -100, y: 500, opacity: 0 }}
         whileInView={{ x: 0, y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
         className="w-[68.157px] h-[68.157px] bg-[radial-gradient(50%_50%_at_50%_50%,_#BAEFF8_0%,_#95D5FA_100%)] shadow-[3.529px_2.823px_1.412px_0px_#BAE6FF_inset] rounded-[13.7px] px-[11.64px] pt-[9.53px] pb-[9.69px] absolute top-[12px] right-[87px] md:w-[161.934px] md:h-[161.934px] md:rounded-[32.549px] md:shadow-[8.384px_6.707px_3.354px_0px_#BAE6FF_inset] md:pl-[25.15px] md:pt-[22.64px] md:right-[321px] md:top-[26px]"
       >
         <div>
@@ -71,7 +71,7 @@ const Future = () => {
         initial={{ x: 100, y: 200, opacity: 0 }}
         whileInView={{ x: 0, y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 1.4 }}
         className="w-[66.102px] h-[66.102px] bg-[url('/svg/future/bg-hoidap.svg')] bg-cover bg-center shadow-[3.529px_2.823px_1.412px_0px_#8CCCF1_inset] rounded-[13.7px] pl-[10px] pt-[19.5px] pb-[9.69px] absolute top-[84px] left-[24px] md:w-[157.051px] md:h-[157.051px] md:rounded-[32.549px] md:shadow-[8.384px_6.707px_3.354px_0px_#8CCCF1_inset] md:pt-[48.59px] md:pl-[30.18px] md:left-[266px] md:top-[203px]"
       >
         <div>
@@ -93,7 +93,7 @@ const Future = () => {
         initial={{ x: 50, y: 200, opacity: 0 }}
         whileInView={{ x: 0, y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 1.4 }}
         className="w-[78.089px] h-[78.089px] bg-[url('/svg/future/bg-ai-support.svg')] bg-cover bg-center shadow-[3.529px_2.823px_1.412px_0px_rgba(125,171,203,0.40)_inset] rounded-[13.7px] pl-[10px] pt-[16px] pb-[9.69px] absolute top-[121px] left-[100px] md:w-[185.532px] md:h-[185.532px] md:shadow-none md:pt-[43.23px] md:pl-[28.04px] md:top-[284px] md:left-[446px]"
       >
         <div className="pl-2">
@@ -115,7 +115,7 @@ const Future = () => {
         initial={{ x: -50, y: 200, opacity: 0 }}
         whileInView={{ x: 0, y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 1.6 }}
         className="w-[61.649px] h-[61.649px] bg-[url('/svg/future/bg-bacsi.svg')] bg-cover bg-center shadow-[3.529px_2.823px_1.412px_0px_rgba(134,205,255,0.30)_inset] rounded-[13.7px] pl-[14.32px] pt-[14.96px] pb-[9.69px] absolute top-[104px] left-[190px] md:w-[146.473px] md:h-[146.473px] md:shadow-none md:pt-[35.55px] md:pl-[31.71px] md:top-[247px] md:left-[659px]"
       >
         <div>
@@ -137,7 +137,7 @@ const Future = () => {
         initial={{ x: -10, y: 100, opacity: 0 }}
         whileInView={{ x: 0, y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 1.8 }}
         className="w-[78.089px] h-[78.089px] bg-[url('/svg/future/bg-giaiphap.svg')] bg-cover bg-center shadow-[3.529px_2.823px_1.412px_0px_rgba(134,205,255,0.30)_inset] rounded-[13.7px] pl-[14.09px] pt-[22.87px] pb-[9.69px] absolute top-[175px] left-[203px] md:w-[185.532px] md:h-[185.532px] md:rounded-[32.549px] md:pt-[53px] md:pl-[35.93px] md:pr-[24px] md:top-[418px] md:left-[691px]"
       >
         <div>
@@ -161,7 +161,7 @@ const Future = () => {
         initial={{ x: -100, y: 300, opacity: 0 }}
         whileInView={{ x: 0, y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 2 }}
         className="w-[78.089px] h-[78.089px] bg-[url('/svg/future/bg-luutru.svg')] bg-cover bg-center shadow-[8.384px_6.707px_3.354px_0px_rgba(127, 226, 240, 0.40)_inset] rounded-[13.7px] pl-[13.06px] pt-[17.15px] pb-[9.69px] absolute top-[85px] left-[262px] md:w-[185.532px] md:h-[185.532px] md:pt-[36px] md:pl-[20.12px] md:pb-[30.82px] md:top-[200px] md:left-[830px]"
       >
         <div className="pl-[3.19px] md:pl-0">
