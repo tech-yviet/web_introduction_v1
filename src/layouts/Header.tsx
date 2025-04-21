@@ -3,7 +3,7 @@ import Image from "next/image";
 export const Header = () => {
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 bg-white z-50 flex items-center justify-between w-full px-[9px] py-[7.5px] h-[40px] max-w-[375px] mx-auto  md:hidden font-inter">
+      <div className="fixed top-0 left-0 right-0 bg-white z-50 flex items-center justify-between  px-[9px] py-[7.5px] h-[40px] w-[375px] mx-auto md:hidden font-inter">
         <button className="flex items-center gap-[3px]">
           <Image src="/svg/y-viet.svg" alt="logo" width={30} height={30} />
           <div className="text-[#1B63DE] font-extrabold uppercase">Y Viet</div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 const IntroductionMedicine = () => {
   return (
     <div className="mt-[40px] px-[10px] text-white font-inter md:mt-[87px] md:px-[50px]">
-      <div className="flex gap-5 md:mt-[185px] md:justify-between md:gap-[58px] md:px-[61px]">
+      <div className="flex gap-5 md:justify-between md:gap-[58px] md:px-[61px]">
         <div className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0">
           <Image
             src="/svg/introduction/introduction-mobile-3.svg"

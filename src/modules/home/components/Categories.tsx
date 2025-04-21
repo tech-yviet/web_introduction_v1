@@ -106,11 +106,11 @@ const Categories = () => {
       </div>
 
       {!!isNearTop && (
-        <div className="fixed top-[40px] left-0 right-0 bg-white z-50 w-full md:hidden font-inter p-[10px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px] max-w-[375px]">
+        <div className="fixed top-[40px] left-0 right-0 bg-white z-50 md:hidden font-inter p-[10px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px] w-[375px] mx-auto">
           <Search
             placeholder="Tìm thuốc, dịch vụ, Bác sĩ, Phòng k..."
             inputClassName="bg-transparent outline-none w-full text-sm font-normal leading-[22px] w-[227px]"
-            className="p-3 flex items-center bg-white rounded-[40px] flex-1 h-[32px]"
+            className="p-3 flex items-center  bg-white rounded-[40px] flex-1 h-[32px]"
             widthIcon={20}
           />
 

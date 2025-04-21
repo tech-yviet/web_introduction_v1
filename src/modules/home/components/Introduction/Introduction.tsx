@@ -51,7 +51,7 @@ const Introduction = () => {
           </div>
         </div>
 
-        <div className="mt-[11px] flex items-center justify-center gap-2 md:mt-8">
+        <div className="mt-[11px] flex items-center justify-center gap-2 md:mt-8 md:gap-4">
           <button
             onClick={handleChangeFindDoctor}
             className={`hover:cursor-pointer hover:opacity-80 px-4 py-2 rounded-[32px]  text-[10px] font-medium leading-[6.228px] md:rounded-[20px] md:text-[14px] md:leading-[20px] ${
