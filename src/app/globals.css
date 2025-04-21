@@ -102,6 +102,10 @@ body {
     backdrop-filter: blur(50px);
   }
 
+  .bg-gradient-8 {
+    background: linear-gradient(90deg, #092a70 0%, #1881c2 50%, #05b9d6 100%);
+  }
+
   .box-shadow-button-gradient {
     box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1),
       0px 1px 3px 0px rgba(0, 0, 0, 0.1);
