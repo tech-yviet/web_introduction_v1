@@ -1,8 +1,10 @@
 import Image from "next/image";
+import { Accordion } from "@chakra-ui/react";
+import { DETAIL_LIST, SUPPORT_LIST } from "@/variables";
 
 export const Footer = () => {
   return (
-    <div className="h-[510px] bg-white mt-[41px] pt-[20px] pb-[12.29px]  bg-footer rounded-t-[20px] font-inter md:hidden">
+    <div className="min-h-[510px] bg-white mt-[41px] pt-[20px] pb-[12.29px]  bg-footer rounded-t-[20px] font-inter md:hidden">
       <div className="pl-[26px] pr-[21.89px]">
         <div className="flex items-center gap-[10px]">
           <Image src={"/svg/y-viet.svg"} alt="y-viet" width={52} height={52} />
@@ -42,34 +44,91 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-[21px]">
-          <div className="flex items-center justify-between border-t-[0.5px] border-white px-[12.85px] py-[10px]">
-            <div className="text-sm font-bold text-[#2E64D6]">
-              Hỗ trợ khách hàng
-            </div>
-            <div>
-              <Image
-                src={"/svg/icons/arrow-down.svg"}
-                alt="arrow-down"
-                width={13}
-                height={8}
-              />
-            </div>
-          </div>
+        <div className="mt-[21px] w-full">
+          <Accordion.Root
+            multiple
+            collapsible
+            defaultValue={["b"]}
+            className="w-full"
+          >
+            <Accordion.Item value="support">
+              <Accordion.ItemTrigger className=" border-t-[0.5px] border-white px-[12.85px] py-[10px] w-full">
+                <div className="w-full">
+                  <div className="text-sm font-bold text-[#2E64D6]">
+                    Hỗ trợ khách hàng
+                  </div>
+                </div>
+                <Accordion.ItemIndicator className="text-[16px] text-[#2E64D6]" />
+              </Accordion.ItemTrigger>
 
-          <div className="flex items-center justify-between border-y-[0.5px] border-white px-[12.85px] py-[10px]">
-            <div className="text-sm font-bold text-[#2E64D6]">
-              Danh sách chi tiết
-            </div>
-            <div>
-              <Image
-                src={"/svg/icons/arrow-down.svg"}
-                alt="arrow-down"
-                width={13}
-                height={8}
-              />
-            </div>
-          </div>
+              {SUPPORT_LIST?.map((item, index) => (
+                <div key={item.id}>
+                  <Accordion.ItemContent>
+                    <Accordion.ItemBody
+                      className={`${
+                        index === 0 ? "mt-[4px]" : "mt-[6px]"
+                      } py-0 px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer `}
+                    >
+                      <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD] leading-[22px]">
+                        {item.title}
+                      </div>
+                    </Accordion.ItemBody>
+                  </Accordion.ItemContent>
+                </div>
+              ))}
+
+              <Accordion.ItemContent>
+                <Accordion.ItemBody className="mt-[6px] py-0 px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer ">
+                  <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD]">
+                    <span className="font-bold">Hotline:</span> 0827 222 115
+                  </div>
+                </Accordion.ItemBody>
+              </Accordion.ItemContent>
+
+              <Accordion.ItemContent className="pb-[23.85px]">
+                <Accordion.ItemBody className="mt-[6px] py-0 px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer ">
+                  <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD]">
+                    <span className="font-bold">Email:</span> info@yviet.ai.vn
+                  </div>
+                </Accordion.ItemBody>
+              </Accordion.ItemContent>
+            </Accordion.Item>
+
+            <Accordion.Item
+              value="detail"
+              className="border-y-[0.5px] border-white"
+            >
+              <Accordion.ItemTrigger className="px-[12.85px] py-[10px] w-full">
+                <div className="w-full">
+                  <div className="text-sm font-bold text-[#2E64D6]">
+                    Danh sách chi tiết
+                  </div>
+                </div>
+                <Accordion.ItemIndicator className="text-[16px] text-[#2E64D6]" />
+              </Accordion.ItemTrigger>
+
+              {DETAIL_LIST?.map((item, index) => (
+                <div key={item.id}>
+                  <Accordion.ItemContent>
+                    <Accordion.ItemBody
+                      className={`${index === 0 ? "mt-[4px]" : "mt-[6px]"} 
+                      
+                      ${
+                        index === DETAIL_LIST.length - 1
+                          ? "mb-[24px] py-0"
+                          : "py-0"
+                      }
+                      px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer `}
+                    >
+                      <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD] leading-[22px]">
+                        {item.title}
+                      </div>
+                    </Accordion.ItemBody>
+                  </Accordion.ItemContent>
+                </div>
+              ))}
+            </Accordion.Item>
+          </Accordion.Root>
         </div>
 
         <div className="mt-[14px] px-[12.84px] text-[#3A3541] text-sm leading-[27px]">
@@ -87,7 +146,7 @@ export const Footer = () => {
 
       <div className="mt-[18px] border-t-[0.8px] border-white pl-[41px] pr-[21.88px] pt-[9.24px]  flex items-center justify-between">
         <div className="font-roboto text-xs text-[#4B4B4B]">
-          Y Viet 2025 © All Rights Reserved
+          Y Viet 2025 © All Rights Reserved
         </div>
 
         <div className="flex items-center gap-[7.2px]">
