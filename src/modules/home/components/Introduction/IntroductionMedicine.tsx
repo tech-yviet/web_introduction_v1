@@ -8,7 +8,7 @@ const IntroductionMedicine = () => {
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
         >
