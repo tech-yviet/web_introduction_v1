@@ -1,10 +1,17 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const IntroductionMedicine = () => {
   return (
     <div className="mt-[40px] px-[10px] text-white font-inter md:mt-[87px] md:px-[50px]">
       <div className="flex gap-5 md:justify-between md:gap-[58px] md:px-[61px]">
-        <div className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0">
+        <motion.div 
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
+        >
           <Image
             src="/svg/introduction/introduction-mobile-3.svg"
             alt="image-2"
@@ -20,9 +27,15 @@ const IntroductionMedicine = () => {
             height={401.028}
             className="absolute top-[51px] -left-[8px] md:top-[218px] md:left-[10px]"
           />
-        </div>
+        </motion.div>
 
-        <div className="relative pl-[39px] pt-[21px] md:pl-[114px] md:pt-[67px]">
+        <motion.div 
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative pl-[39px] pt-[21px] md:pl-[114px] md:pt-[67px]"
+        >
           <div className="absolute top-0 left-0 text-[47px] text-white font-bold leading-[47.231px] opacity-[0.1] md:text-[150px] md:leading-[151.67px]">
             01
           </div>
@@ -42,11 +55,17 @@ const IntroductionMedicine = () => {
             Chụp hoặc tải lên ảnh đơn thuốc hoặc hộp thuốc, AI tự động phân tích
             và hiển thị chi tiết, giúp bạn kiểm tra đơn thuốc rõ ràng
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="flex gap-4 md:px-[54px] md:justify-between md:gap-[58px] mt-[30px] md:mt-[194px]">
-        <div className="relative pl-[39px] pt-[21px] md:pl-[95px] md:pt-[67px]">
+        <motion.div 
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative pl-[39px] pt-[21px] md:pl-[95px] md:pt-[67px]"
+        >
           <div className="absolute top-0 left-0 text-[47px] text-white font-bold leading-[47.231px] opacity-[0.1] md:text-[150px] md:leading-[151.67px]">
             02
           </div>
@@ -73,9 +92,15 @@ const IntroductionMedicine = () => {
               chóng qua giao hàng hoặc đến mua trực tiếp
             </li>
           </ul>
-        </div>
+        </motion.div>
 
-        <div className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0">
+        <motion.div 
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
+        >
           <Image
             src="/svg/introduction/introduction-mobile-4.svg"
             alt="image-1"
@@ -91,7 +116,7 @@ const IntroductionMedicine = () => {
             height={401.028}
             className="absolute top-[70px] left-0 md:-top-[135px]"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
