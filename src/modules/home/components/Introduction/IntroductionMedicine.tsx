@@ -5,7 +5,7 @@ const IntroductionMedicine = () => {
   return (
     <div className="mt-[40px] px-[10px] text-white font-inter md:mt-[87px] md:px-[50px]">
       <div className="flex gap-5 md:justify-between md:gap-[58px] md:px-[61px]">
-        <motion.div 
+        <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -29,7 +29,7 @@ const IntroductionMedicine = () => {
           />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -59,10 +59,10 @@ const IntroductionMedicine = () => {
       </div>
 
       <div className="flex gap-4 md:px-[54px] md:justify-between md:gap-[58px] mt-[30px] md:mt-[194px]">
-        <motion.div 
+        <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative pl-[39px] pt-[21px] md:pl-[95px] md:pt-[67px]"
         >
@@ -94,10 +94,10 @@ const IntroductionMedicine = () => {
           </ul>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
         >
