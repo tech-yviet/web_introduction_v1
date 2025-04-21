@@ -21,7 +21,7 @@ const config: Config = {
         },
       },
       animation: {
-        float: "float 4s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
       },
     },
   },
