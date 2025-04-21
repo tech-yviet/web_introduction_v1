@@ -5,6 +5,7 @@ import Image from "next/image";
 import Search from "./Search";
 import { Button } from "@chakra-ui/react";
 import MobileDrawer from "./MobileDrawer";
+import { motion } from "framer-motion";
 
 const categories = [
   {
@@ -69,15 +70,30 @@ const Categories = () => {
           {categories?.map((c, index) => {
             const isEven = index % 2 === 0;
             return (
-              <div
+              <motion.div
                 key={c.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
                 className={`w-[24%] bg-[rgba(255,255,255,0.21)] hover:bg-[rgba(255,255,255,0.7)] rounded-xl px-[3px] pt-[10px] pb-[13.48px] text-white flex flex-col items-center transition-all duration-300 hover:cursor-pointer group md:rounded-[40px] md:pt-[30px] md:pb-[37px] md:px-[12px] md:min-h-[453px] ${
                   !!isEven
                     ? "mb-[10.52px] md:mb-[33px]"
                     : "mt-[10.52px] md:mt-[33px]"
                 }`}
               >
-                <div>
+                <motion.div
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1 + 0.2,
+                    ease: "easeOut"
+                  }}
+                >
                   <Image
                     src={c.image}
                     width={51}
@@ -85,21 +101,46 @@ const Categories = () => {
                     alt={c.title}
                     className="md:w-[160px] md:h-[160px]"
                   />
-                </div>
+                </motion.div>
 
-                <div className="text-[8.5px] font-inter font-bold text-center uppercase mt-[5.98px] group-hover:text-[#0180AA] whitespace-pre-line md:mt-5 md:text-2xl">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1 + 0.3,
+                    ease: "easeOut"
+                  }}
+                  className="text-[8.5px] font-inter font-bold text-center uppercase mt-[5.98px] group-hover:text-[#0180AA] whitespace-pre-line md:mt-5 md:text-2xl"
+                >
                   {c.title}
-                </div>
+                </motion.div>
 
-                <div
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1 + 0.4,
+                    ease: "easeOut"
+                  }}
                   className="mt-[6.38px] text-[6px] font-inter font-medium text-center whitespace-pre-line group-hover:text-[#0180AA] md:mt-5 md:text-base"
                   dangerouslySetInnerHTML={{ __html: c.desc }}
-                ></div>
+                ></motion.div>
 
-                <button className="mt-[7.23px] bg-[#E9EBED] rounded-[37.5px] py-[3px] px-[9px] h-[15px] text-[5.625px] font-roboto font-medium text-[#4B4B4B] md:mt-[30px] md:w-[154px] md:h-[48px] md:text-base md:font-semibold group-hover:bg-button-hover-2 group-hover:text-white">
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1 + 0.5,
+                    ease: "easeOut"
+                  }}
+                  className="mt-[7.23px] bg-[#E9EBED] rounded-[37.5px] py-[3px] px-[9px] h-[15px] text-[5.625px] font-roboto font-medium text-[#4B4B4B] md:mt-[30px] md:w-[154px] md:h-[48px] md:text-base md:font-semibold group-hover:bg-button-hover-2 group-hover:text-white"
+                >
                   Xem thêm
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             );
           })}
         </div>
