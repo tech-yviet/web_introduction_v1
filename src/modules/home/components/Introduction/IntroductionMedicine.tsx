@@ -45,7 +45,7 @@ const IntroductionMedicine = () => {
         </div>
       </div>
 
-      <div className="flex gap-4 md:px-[54px] md:justify-between md:gap-[58px] mt-[30px]">
+      <div className="flex gap-4 md:px-[54px] md:justify-between md:gap-[58px] mt-[30px] md:mt-[194px]">
         <div className="relative pl-[39px] pt-[21px] md:pl-[95px] md:pt-[67px]">
           <div className="absolute top-0 left-0 text-[47px] text-white font-bold leading-[47.231px] opacity-[0.1] md:text-[150px] md:leading-[151.67px]">
             02
