@@ -5,6 +5,7 @@ import Image from "next/image";
 import { dispatch, useAppSelector } from "@/store";
 import { appA, appS } from "@/store/modules/app";
 import { Button, Drawer, Portal, Accordion } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 const items = [
   {
@@ -22,7 +23,7 @@ const items = [
   {
     id: "3",
     title: "Bác sĩ - Điều dưỡng - NVYT",
-    link: "/",
+    link: "/doctors",
     icon: "/svg/icons/circle-bacsi.svg",
   },
   {
@@ -46,6 +47,8 @@ const items = [
 ];
 
 const MobileDrawer = () => {
+  const router = useRouter();
+
   const [isNearTop, setIsNearTop] = useState(true);
   const isOpenDrawerMenuMobile = useAppSelector(
     appS.selectIsOpenDrawerMenuMobile
@@ -64,6 +67,11 @@ const MobileDrawer = () => {
   }, [isNearTop]);
 
   const handleClose = () => {
+    dispatch(appA.closeDrawerMenuMobile());
+  };
+
+  const handleClickItem = (link: string) => {
+    router.push(link);
     dispatch(appA.closeDrawerMenuMobile());
   };
 
@@ -138,7 +146,10 @@ const MobileDrawer = () => {
                       </Accordion.ItemTrigger>
 
                       {items?.map((item) => (
-                        <div key={item.id}>
+                        <div
+                          key={item.id}
+                          onClick={() => handleClickItem(item.link)}
+                        >
                           <Accordion.ItemContent>
                             <Accordion.ItemBody className="px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer flex items-center gap-[10px]">
                               <div>

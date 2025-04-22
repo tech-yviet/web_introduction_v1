@@ -1,10 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const Header = () => {
+  const router = useRouter();
+
   return (
     <>
       <div className="fixed top-0 left-0 right-0 bg-white z-50 flex items-center justify-between  px-[9px] py-[7.5px] h-[40px] md:hidden font-inter">
-        <button className="flex items-center gap-[3px]">
+        <button
+          className="flex items-center gap-[3px]"
+          onClick={() => router.push("/")}
+        >
           <Image src="/svg/y-viet.svg" alt="logo" width={30} height={30} />
           <div className="text-[#1B63DE] font-extrabold uppercase">Y Viet</div>
         </button>
