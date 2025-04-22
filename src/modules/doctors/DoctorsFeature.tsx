@@ -165,7 +165,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
           </Button>
         </div>
 
-        <div className="flex items-center gap-2 mb-4 overflow-x-auto">
+        <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide">
           {filterDoctors.map((filter) => (
             <Button
               className="px-4 rounded-[100px] bg-[rgba(255,255,255,0.90)] text-sm font-medium text-[#0274FF] hover:bg-[#0274FF] hover:text-white"
