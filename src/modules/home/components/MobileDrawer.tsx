@@ -1,13 +1,10 @@
 "use client";
 
-import { Button, Drawer, Portal, Accordion } from "@chakra-ui/react";
-import Image from "next/image";
 import { useState, useEffect } from "react";
-
-interface MobileDrawerProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import Image from "next/image";
+import { dispatch, useAppSelector } from "@/store";
+import { appA, appS } from "@/store/modules/app";
+import { Button, Drawer, Portal, Accordion } from "@chakra-ui/react";
 
 const items = [
   {
@@ -48,8 +45,11 @@ const items = [
   },
 ];
 
-const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
+const MobileDrawer = () => {
   const [isNearTop, setIsNearTop] = useState(true);
+  const isOpenDrawerMenuMobile = useAppSelector(
+    appS.selectIsOpenDrawerMenuMobile
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,8 +63,12 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isNearTop]);
 
+  const handleClose = () => {
+    dispatch(appA.closeDrawerMenuMobile());
+  };
+
   return (
-    <Drawer.Root open={isOpen} onOpenChange={onClose}>
+    <Drawer.Root open={isOpenDrawerMenuMobile} onOpenChange={handleClose}>
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
@@ -74,7 +78,7 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
                 <div className="flex justify-end">
                   <Button
                     className="rounded-xl border border-[rgba(2,116,255,0.50)] hover:opacity-70"
-                    onClick={onClose}
+                    onClick={handleClose}
                   >
                     <Image
                       src="/svg/icons/eva_close-outline.svg"

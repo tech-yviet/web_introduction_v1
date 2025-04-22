@@ -3,6 +3,7 @@ import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/components/ui/provider";
 import Header from "@/layouts/Header";
+import { ReduxProvider } from "@/core/providers/ReduxProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,8 +36,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${roboto.variable} antialiased`}>
         <Provider>
-          <Header />
-          {children}
+          <ReduxProvider>
+            <Header />
+            {children}
+          </ReduxProvider>
         </Provider>
       </body>
     </html>

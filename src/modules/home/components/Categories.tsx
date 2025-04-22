@@ -1,11 +1,11 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
+import { dispatch } from "@/store";
+import { appA } from "@/store/modules/app";
 import Image from "next/image";
-import Search from "./Search";
 import { Button } from "@chakra-ui/react";
-import MobileDrawer from "./MobileDrawer";
 import { motion } from "framer-motion";
+import Search from "./Search";
 
 const categories = [
   {
@@ -35,21 +35,22 @@ const categories = [
 ];
 
 const Categories = () => {
-  const abcRef = useRef(null);
+  const refTrackScroll = useRef(null);
   const [isNearTop, setIsNearTop] = useState(false);
-  const [isOpenMobileDrawer, setIsOpenMobileDrawer] = useState(false);
 
   const handleScroll = () => {
-    if (!abcRef.current) return;
+    if (!refTrackScroll.current) return;
 
-    const rect = (abcRef.current as HTMLDivElement).getBoundingClientRect();
+    const rect = (
+      refTrackScroll.current as HTMLDivElement
+    ).getBoundingClientRect();
     const isNearTop = rect.top <= 120;
 
     setIsNearTop(isNearTop);
   };
 
   const handleToggleMobileDrawer = () => {
-    setIsOpenMobileDrawer((prev) => !prev);
+    dispatch(appA.toggleDrawerMenuMobile());
   };
 
   useEffect(() => {
@@ -63,7 +64,7 @@ const Categories = () => {
   return (
     <>
       <div
-        ref={abcRef}
+        ref={refTrackScroll}
         className="abc mt-[29px] px-[7px] md:max-w-[1200px] md:mx-auto md:px-[29px] relative z-10"
       >
         <div className="flex items-center gap-[5.12px] md:gap-4 ">
@@ -166,11 +167,6 @@ const Categories = () => {
           </Button>
         </div>
       )}
-
-      <MobileDrawer
-        isOpen={isOpenMobileDrawer}
-        onClose={handleToggleMobileDrawer}
-      />
     </>
   );
 };

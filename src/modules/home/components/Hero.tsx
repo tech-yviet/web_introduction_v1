@@ -1,10 +1,8 @@
 "use client";
-
-import { useState } from "react";
-
+import { dispatch } from "@/store";
+import { appA } from "@/store/modules/app";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-
 import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import Search from "../components/Search";
 import { Button } from "@chakra-ui/react";
@@ -35,10 +33,8 @@ const data = [
 ];
 
 const Hero = () => {
-  const [isOpenMobileDrawer, setIsOpenMobileDrawer] = useState(false);
-
   const handleToggleMobileDrawer = () => {
-    setIsOpenMobileDrawer((prev) => !prev);
+    dispatch(appA.toggleDrawerMenuMobile());
   };
 
   return (
@@ -188,10 +184,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <LazyMobileDrawer
-        isOpen={isOpenMobileDrawer}
-        onClose={() => setIsOpenMobileDrawer(false)}
-      />
+      <LazyMobileDrawer />
     </div>
   );
 };
