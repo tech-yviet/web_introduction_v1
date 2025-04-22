@@ -4,7 +4,7 @@ import { FC, useEffect, useMemo } from "react";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA } from "@/store/modules/doctors";
 import Footer from "@/layouts/Footer";
-import { Button } from "@chakra-ui/react";
+import { Button, ButtonGroup, IconButton } from "@chakra-ui/react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { appA } from "@/store/modules/app";
@@ -259,9 +259,39 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
           ))}
         </div>
 
-        <div>Pagination</div>
-      </div>
+        <div className="mt-4 flex justify-end">
+          <ButtonGroup className="gap-1">
+            <IconButton className="w-[41px] h-[41px] bg-white rounded-[7.455px]">
+              <Image
+                src="/svg/icons/arrow-left.svg"
+                alt="arrow-left"
+                width={14.909}
+                height={14.909}
+              />
+            </IconButton>
 
+            {[1, 2, 3, "...", 25].map((item, index) => (
+              <IconButton
+                key={index}
+                className={`w-[41px] h-[41px] bg-white rounded-[7.455px] ${
+                  item === 1 ? "bg-[#0274FF] text-white" : "text-[#3590FF]"
+                }`}
+              >
+                {item}
+              </IconButton>
+            ))}
+
+            <IconButton className="w-[41px] h-[41px] bg-white rounded-[7.455px]">
+              <Image
+                src="/svg/icons/arrow-right.svg"
+                alt="arrow-right"
+                width={14.909}
+                height={14.909}
+              />
+            </IconButton>
+          </ButtonGroup>
+        </div>
+      </div>
       <Footer />
 
       <LazyMobileDrawer />
