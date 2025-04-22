@@ -64,7 +64,15 @@ body {
   }
 
   .bg-doctors-gradient-mobile {
-    background: linear-gradient(180deg, #DDFCFF 0%, #98D4FF 100%);
+    background: linear-gradient(180deg, #ddfcff 0%, #98d4ff 100%);
+  }
+
+  .border-doctors-card {
+    border: 0.775px solid rgba(185, 189, 193, 0.3);
+  }
+
+  .box-shadow-doctors-card {
+    box-shadow: 0px 0.775px 3.1px 0px rgba(53, 144, 255, 0.25);
   }
 
   .bg-button {
