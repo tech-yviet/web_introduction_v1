@@ -1,13 +1,9 @@
 const init = () => {
-  return async () => {
-    console.log("init");
-  };
+  return async () => {};
 };
 
 const destroy = () => {
-  return async () => {
-    console.log("destroy");
-  };
+  return async () => {};
 };
 
 export const extendActions = {

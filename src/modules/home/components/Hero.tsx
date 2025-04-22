@@ -7,9 +7,12 @@ import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import Search from "../components/Search";
 import { Button } from "@chakra-ui/react";
 
-const LazyMobileDrawer = dynamic(() => import("./MobileDrawer"), {
-  ssr: false,
-});
+const LazyMobileDrawer = dynamic(
+  () => import("@/components/drawer/MobileDrawer"),
+  {
+    ssr: false,
+  }
+);
 
 const data = [
   {

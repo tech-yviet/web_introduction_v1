@@ -112,7 +112,10 @@ const MobileDrawer = () => {
                 </div>
 
                 <div className="mt-[24px]">
-                  <div className="flex items-start gap-[10px] px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group">
+                  <div
+                    onClick={() => handleClickItem("/")}
+                    className="flex items-start gap-[10px] px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group"
+                  >
                     <div>
                       <Image
                         src="/svg/icons/home.svg"
