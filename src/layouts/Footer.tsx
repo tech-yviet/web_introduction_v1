@@ -72,9 +72,9 @@ export const Footer = () => {
                     <Accordion.ItemBody
                       className={`${
                         index === 0 ? "mt-[4px]" : "mt-[6px]"
-                      } py-0 px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer `}
+                      } py-0 px-3  rounded-lg hover:cursor-pointer `}
                     >
-                      <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD] leading-[22px]">
+                      <div className="font-roboto text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[22px]">
                         {item.title}
                       </div>
                     </Accordion.ItemBody>
@@ -83,16 +83,16 @@ export const Footer = () => {
               ))}
 
               <Accordion.ItemContent>
-                <Accordion.ItemBody className="mt-[6px] py-0 px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer ">
-                  <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD]">
+                <Accordion.ItemBody className="mt-[6px] py-0 px-3 rounded-lg hover:cursor-pointer ">
+                  <div className="font-roboto text-sm text-[#1F2A37] hover:text-[#0A6DFD]">
                     <span className="font-bold">Hotline:</span> 0827 222 115
                   </div>
                 </Accordion.ItemBody>
               </Accordion.ItemContent>
 
               <Accordion.ItemContent className="pb-[23.85px]">
-                <Accordion.ItemBody className="mt-[6px] py-0 px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer ">
-                  <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD]">
+                <Accordion.ItemBody className="mt-[6px] py-0 px-3 rounded-lg hover:cursor-pointer ">
+                  <div className="font-roboto text-sm text-[#1F2A37] hover:text-[#0A6DFD]">
                     <span className="font-bold">Email:</span> info@yviet.ai.vn
                   </div>
                 </Accordion.ItemBody>
@@ -113,9 +113,12 @@ export const Footer = () => {
               </Accordion.ItemTrigger>
 
               {DETAIL_LIST?.map((item, index) => (
-                <div key={item.id} onClick={() => {
-                  router.push(item.href);
-                }}>
+                <div
+                  key={item.id}
+                  onClick={() => {
+                    router.push(item.href);
+                  }}
+                >
                   <Accordion.ItemContent>
                     <Accordion.ItemBody
                       className={`${index === 0 ? "mt-[4px]" : "mt-[6px]"} 
@@ -125,9 +128,9 @@ export const Footer = () => {
                           ? "mb-[24px] py-0"
                           : "py-0"
                       }
-                      px-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer `}
+                      px-3 hover:text-[#0274ff]  rounded-lg hover:cursor-pointer `}
                     >
-                      <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD] leading-[22px]">
+                      <div className="font-roboto text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[22px]">
                         {item.title}
                       </div>
                     </Accordion.ItemBody>
