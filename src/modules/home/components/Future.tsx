@@ -110,7 +110,7 @@ const Future = () => {
   }, [isMobile]);
 
   return (
-    <div className="mt-[65px] font-inter px-[20px] text-white relative md:max-w-[1200px] md:mx-auto md:mt-[180px] md:pl-[270px] md:pr-[20px]">
+    <div className="max-w-[375px] mx-auto mt-[65px] font-inter px-[20px] text-white relative md:max-w-[1200px] md:mx-auto md:mt-[180px] md:pl-[270px] md:pr-[20px]">
       <div>
         <motion.div
           initial={{ x: -100, opacity: 0 }}

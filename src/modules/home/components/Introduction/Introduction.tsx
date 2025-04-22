@@ -53,7 +53,7 @@ const Introduction = () => {
   };
 
   return (
-    <div className="px-[7px] md:max-w-[1200px] md:mx-auto md:mt-[52px] relative z-10 font-inter">
+    <div className="max-w-[375px] mx-auto px-[7px] md:max-w-[1200px] md:mx-auto md:mt-[52px] relative z-10 font-inter">
       <motion.div
         ref={refToScroll}
         initial={{ y: 50, opacity: 0 }}
