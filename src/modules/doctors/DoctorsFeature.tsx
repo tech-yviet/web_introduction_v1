@@ -2,7 +2,7 @@
 
 import { FC, useEffect, useMemo } from "react";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
-import { doctorsA } from "@/store/modules/doctors";
+import { doctorsA, doctorsS } from "@/store/modules/doctors";
 import Footer from "@/layouts/Footer";
 import { Button, ButtonGroup, IconButton } from "@chakra-ui/react";
 import Image from "next/image";
@@ -28,7 +28,7 @@ enum FILTER_DOCTORS {
   CO_XUONG_KHOP = "co-xung-khop",
 }
 
-const $DoctorsFeature: FC<PropsFromRedux> = () => {
+const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
   useEffect(() => {
     dispatch(doctorsA.init());
 
@@ -91,24 +91,10 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
     ];
   }, []);
 
-  const doctors = useMemo(() => {
-    return Array.from({ length: 10 }, (_, index) => ({
-      id: `${index}`,
-      doctorFirstName: "BS",
-      doctorLastName: "Trịnh Thụy Thùy ",
-      subSpecialtyNameVi: "Nội tổng quát",
-      subMainType: "INTERNAL_MEDICINE",
-      address: "Bệnh viện Đại học Y Dược TP.HCM",
-      appointmentCount: 18,
-      hasWorkingTime: true,
-      image: "/img/bs-nu.png",
-    }));
-  }, []);
-
   return (
     <div className="pt-[113px] bg-doctors-gradient-mobile  flex flex-col font-roboto">
       <div className="flex-1 px-4">
-        <div className="fixed top-[40px] left-0 right-0 bg-white z-50 md:hidden font-inter px-[10px] py-[6px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px]">
+        <div className="fixed top-[40px] left-0 right-0 bg-white z-50 md:hidden font-inter px-[10px] py-[10.5px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px]">
           <div className="p-3 flex items-center  bg-white rounded-[40px] flex-1 h-[32px]">
             <div className="mr-[8px]">
               <Image
@@ -123,11 +109,11 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
               <input
                 type="text"
                 placeholder="Tìm Bác sĩ - Điều dưỡng - NV..."
-                className="bg-transparent outline-none w-full text-sm font-normal leading-[22px] "
+                className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full"
               />
             </div>
 
-            <div className="ml-[11px]">
+            <div >
               <Image
                 src="/svg/icons/filter.svg"
                 alt="filter"
@@ -155,7 +141,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
             </div>
           </div>
 
-          <Button onClick={handleToggleMobileDrawer}>
+          <Button onClick={handleToggleMobileDrawer} size="xs">
             <Image
               src="/svg/collapse.svg"
               alt="search"
@@ -180,20 +166,20 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
         <div className="grid grid-cols-1 gap-3">
           {doctors.map((doctor) => (
             <div
-              key={doctor.id}
+              key={doctor.doctorId}
               className="flex items-center gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer"
             >
               <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
                 <Image
-                  src={doctor.image}
-                  alt={`${doctor.doctorFirstName} ${doctor.doctorLastName}`}
+                  src={doctor?.urlAvatar}
+                  alt={`${doctor.fullName}`}
                   width={88}
                   height={88}
                 />
               </div>
 
               <div className="flex-1">
-                <div className="text-[#1F2A37] font-medium mb-2">{`${doctor.doctorFirstName} ${doctor.doctorLastName}`}</div>
+                <div className="text-[#1F2A37] font-medium mb-2">{`${doctor.fullName}`}</div>
 
                 <div className="flex flex-col gap-[4.75px]  font-inter text-xs text-[#8E8E8E]">
                   <div className="flex items-center gap-[6.2px]">
@@ -206,7 +192,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
                       />
                     </div>
 
-                    <div className=" ">{doctor.subSpecialtyNameVi}</div>
+                    <div className=" ">{doctor.mainSpecialty}</div>
                   </div>
 
                   <div className="flex items-center gap-[6.2px]">
@@ -219,7 +205,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
                       />
                     </div>
 
-                    <div>{doctor.address}</div>
+                    <div>{doctor.unitName}</div>
                   </div>
 
                   <div className="flex items-center gap-[17.68px]">
@@ -250,7 +236,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
                         </div>
                       </div>
 
-                      <div>{doctor.appointmentCount} lượt đặt</div>
+                      <div>{doctor.numberOfOrders} lượt đặt</div>
                     </div>
                   </div>
                 </div>
@@ -300,8 +286,11 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
 interface OwnProps {}
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
+  const doctors = doctorsS.selectDoctors(state);
+
   return {
     ...ownProps,
+    doctors,
   };
 };
 
