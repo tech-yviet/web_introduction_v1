@@ -273,9 +273,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = () => {
             {[1, 2, 3, "...", 25].map((item, index) => (
               <IconButton
                 key={index}
-                className={`w-[41px] h-[41px] bg-white rounded-[7.455px] ${
-                  item === 1 ? "bg-[#0274FF] text-white" : "text-[#3590FF]"
-                }`}
+                className={`w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white`}
               >
                 {item}
               </IconButton>
