@@ -1,33 +1,61 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import IntroductionDoctor from "./IntroductionDoctor";
 import IntroductionMedicine from "./IntroductionMedicine";
 import { motion } from "framer-motion";
 
 const Introduction = () => {
+  const refToScroll = useRef(null);
+  const [isNearTop, setIsNearTop] = useState(false);
   const [isFindDoctor, setIsFindDoctor] = useState(true);
+  const [timeInterval, setTimeInterval] = useState(6000);
+
+  const handleScroll = () => {
+    if (!refToScroll.current) return;
+
+    const rect = (
+      refToScroll.current as HTMLDivElement
+    ).getBoundingClientRect();
+    const isNearTop = rect.top <= 300;
+
+    setIsNearTop(isNearTop);
+  };
 
   useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isNearTop) return;
+
     const interval = setInterval(() => {
       setIsFindDoctor((prev) => !prev);
-    }, 6000);
+      setTimeInterval(6000);
+    }, timeInterval);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isNearTop, timeInterval]);
 
   const handleChangeFindDoctor = () => {
     setIsFindDoctor(true);
+    setTimeInterval(15000);
   };
 
   const handleChangeFindMedicine = () => {
     setIsFindDoctor(false);
+    setTimeInterval(15000);
   };
 
   return (
     <div className="px-[7px] md:max-w-[1200px] md:mx-auto md:mt-[52px] relative z-10 font-inter">
-      <motion.div 
+      <motion.div
+        ref={refToScroll}
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
@@ -51,17 +79,18 @@ const Introduction = () => {
       </motion.div>
 
       <div className="mt-4 text-white">
-        <motion.div 
+        <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          ref={refToScroll}
           className="font-roboto text-center text-[30px] font-black leading[120%] text-shadow md:mt-8 md:text-[96px] md:text-shadow-2"
         >
           Kết nối cùng Y Viet
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -78,7 +107,7 @@ const Introduction = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
