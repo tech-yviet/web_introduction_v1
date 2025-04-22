@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { Accordion } from "@chakra-ui/react";
 import { DETAIL_LIST, SUPPORT_LIST } from "@/variables";
+import { useRouter } from "next/navigation";
 
 export const Footer = () => {
+  const router = useRouter();
+
   return (
     <div className="min-h-[510px] bg-white mt-[41px] pt-[20px] pb-[12.29px]  bg-footer rounded-t-[20px] font-inter md:hidden">
       <div className="pl-[26px] pr-[21.89px]">
@@ -108,7 +113,9 @@ export const Footer = () => {
               </Accordion.ItemTrigger>
 
               {DETAIL_LIST?.map((item, index) => (
-                <div key={item.id}>
+                <div key={item.id} onClick={() => {
+                  router.push(item.href);
+                }}>
                   <Accordion.ItemContent>
                     <Accordion.ItemBody
                       className={`${index === 0 ? "mt-[4px]" : "mt-[6px]"} 

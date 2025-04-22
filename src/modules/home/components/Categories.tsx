@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import { dispatch } from "@/store";
 import { appA } from "@/store/modules/app";
@@ -6,37 +7,43 @@ import Image from "next/image";
 import { Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Search from "./Search";
-
+import { PATH_PAGE } from "@/core/routes";
+import { useRouter } from "next/navigation";
 const categories = [
   {
     id: "1",
     title: "Bác sĩ \n điều dưỡng",
     image: "/svg/categories/category-1.svg",
     desc: "Kết nối Bác sĩ để được \n tư vấn sức khỏe",
+    link: PATH_PAGE.doctors,
   },
   {
     id: "2",
     title: "Bệnh viện \n phòng khám",
     image: "/svg/categories/category-2.svg",
     desc: "Tra cứu nhanh chóng \n Đặt khám dễ dàng",
+    link: PATH_PAGE.home,
   },
   {
     id: "3",
     title: "Trung tâm \n xét nghiệm",
     image: "/svg/categories/category-3.svg",
     desc: "Xét nghiệm tổng quát \n và chuyên sâu",
+    link: PATH_PAGE.home,
   },
   {
     id: "4",
     title: "Nhà thuốc \n cửa hàng",
     image: "/svg/categories/category-4.svg",
     desc: "Tìm thuốc tiện lợi \n với <b>Bo AI</b>",
+    link: PATH_PAGE.home,
   },
 ];
 
 const Categories = () => {
   const refTrackScroll = useRef(null);
   const [isNearTop, setIsNearTop] = useState(false);
+  const router = useRouter();
 
   const handleScroll = () => {
     if (!refTrackScroll.current) return;
@@ -86,6 +93,9 @@ const Categories = () => {
                     ? "mb-[10.52px] md:mb-[33px]"
                     : "mt-[10.52px] md:mt-[33px]"
                 }`}
+                onClick={() => {
+                  router.push(c.link);
+                }}
               >
                 <motion.div
                   initial={{ scale: 0.8 }}

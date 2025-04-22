@@ -4,10 +4,11 @@ import Image from "next/image";
 import { Button, Menu, Portal } from "@chakra-ui/react";
 import { DETAIL_LIST } from "@/variables";
 import { useEffect, useState } from "react";
-
+import { useRouter } from "next/navigation";
 const HeaderDesktop = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,6 +90,9 @@ const HeaderDesktop = () => {
                             key={item.id}
                             value={item.id}
                             className="hover:cursor-pointer px-4 text-white font-roboto hover:bg-[rgba(0,0,0,0.10)] hover:font-semibold transition-all duration-200"
+                            onClick={() => {
+                              router.push(item.href);
+                            }}
                           >
                             {item.title}
                           </Menu.Item>

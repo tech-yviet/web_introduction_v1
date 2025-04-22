@@ -6,6 +6,7 @@ import { dispatch, useAppSelector } from "@/store";
 import { appA, appS } from "@/store/modules/app";
 import { Button, Drawer, Portal, Accordion } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
+import { PATH_PAGE } from "@/core/routes";
 
 const items = [
   {
@@ -23,7 +24,7 @@ const items = [
   {
     id: "3",
     title: "Bác sĩ - Điều dưỡng - NVYT",
-    link: "/doctors",
+    link: PATH_PAGE.doctors,
     icon: "/svg/icons/circle-bacsi.svg",
   },
   {

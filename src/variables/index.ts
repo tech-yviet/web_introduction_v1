@@ -1,3 +1,5 @@
+import { PATH_PAGE } from "@/core/routes";
+
 export const SUPPORT_LIST = [
   {
     id: "1",
@@ -30,7 +32,7 @@ export const DETAIL_LIST = [
   {
     id: "3",
     title: "Bác sĩ - Điều dưỡng - NVYT",
-    href: "/",
+    href: PATH_PAGE.doctors,
   },
   {
     id: "4",
