@@ -10,7 +10,7 @@ import FooterDesktop from "@/layouts/components/FooterDesktop";
 
 const HomeFeature = () => {
   return (
-    <div className="h-full  md:min-w-[1200px] lg:max-w-full relative overflow-hidden ">
+    <div className="h-full md:min-w-[1200px] lg:max-w-full relative overflow-hidden ">
       <Hero />
 
       <div className="md:hidden">
