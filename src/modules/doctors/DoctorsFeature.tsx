@@ -1,17 +1,18 @@
 "use client";
 
 import { FC, useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA, doctorsS } from "@/store/modules/doctors";
 import Footer from "@/layouts/Footer";
 import { Button, ButtonGroup, Checkbox, IconButton } from "@chakra-ui/react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { appA } from "@/store/modules/app";
 import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import FooterDesktop from "@/layouts/components/FooterDesktop";
 import Select from "react-select";
-import { motion } from "framer-motion";
+import CardDoctor from "./components/CardDoctor";
+import isEmpty from "lodash/isEmpty";
 
 const LazyMobileDrawer = dynamic(
   () => import("@/components/drawer/MobileDrawer"),
@@ -20,19 +21,11 @@ const LazyMobileDrawer = dynamic(
   }
 );
 
-enum FILTER_DOCTORS {
-  RANG_HAM_MAT = "rang-ham-mat",
-  TIM_MACH = "tim-mach",
-  DA_LIEU = "da-lieu",
-  ALL = "all",
-  HO_HAP = "ho-hap",
-  THAN_TIET_NIU = "than-tiet-niu",
-  NOI_TIET_DAI_THAO_DUONG = "noi-tiet-dai-thao-duong",
-  TIEU_HOA = "tieu-hoa",
-  CO_XUONG_KHOP = "co-xung-khop",
-}
-
-const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
+const $DoctorsFeature: FC<PropsFromRedux> = ({
+  doctors,
+  mainSpecialties,
+  mainSpecialtyFilter,
+}) => {
   const [checkedFilters, setCheckedFilters] = useState<Record<string, boolean>>(
     {}
   );
@@ -56,70 +49,38 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
     }));
   };
 
-  const filterDoctors = useMemo(() => {
-    return [
-      {
-        id: "0",
-        name: "Tất cả",
-        value: FILTER_DOCTORS.ALL,
-      },
-      {
-        id: "1",
-        name: "Răng hàm mặt ",
-        value: FILTER_DOCTORS.RANG_HAM_MAT,
-      },
-      {
-        id: "2",
-        name: "Tim mạch",
-        value: FILTER_DOCTORS.TIM_MACH,
-      },
-      {
-        id: "3",
-        name: "Da liễu",
-        value: FILTER_DOCTORS.DA_LIEU,
-      },
-      {
-        id: "4",
-        name: "Hô hấp",
-        value: FILTER_DOCTORS.HO_HAP,
-      },
-      {
-        id: "5",
-        name: "Than tiết niệu",
-        value: FILTER_DOCTORS.THAN_TIET_NIU,
-      },
-      {
-        id: "6",
-        name: "Nội tết đại thao duong",
-        value: FILTER_DOCTORS.NOI_TIET_DAI_THAO_DUONG,
-      },
-      {
-        id: "7",
-        name: "Tieu hóa",
-        value: FILTER_DOCTORS.TIEU_HOA,
-      },
-      {
-        id: "8",
-        name: "Cơ xương khớp",
-        value: FILTER_DOCTORS.CO_XUONG_KHOP,
-      },
-      {
-        id: "9",
-        name: "Nội khoa",
-        value: FILTER_DOCTORS.CO_XUONG_KHOP,
-      },
-      {
-        id: "10",
-        name: "Ngoại khoa",
-        value: FILTER_DOCTORS.TIEU_HOA,
-      },
-      {
-        id: "11",
-        name: "Nội khoa",
-        value: FILTER_DOCTORS.CO_XUONG_KHOP,
-      },
+  const specialtiesFilter = useMemo(() => {
+    const mergedMainSpecialties = [
+      { description: "Tất cả", name: "ALL" },
+      ...mainSpecialties,
     ];
-  }, []);
+
+    return mergedMainSpecialties.map((specialty, index) => {
+      const isAll = specialty.name === "ALL" && !!isEmpty(mainSpecialtyFilter);
+      const isSelected =
+        mainSpecialtyFilter.some((item) => item === specialty.name) || isAll;
+
+      return {
+        id: `${index}`,
+        name: specialty.description,
+        value: specialty.name,
+        isSelected: isSelected,
+      };
+    });
+  }, [mainSpecialties, mainSpecialtyFilter]);
+
+  const handleSelectMainSpecialty = (value: string) => {
+    if (value === "ALL") {
+      dispatch(doctorsA.setMainSpecialtyFilter([]));
+      dispatch(doctorsA.getDoctors());
+    } else {
+      const updatedMainSpecialtyFilter = mainSpecialtyFilter.includes(value)
+        ? mainSpecialtyFilter.filter((item) => item !== value)
+        : [...mainSpecialtyFilter, value];
+      dispatch(doctorsA.setMainSpecialtyFilter(updatedMainSpecialtyFilter));
+      dispatch(doctorsA.getDoctorsByMainSpecialty());
+    }
+  };
 
   return (
     <>
@@ -241,11 +202,16 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
           </div>
 
           <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide md:hidden">
-            {filterDoctors.map((filter) => (
+            {specialtiesFilter.map((filter) => (
               <Button
-                className="px-4 rounded-[100px] bg-[rgba(255,255,255,0.90)] text-sm font-medium text-[#0274FF] hover:bg-[#0274FF] hover:text-white"
+                className={`px-4 rounded-[100px]  text-sm font-medium text-[#0274FF] hover:bg-[#0274FF] hover:text-white ${
+                  filter.isSelected
+                    ? "bg-[#0274FF] text-white"
+                    : "bg-[rgba(255,255,255,0.90)]"
+                }`}
                 size="xs"
                 key={filter.id}
+                onClick={() => handleSelectMainSpecialty(filter.value)}
               >
                 {filter.name}
               </Button>
@@ -280,7 +246,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
 
                 <div className="max-h-[300px] overflow-auto mt-[31px]">
                   <div className="flex flex-col gap-4">
-                    {filterDoctors.map((filter) => (
+                    {specialtiesFilter.map((filter) => (
                       <Checkbox.Root
                         key={filter.id}
                         className="flex hover:cursor-pointer gap-3"
@@ -539,98 +505,11 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
 
             <div className="grid grid-cols-1 gap-3 md:flex-1">
               {doctors.map((doctor, index) => (
-                <motion.div
+                <CardDoctor
                   key={doctor.doctorId}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="flex gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group"
-                >
-                  <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
-                    <Image
-                      src={doctor?.urlAvatar}
-                      alt={`${doctor.fullName}`}
-                      width={88}
-                      height={88}
-                      className="md:w-[107px] md:h-[107px]"
-                    />
-                  </div>
-
-                  <div className="flex-1">
-                    <div className="text-[#1F2A37] font-medium mb-2 md:text-lg md:mb-[10px]">{`${doctor.fullName}`}</div>
-
-                    <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E] md:text-sm md:gap-[6px]">
-                      <div className="flex items-center gap-[6.2px]">
-                        <div>
-                          <Image
-                            src="/svg/icons/school.svg"
-                            alt="school"
-                            width={15}
-                            height={15}
-                            className="md:w-[16px] md:h-[16px]"
-                          />
-                        </div>
-
-                        <div>{doctor.mainSpecialty}</div>
-                      </div>
-
-                      <div className="flex items-center gap-[6.2px]">
-                        <div>
-                          <Image
-                            src="/svg/icons/location.svg"
-                            alt="location"
-                            width={15}
-                            height={16}
-                            className="md:w-[16px] md:h-[16px]"
-                          />
-                        </div>
-
-                        <div>{doctor.unitName}</div>
-                      </div>
-
-                      <div className="flex items-center gap-[17.68px] md:gap-[63.07px]">
-                        <div className="flex items-center gap-[6.2px] md:gap-[8px]">
-                          <div>
-                            <div>
-                              <Image
-                                src="/svg/icons/star.svg"
-                                alt="star"
-                                width={13}
-                                height={13}
-                                className="md:w-[15.933px] md:h-[15.933px]"
-                              />
-                            </div>
-                          </div>
-
-                          <div>9.5/10</div>
-                        </div>
-
-                        <div className="flex items-center gap-[6.2px] md:gap-[12px]">
-                          <div>
-                            <div>
-                              <Image
-                                src="/svg/icons/calendar.svg"
-                                alt="calendar"
-                                width={11.625}
-                                height={11.625}
-                                className="md:w-[15px] md:h-[15px]"
-                              />
-                            </div>
-                          </div>
-
-                          <div>{doctor.numberOfOrders} lượt đặt</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="hidden md:flex items-end">
-                    <Button className="bg-[#0274FF] min-w-[138px] text-white rounded-[100px] font-medium font-roboto box-shadow-button-gradient-3 group-hover:bg-button-hover-3 transition-all duration-300">
-                      Xem chi tiết
-                    </Button>
-                  </div>
-                </motion.div>
+                  doctor={doctor}
+                  index={index}
+                />
               ))}
             </div>
           </div>
@@ -682,10 +561,14 @@ interface OwnProps {}
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const doctors = doctorsS.selectDoctors(state);
+  const mainSpecialties = doctorsS.selectMainSpecialties(state);
+  const mainSpecialtyFilter = doctorsS.selectMainSpecialtyFilter(state);
 
   return {
     ...ownProps,
     doctors,
+    mainSpecialties,
+    mainSpecialtyFilter,
   };
 };
 

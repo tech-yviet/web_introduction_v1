@@ -8,5 +8,6 @@ export const BACKEND_API = {
 export const API_DOCTORS = {
   introduction: {
     doctors: `${BACKEND_API.restAPI}/introduction/doctors`,
+    listSpecialties: `${BACKEND_API.restAPI}/introduction/list/main-specialties`,
   },
 };
