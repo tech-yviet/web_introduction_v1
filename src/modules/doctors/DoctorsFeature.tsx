@@ -11,6 +11,7 @@ import { appA } from "@/store/modules/app";
 import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import FooterDesktop from "@/layouts/components/FooterDesktop";
 import Select from "react-select";
+import { motion } from "framer-motion";
 
 const LazyMobileDrawer = dynamic(
   () => import("@/components/drawer/MobileDrawer"),
@@ -537,9 +538,13 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
             </div>
 
             <div className="grid grid-cols-1 gap-3 md:flex-1">
-              {doctors.map((doctor) => (
-                <div
+              {doctors.map((doctor, index) => (
+                <motion.div
                   key={doctor.doctorId}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
                   className="flex gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group"
                 >
                   <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
@@ -625,7 +630,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                       Xem chi tiết
                     </Button>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
