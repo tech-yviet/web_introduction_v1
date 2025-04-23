@@ -108,8 +108,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
             <div className="flex-1">
               <input
                 type="text"
-                placeholder="Tìm Bác sĩ - Điều dưỡng - NV..."
-                className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full"
+                placeholder="Tìm Bác sĩ - Điều dưỡng - NVYT"
+                className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate"
               />
             </div>
 
@@ -259,7 +259,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
             {[1, 2, 3, "...", 25].map((item, index) => (
               <IconButton
                 key={index}
-                className={`w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white`}
+                className={`${index === 0 ? "bg-[#3590FF] text-white" : "bg-white"} w-[41px] h-[41px] rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white`}
               >
                 {item}
               </IconButton>
