@@ -97,16 +97,49 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
     <>
       <HeaderDesktop isFixed={true} />
 
-      <div className="pt-[113px] md:pt-[78px] bg-doctors-gradient-mobile  flex flex-col font-roboto">
+      <div className="pt-[113px] md:pt-[94px] bg-doctors-gradient-mobile  flex flex-col font-roboto">
         <div className="flex-1 px-4 md:w-[1200px] md:mx-auto  md:px-[28px]">
-          <div className="fixed top-[40px] left-0 right-0 bg-white z-50 md:hidden font-inter px-[10px] py-[10.5px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px]">
-            <div className="p-3 flex items-center  bg-white rounded-[40px] flex-1 h-[32px]">
+          <div className="hidden md:flex">
+            <div className="flex items-center gap-2 bg-white px-4 py-[10px] rounded-bl-[12px] rounded-tl-[12px]">
+              <div>
+                <Image
+                  src="/svg/icons/grid-view.svg"
+                  alt="grid-view"
+                  width={20}
+                  height={20}
+                />
+              </div>
+
+              <div className="text-sm font-inter font-medium text-[#0274FF]">
+                Danh sach chi tiet
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 px-4 py-[10px] bg-gradient-10 rounded-br-[12px] rounded-tr-[12px]">
+              <div>
+                <Image
+                  src="/svg/icons/menu.svg"
+                  alt="menu"
+                  width={20}
+                  height={20}
+                />
+              </div>
+
+              <div className="text-sm font-inter font-semibold text-white">
+                Danh sách Bác sĩ - Điều dưỡng - NVYT
+              </div>
+            </div>
+          </div>
+
+          <div className="fixed top-[40px] left-0 right-0 z-50 font-inter px-[10px] py-[10.5px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px] md:static md:bg-white-1 md:mt-[36px] md:rounded-[40px] md:max-w-[886px] md:mx-auto md:px-0">
+            <div className="p-3 flex items-center  bg-white rounded-[40px] flex-1 h-[32px] md:px-4">
               <div className="mr-[8px]">
                 <Image
                   src="/svg/proicons_search.svg"
                   alt="search"
                   width={20}
                   height={20}
+                  className="md:w-[24px] md:h-[24px]"
                 />
               </div>
 
@@ -114,11 +147,11 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                 <input
                   type="text"
                   placeholder="Tìm Bác sĩ - Điều dưỡng - NVYT"
-                  className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate"
+                  className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base md:text-[#B9BDC1]"
                 />
               </div>
 
-              <div>
+              <div className="md:hidden">
                 <Image
                   src="/svg/icons/filter.svg"
                   alt="filter"
@@ -127,7 +160,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                 />
               </div>
 
-              <div className="mx-[8px]">
+              <div className="mx-[8px] md:hidden">
                 <Image
                   src="/svg/trailing-caret.svg"
                   alt="filter"
@@ -136,17 +169,40 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                 />
               </div>
 
-              <div>
+              <div className="md:ml-3">
                 <Image
                   src="/svg/Microphone.svg"
                   alt="microphone"
                   width={20}
                   height={20}
+                  className="md:w-[24px] md:h-[24px]"
+                />
+              </div>
+
+              <div className="hidden md:block mx-[12px]">
+                <Image
+                  src="/svg/trailing-caret.svg"
+                  alt="filter"
+                  width={1}
+                  height={1}
+                />
+              </div>
+
+              <div className="hidden md:block">
+                <Image
+                  src="/svg/gallery-add.svg"
+                  alt="gallery-add"
+                  width={24}
+                  height={24}
                 />
               </div>
             </div>
 
-            <Button onClick={handleToggleMobileDrawer} size="xs">
+            <Button
+              onClick={handleToggleMobileDrawer}
+              size="xs"
+              className="md:hidden"
+            >
               <Image
                 src="/svg/collapse.svg"
                 alt="search"
@@ -154,15 +210,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                 height={32}
               />
             </Button>
-          </div>
-
-          <div className="hidden md:flex ">
-            <div>Danh sach chi tiet</div>
-            <div>Danh sách Bác sĩ - Điều dưỡng - NVYT</div>
-          </div>
-
-          <div className="hidden md:flex ">
-            <div>Search</div>
+            
           </div>
 
           <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide md:hidden">
@@ -177,7 +225,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
             ))}
           </div>
 
-          <div>
+          <div className="md:mt-[36px]">
             <div>
               <div>Tim Kiem chuyen khoa</div>
               <div>Tuỳ chọn nâng cao</div>
