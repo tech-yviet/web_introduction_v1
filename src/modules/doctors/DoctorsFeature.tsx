@@ -1,10 +1,10 @@
 "use client";
 
-import { FC, useEffect, useMemo } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA, doctorsS } from "@/store/modules/doctors";
 import Footer from "@/layouts/Footer";
-import { Button, ButtonGroup, IconButton } from "@chakra-ui/react";
+import { Button, ButtonGroup, Checkbox, IconButton } from "@chakra-ui/react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { appA } from "@/store/modules/app";
@@ -31,6 +31,10 @@ enum FILTER_DOCTORS {
 }
 
 const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
+  const [checkedFilters, setCheckedFilters] = useState<Record<string, boolean>>(
+    {}
+  );
+
   useEffect(() => {
     dispatch(doctorsA.init());
 
@@ -41,6 +45,13 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
 
   const handleToggleMobileDrawer = () => {
     dispatch(appA.toggleDrawerMenuMobile());
+  };
+
+  const handleCheckboxChange = (filterId: string) => {
+    setCheckedFilters((prev) => ({
+      ...prev,
+      [filterId]: !prev[filterId],
+    }));
   };
 
   const filterDoctors = useMemo(() => {
@@ -90,6 +101,21 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
         name: "Cơ xương khớp",
         value: FILTER_DOCTORS.CO_XUONG_KHOP,
       },
+      {
+        id: "9",
+        name: "Nội khoa",
+        value: FILTER_DOCTORS.CO_XUONG_KHOP,
+      },
+      {
+        id: "10",
+        name: "Ngoại khoa",
+        value: FILTER_DOCTORS.TIEU_HOA,
+      },
+      {
+        id: "11",
+        name: "Nội khoa",
+        value: FILTER_DOCTORS.CO_XUONG_KHOP,
+      },
     ];
   }, []);
 
@@ -111,7 +137,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
               </div>
 
               <div className="text-sm font-inter font-medium text-[#0274FF]">
-                Danh sach chi tiet
+                Danh sách chi tiết
               </div>
             </div>
 
@@ -147,7 +173,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                 <input
                   type="text"
                   placeholder="Tìm Bác sĩ - Điều dưỡng - NVYT"
-                  className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base md:text-[#B9BDC1]"
+                  className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base "
                 />
               </div>
 
@@ -210,7 +236,6 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                 height={32}
               />
             </Button>
-            
           </div>
 
           <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide md:hidden">
@@ -225,13 +250,80 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
             ))}
           </div>
 
-          <div className="md:mt-[36px]">
-            <div>
-              <div>Tim Kiem chuyen khoa</div>
+          <div className="md:mt-[36px] md:flex gap-6 h-full font-inter">
+            <div className="hidden md:block w-[32%]">
+              <div className="bg-white rounded-xl px-[26px] py-[20px] max-h-[484px]">
+                <div className="text-[#1F2A37] text-[18px] font-medium">
+                  Tìm kiếm chuyên gia
+                </div>
+
+                <div className="mt-[15px] flex items-center gap-2 rounded-xl border border-[#B9BDC1] px-3 py-[8px]">
+                  <div>
+                    <Image
+                      src="/svg/icons/search.svg"
+                      alt="search"
+                      width={20}
+                      height={20}
+                    />
+                  </div>
+
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Tìm nhanh chuyên khoa"
+                      className="outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="max-h-[300px] overflow-auto mt-[31px]">
+                  <div className="flex flex-col gap-4">
+                    {filterDoctors.map((filter) => (
+                      <Checkbox.Root
+                        key={filter.id}
+                        className="flex hover:cursor-pointer gap-3"
+                        checked={checkedFilters[filter.id]}
+                        onChange={() => handleCheckboxChange(filter.id)}
+                      >
+                        <Checkbox.HiddenInput />
+
+                        {!!checkedFilters[filter.id] ? (
+                          <Checkbox.Control
+                            className={`w-6 h-6 rounded-md bg-[#0274FF]`}
+                          >
+                            <Image
+                              src={
+                                checkedFilters[filter.id]
+                                  ? "/svg/icons/choose.svg"
+                                  : "/svg/icons/no-choose.svg"
+                              }
+                              alt={
+                                checkedFilters[filter.id]
+                                  ? "choose"
+                                  : "no-choose"
+                              }
+                              width={24}
+                              height={24}
+                            />
+                          </Checkbox.Control>
+                        ) : (
+                          <Checkbox.Control
+                            className={`w-6 h-6 rounded-md bg-white border border-[rgba(185,189,193,0.50)]`}
+                          />
+                        )}
+                        <Checkbox.Label className="text-sm">
+                          {filter.name}
+                        </Checkbox.Label>
+                      </Checkbox.Root>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               <div>Tuỳ chọn nâng cao</div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 gap-3 md:flex-1">
               {doctors.map((doctor) => (
                 <div
                   key={doctor.doctorId}

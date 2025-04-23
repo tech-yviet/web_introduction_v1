@@ -1,11 +1,12 @@
 import axiosInstance from "@/core/axiosInstance";
 import { dispatch } from "@/store";
 import { doctorsA as A } from ".";
+import { API_DOCTORS } from "@/core/config";
 
 const getDoctors = () => {
   return async () => {
     const response = await axiosInstance.get(
-      "/introduction/doctors?page=0&size=10"
+      `${API_DOCTORS.introduction.doctors}?page=0&size=10`
     );
 
     if (response.status === 200) {
