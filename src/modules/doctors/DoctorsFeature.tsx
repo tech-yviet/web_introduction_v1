@@ -98,7 +98,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
       <HeaderDesktop isFixed={true} />
 
       <div className="pt-[113px] md:pt-[78px] bg-doctors-gradient-mobile  flex flex-col font-roboto">
-        <div className="flex-1 px-4 md:w-[1200px] mx-auto  md:px-[28px]">
+        <div className="flex-1 px-4 md:w-[1200px] md:mx-auto  md:px-[28px]">
           <div className="fixed top-[40px] left-0 right-0 bg-white z-50 md:hidden font-inter px-[10px] py-[10.5px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px]">
             <div className="p-3 flex items-center  bg-white rounded-[40px] flex-1 h-[32px]">
               <div className="mr-[8px]">
@@ -161,6 +161,10 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
             <div>Danh sách Bác sĩ - Điều dưỡng - NVYT</div>
           </div>
 
+          <div className="hidden md:flex ">
+            <div>Search</div>
+          </div>
+
           <div className="flex items-center gap-2 mb-4 overflow-x-auto scrollbar-hide md:hidden">
             {filterDoctors.map((filter) => (
               <Button
@@ -173,86 +177,93 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 gap-3">
-            {doctors.map((doctor) => (
-              <div
-                key={doctor.doctorId}
-                className="flex items-center gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer"
-              >
-                <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
-                  <Image
-                    src={doctor?.urlAvatar}
-                    alt={`${doctor.fullName}`}
-                    width={88}
-                    height={88}
-                  />
-                </div>
+          <div>
+            <div>
+              <div>Tim Kiem chuyen khoa</div>
+              <div>Tuỳ chọn nâng cao</div>
+            </div>
 
-                <div className="flex-1">
-                  <div className="text-[#1F2A37] font-medium mb-2">{`${doctor.fullName}`}</div>
+            <div className="grid grid-cols-1 gap-3">
+              {doctors.map((doctor) => (
+                <div
+                  key={doctor.doctorId}
+                  className="flex items-center gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer"
+                >
+                  <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
+                    <Image
+                      src={doctor?.urlAvatar}
+                      alt={`${doctor.fullName}`}
+                      width={88}
+                      height={88}
+                    />
+                  </div>
 
-                  <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E]">
-                    <div className="flex items-center gap-[6.2px]">
-                      <div>
-                        <Image
-                          src="/svg/icons/school.svg"
-                          alt="school"
-                          width={15}
-                          height={15}
-                        />
-                      </div>
+                  <div className="flex-1">
+                    <div className="text-[#1F2A37] font-medium mb-2">{`${doctor.fullName}`}</div>
 
-                      <div>{doctor.mainSpecialty}</div>
-                    </div>
-
-                    <div className="flex items-center gap-[6.2px]">
-                      <div>
-                        <Image
-                          src="/svg/icons/location.svg"
-                          alt="location"
-                          width={15}
-                          height={16}
-                        />
-                      </div>
-
-                      <div>{doctor.unitName}</div>
-                    </div>
-
-                    <div className="flex items-center gap-[17.68px]">
+                    <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E]">
                       <div className="flex items-center gap-[6.2px]">
                         <div>
-                          <div>
-                            <Image
-                              src="/svg/icons/star.svg"
-                              alt="star"
-                              width={13}
-                              height={13}
-                            />
-                          </div>
+                          <Image
+                            src="/svg/icons/school.svg"
+                            alt="school"
+                            width={15}
+                            height={15}
+                          />
                         </div>
 
-                        <div>9.5/10</div>
+                        <div>{doctor.mainSpecialty}</div>
                       </div>
 
                       <div className="flex items-center gap-[6.2px]">
                         <div>
-                          <div>
-                            <Image
-                              src="/svg/icons/calendar.svg"
-                              alt="calendar"
-                              width={11.625}
-                              height={11.625}
-                            />
-                          </div>
+                          <Image
+                            src="/svg/icons/location.svg"
+                            alt="location"
+                            width={15}
+                            height={16}
+                          />
                         </div>
 
-                        <div>{doctor.numberOfOrders} lượt đặt</div>
+                        <div>{doctor.unitName}</div>
+                      </div>
+
+                      <div className="flex items-center gap-[17.68px]">
+                        <div className="flex items-center gap-[6.2px]">
+                          <div>
+                            <div>
+                              <Image
+                                src="/svg/icons/star.svg"
+                                alt="star"
+                                width={13}
+                                height={13}
+                              />
+                            </div>
+                          </div>
+
+                          <div>9.5/10</div>
+                        </div>
+
+                        <div className="flex items-center gap-[6.2px]">
+                          <div>
+                            <div>
+                              <Image
+                                src="/svg/icons/calendar.svg"
+                                alt="calendar"
+                                width={11.625}
+                                height={11.625}
+                              />
+                            </div>
+                          </div>
+
+                          <div>{doctor.numberOfOrders} lượt đặt</div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="mt-4 flex justify-end">
