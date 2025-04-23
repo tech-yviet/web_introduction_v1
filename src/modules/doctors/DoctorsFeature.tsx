@@ -540,7 +540,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
               {doctors.map((doctor) => (
                 <div
                   key={doctor.doctorId}
-                  className="flex items-center gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer"
+                  className="flex items-center gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:p-3 md:gap-[19.67px]"
                 >
                   <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
                     <Image
@@ -548,13 +548,14 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                       alt={`${doctor.fullName}`}
                       width={88}
                       height={88}
+                      className="w-[107px] h-[107px]"
                     />
                   </div>
 
                   <div className="flex-1">
-                    <div className="text-[#1F2A37] font-medium mb-2">{`${doctor.fullName}`}</div>
+                    <div className="text-[#1F2A37] font-medium mb-2 md:text-lg md:mb-[10px]">{`${doctor.fullName}`}</div>
 
-                    <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E]">
+                    <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E] md:text-sm md:gap-[6px]">
                       <div className="flex items-center gap-[6.2px]">
                         <div>
                           <Image
@@ -562,6 +563,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                             alt="school"
                             width={15}
                             height={15}
+                            className="md:w-[16px] md:h-[16px]"
                           />
                         </div>
 
@@ -575,14 +577,15 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                             alt="location"
                             width={15}
                             height={16}
+                            className="md:w-[16px] md:h-[16px]"
                           />
                         </div>
 
                         <div>{doctor.unitName}</div>
                       </div>
 
-                      <div className="flex items-center gap-[17.68px]">
-                        <div className="flex items-center gap-[6.2px]">
+                      <div className="flex items-center gap-[17.68px] md:gap-[63.07px]">
+                        <div className="flex items-center gap-[6.2px] md:gap-[8px]">
                           <div>
                             <div>
                               <Image
@@ -590,6 +593,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                                 alt="star"
                                 width={13}
                                 height={13}
+                                className="md:w-[15.933px] md:h-[15.933px]"
                               />
                             </div>
                           </div>
@@ -597,7 +601,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                           <div>9.5/10</div>
                         </div>
 
-                        <div className="flex items-center gap-[6.2px]">
+                        <div className="flex items-center gap-[6.2px] md:gap-[12px]">
                           <div>
                             <div>
                               <Image
@@ -605,6 +609,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                                 alt="calendar"
                                 width={11.625}
                                 height={11.625}
+                                className="md:w-[15px] md:h-[15px]"
                               />
                             </div>
                           </div>
