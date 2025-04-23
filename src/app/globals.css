@@ -141,7 +141,7 @@ body {
   }
 
   .box-shadow-button-gradient-3 {
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
   }
 
   .bg-button-hover {
@@ -150,6 +150,17 @@ body {
 
   .bg-button-hover-2 {
     background: linear-gradient(90deg, #0274ff 0%, #38b6ff 100%);
+  }
+
+  .bg-button-hover-3 {
+    background: linear-gradient(90deg, #0274ff 12.5%, #02b3ff 62.02%, #00c0ef 100%);
+  }
+
+  .bg-card-doctor-hover-desktop {
+    box-shadow: 2px 2px 10px 0px rgba(2, 179, 255, 0.2);
+    border-radius: 16px;
+    border: 1px solid #02b3ff;
+    background: #fff;
   }
 
   .bg-hero-banner {

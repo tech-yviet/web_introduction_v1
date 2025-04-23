@@ -540,7 +540,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
               {doctors.map((doctor) => (
                 <div
                   key={doctor.doctorId}
-                  className="flex gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px]"
+                  className="flex gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group"
                 >
                   <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
                     <Image
@@ -621,7 +621,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({ doctors }) => {
                   </div>
 
                   <div className="hidden md:flex items-end">
-                    <Button className="bg-[#0274FF] min-w-[138px] text-white rounded-[100px] font-medium font-roboto box-shadow-button-gradient-3">
+                    <Button className="bg-[#0274FF] min-w-[138px] text-white rounded-[100px] font-medium font-roboto box-shadow-button-gradient-3 group-hover:bg-button-hover-3 transition-all duration-300">
                       Xem chi tiết
                     </Button>
                   </div>
