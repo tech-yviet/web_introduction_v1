@@ -8,6 +8,7 @@ export const initialState: T.ContainerState = {
   mainSpecialties: [],
   cities: [],
   districts: [],
+  trainingUnits: [],
   filterDoctors: {
     mainSpecialties: [],
     searchValue: "",
@@ -15,6 +16,7 @@ export const initialState: T.ContainerState = {
   filterMobileDrawer: {
     isOpen: false,
     cityId: null,
+    districtId: null,
   },
 };
 
@@ -45,7 +47,10 @@ const slice = createSlice({
     setCities: (state, action: PayloadAction<T.ContainerState["cities"]>) => {
       state.cities = action.payload;
     },
-    setDistricts: (state, action: PayloadAction<T.ContainerState["districts"]>) => {
+    setDistricts: (
+      state,
+      action: PayloadAction<T.ContainerState["districts"]>
+    ) => {
       state.districts = action.payload;
     },
     setSearchValue: (state, action: PayloadAction<string>) => {
@@ -59,6 +64,15 @@ const slice = createSlice({
     },
     setCityIdFilterMobileDrawer: (state, action: PayloadAction<number>) => {
       state.filterMobileDrawer.cityId = action.payload;
+    },
+    setDistrictIdFilterMobileDrawer: (state, action: PayloadAction<number>) => {
+      state.filterMobileDrawer.districtId = action.payload;
+    },
+    setTrainingUnits: (
+      state,
+      action: PayloadAction<T.ContainerState["trainingUnits"]>
+    ) => {
+      state.trainingUnits = action.payload;
     },
   },
 });

@@ -14,6 +14,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
   cities,
   districts,
   cityId,
+  trainingUnits,
 }) => {
   const handleClose = () => {
     dispatch(doctorsA.closeFilterMobileDrawer());
@@ -41,6 +42,27 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
       label: district.nameVi,
     }));
   }, [districts]);
+
+  const trainingUnitOptions = useMemo(() => {
+    return trainingUnits.map((trainingUnit) => ({
+      value: trainingUnit.id,
+      label: trainingUnit.name,
+    }));
+  }, [trainingUnits]);
+
+  const scoreOptions = useMemo(() => {
+    return [
+      { value: "asc", label: "Tăng dần" },
+      { value: "desc", label: "Giảm dần" },
+    ];
+  }, []);
+
+  const genderOptions = useMemo(() => {
+    return [
+      { value: "MALE", label: "Nam" },
+      { value: "FEMALE", label: "Nữ" },
+    ];
+  }, []);
 
   const handleSelectCity = (cityId: number) => {
     dispatch(doctorsA.setCityIdFilterMobileDrawer(cityId));
@@ -132,6 +154,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                       }),
                     }}
                     isSearchable={true}
+                    isClearable={true}
                     options={mainSpecialtyOptions}
                     placeholder="Tất cả"
                     components={{
@@ -182,11 +205,14 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         boxShadow: "4px 4px 16px 4px rgba(0, 0, 0, 0.10)",
                       }),
                     }}
+                    isClearable={true}
                     isSearchable={true}
                     options={cityOptions}
                     placeholder="Tất cả"
-                    onChange={(e: any) => {
-                      handleSelectCity(e.value);
+                    onChange={(e) => {
+                      if (!!e) {
+                        handleSelectCity(e.value);
+                      }
                     }}
                     components={{
                       IndicatorSeparator: () => null,
@@ -278,12 +304,26 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                   </div>
 
                   <Select
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        border: "1px solid #B9BDC1",
+                        borderRadius: "8px",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        boxShadow: "4px 4px 16px 4px rgba(0, 0, 0, 0.10)",
+                      }),
+                    }}
                     isSearchable={true}
+                    options={trainingUnitOptions}
+                    placeholder="Tất cả"
+                    isClearable={true}
                     components={{
                       IndicatorSeparator: () => null,
-                      DropdownIndicator: () => {
+                      DropdownIndicator: (props) => {
                         return (
-                          <div className="pr-[12px]">
+                          <div className="pr-[12px]" {...props}>
                             <Image
                               src="/svg/icons/arrow-down-ori.svg"
                               alt="arrow-down"
@@ -293,27 +333,19 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           </div>
                         );
                       },
-                      Placeholder: () => null,
-                      Input: (props) => {
-                        return (
-                          <div className="w-full h-full font-inter py-2.5 pl-[4px]">
-                            <input
-                              type="text"
-                              placeholder="Tất cả"
-                              className="outline-none w-full"
-                              {...props}
-                            />
-                          </div>
-                        );
-                      },
                       Control: (props) => {
                         return (
-                          <div
+                          <components.Control
                             {...props}
-                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                            className="w-full rounded-lg py-1.5 border"
                           >
                             {props.children}
-                          </div>
+                          </components.Control>
+                        );
+                      },
+                      Menu: (props) => {
+                        return (
+                          <components.Menu {...props} className="border-l " />
                         );
                       },
                     }}
@@ -370,12 +402,26 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                   <div className="text-sm mb-1">Giới tính</div>
 
                   <Select
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        border: "1px solid #B9BDC1",
+                        borderRadius: "8px",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        boxShadow: "4px 4px 16px 4px rgba(0, 0, 0, 0.10)",
+                      }),
+                    }}
                     isSearchable={true}
+                    options={genderOptions}
+                    placeholder="Tất cả"
+                    isClearable={true}
                     components={{
                       IndicatorSeparator: () => null,
-                      DropdownIndicator: () => {
+                      DropdownIndicator: (props) => {
                         return (
-                          <div className="pr-[12px]">
+                          <div className="pr-[12px]" {...props}>
                             <Image
                               src="/svg/icons/arrow-down-ori.svg"
                               alt="arrow-down"
@@ -385,27 +431,19 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           </div>
                         );
                       },
-                      Placeholder: () => null,
-                      Input: (props) => {
-                        return (
-                          <div className="w-full h-full font-inter py-2.5 pl-[4px]">
-                            <input
-                              type="text"
-                              placeholder="Tất cả"
-                              className="outline-none w-full"
-                              {...props}
-                            />
-                          </div>
-                        );
-                      },
                       Control: (props) => {
                         return (
-                          <div
+                          <components.Control
                             {...props}
-                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                            className="w-full rounded-lg py-1.5 border"
                           >
                             {props.children}
-                          </div>
+                          </components.Control>
+                        );
+                      },
+                      Menu: (props) => {
+                        return (
+                          <components.Menu {...props} className="border-l " />
                         );
                       },
                     }}
@@ -448,6 +486,7 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const cities = doctorsS.selectCities(state);
   const districts = doctorsS.selectDistricts(state);
+  const trainingUnits = doctorsS.selectTrainingUnits(state);
 
   return {
     ...ownProps,
@@ -456,6 +495,7 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     mainSpecialties,
     cities,
     districts,
+    trainingUnits,
   };
 };
 

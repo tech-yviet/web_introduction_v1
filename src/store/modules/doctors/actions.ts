@@ -80,6 +80,34 @@ const getDistricts = (id: number) => {
   };
 };
 
+const getTrainingUnits = (search?: string) => {
+  return async () => {
+    try {
+      const response = await axiosInstance.get(
+        `${API_DOCTORS.introduction.trainingUnits}`,
+        {
+          params: {
+            page: 0,
+            size: 10,
+            ...(!isEmpty(search) && {
+              search: search,
+            }),
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        dispatch(A.setTrainingUnits(response.data.data.content));
+      } else {
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      dispatch(A.setTrainingUnits([]));
+      console.log(error);
+    }
+  };
+};
+
 const getDoctorsByFilter = () => {
   return async () => {
     try {
@@ -128,6 +156,7 @@ const init = () => {
     dispatch(getDoctors());
     dispatch(getMainSpecialties());
     dispatch(getCities());
+    dispatch(getTrainingUnits());
   };
 };
 
@@ -143,4 +172,5 @@ export const extendActions = {
   getDoctorsByFilter,
   getDoctors,
   getDistricts,
+  getTrainingUnits,
 };

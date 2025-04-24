@@ -48,11 +48,18 @@ export interface IFilterDoctor {
   value: string;
 }
 
+export type ITrainingUnit = {
+  id: string;
+  name: string;
+  description: string;
+};
+
 export interface DoctorsState {
   doctors: IDoctor[];
   mainSpecialties: IMainSpecialty[];
   cities: ICity[];
   districts: IDistrict[];
+  trainingUnits: ITrainingUnit[];
   filterDoctors: {
     mainSpecialties: string[];
     searchValue: string;
@@ -60,6 +67,7 @@ export interface DoctorsState {
   filterMobileDrawer: {
     isOpen: boolean;
     cityId: number | null;
+    districtId: number | null;
   };
 }
 
