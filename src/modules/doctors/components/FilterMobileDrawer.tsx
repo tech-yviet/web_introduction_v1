@@ -7,19 +7,20 @@ import { Button, Drawer, Portal } from "@chakra-ui/react";
 import Image from "next/image";
 import Select, { components } from "react-select";
 import orderBy from "lodash/orderBy";
+import { keyBy } from "lodash";
 
 const $FilterMobileDrawer: FC<PropsFromRedux> = ({
   isOpen,
   mainSpecialties,
   cities,
   districts,
-  cityId,
   trainingUnits,
+  mainSpecialtyFilter,
+  cityId,
+  unitName,
+  genderType,
+  districtId
 }) => {
-  const handleClose = () => {
-    dispatch(doctorsA.closeFilterMobileDrawer());
-  };
-
   const mainSpecialtyOptions = useMemo(() => {
     return orderBy(mainSpecialties, ["numOrder"], ["asc"]).map(
       (mainSpecialty) => ({
@@ -29,12 +30,20 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
     );
   }, [mainSpecialties]);
 
+  const mainSpecialtyOptionsMap = useMemo(() => {
+    return keyBy(mainSpecialtyOptions, "value");
+  }, [mainSpecialtyOptions]);
+
   const cityOptions = useMemo(() => {
     return orderBy(cities, ["numOrder"], ["asc"]).map((city) => ({
       value: city.cityCode,
       label: city.nameVi,
     }));
   }, [cities]);
+
+  const cityOptionsMap = useMemo(() => {
+    return keyBy(cityOptions, "value");
+  }, [cityOptions]);
 
   const districtOptions = useMemo(() => {
     return orderBy(districts, ["numOrder"], ["asc"]).map((district) => ({
@@ -43,6 +52,10 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
     }));
   }, [districts]);
 
+  const districtOptionsMap = useMemo(() => {
+    return keyBy(districtOptions, "value");
+  }, [districtOptions]);
+
   const trainingUnitOptions = useMemo(() => {
     return trainingUnits.map((trainingUnit) => ({
       value: trainingUnit.id,
@@ -50,12 +63,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
     }));
   }, [trainingUnits]);
 
-  const scoreOptions = useMemo(() => {
-    return [
-      { value: "asc", label: "Tăng dần" },
-      { value: "desc", label: "Giảm dần" },
-    ];
-  }, []);
+  const trainingUnitOptionsMap = useMemo(() => {
+    return keyBy(trainingUnitOptions, "value");
+  }, [trainingUnitOptions]);
 
   const genderOptions = useMemo(() => {
     return [
@@ -64,9 +74,48 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
     ];
   }, []);
 
-  const handleSelectCity = (cityId: number) => {
-    dispatch(doctorsA.setCityIdFilterMobileDrawer(cityId));
-    dispatch(doctorsA.getDistricts(cityId));
+  const genderOptionsMap = useMemo(() => {
+    return keyBy(genderOptions, "value");
+  }, [genderOptions]);
+
+  const handleSelectMainSpecialty = (mainSpecialty: string) => {
+    dispatch(doctorsA.setMainSpecialtyFilter([mainSpecialty]));
+  };
+
+  const handleSelectCity = (cityId: number | null) => {
+    dispatch(doctorsA.setCityIdFilter(cityId));
+    dispatch(doctorsA.setDistrictIdFilter(null));
+
+    if (!!cityId) {
+      dispatch(doctorsA.getDistricts(cityId));
+    }
+  };
+
+  const handleSelectDistrict = (districtId: number | null) => {
+    dispatch(doctorsA.setDistrictIdFilter(districtId));
+  };
+
+  const handleSelectUnitName = (unitName: string) => {
+    dispatch(doctorsA.setUnitNameFilter(unitName));
+  };
+
+  const handleSelectGender = (gender: string) => {
+    dispatch(doctorsA.setGenderFilter(gender));
+  };
+
+  const handleResetFilter = () => {
+    dispatch(doctorsA.resetFilter());
+    dispatch(doctorsA.getDoctors());
+  };
+
+  const handleClose = () => {
+    dispatch(doctorsA.closeFilterMobileDrawer());
+    dispatch(doctorsA.resetFilter());
+  };
+
+  const handleApplyFilter = () => {
+    dispatch(doctorsA.getDoctorsByFilter());
+    dispatch(doctorsA.closeFilterMobileDrawer());
   };
 
   return (
@@ -153,6 +202,18 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         boxShadow: "4px 4px 16px 4px rgba(0, 0, 0, 0.10)",
                       }),
                     }}
+                    onChange={(e) => {
+                      if (!!e) {
+                        handleSelectMainSpecialty(e.value);
+                      } else {
+                        handleSelectMainSpecialty("");
+                      }
+                    }}
+                    value={
+                      !!mainSpecialtyFilter[0]
+                        ? mainSpecialtyOptionsMap[mainSpecialtyFilter[0]]
+                        : null
+                    }
                     isSearchable={true}
                     isClearable={true}
                     options={mainSpecialtyOptions}
@@ -208,10 +269,13 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                     isClearable={true}
                     isSearchable={true}
                     options={cityOptions}
+                    value={!!cityId ? cityOptionsMap[cityId] : null}
                     placeholder="Tất cả"
                     onChange={(e) => {
                       if (!!e) {
                         handleSelectCity(e.value);
+                      } else {
+                        handleSelectCity(null);
                       }
                     }}
                     components={{
@@ -263,6 +327,15 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                       }),
                     }}
                     isSearchable={true}
+                    onChange={(e) => {
+                      if (e) {
+                        handleSelectDistrict(e.value);
+                      } else {
+                        handleSelectDistrict(null);
+                      }
+                    }}
+                    value={!!districtId ? districtOptionsMap[districtId] : null}
+                    isClearable={true}
                     options={districtOptions}
                     placeholder="Tất cả"
                     components={{
@@ -317,6 +390,14 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                     }}
                     isSearchable={true}
                     options={trainingUnitOptions}
+                    value={!!unitName ? trainingUnitOptionsMap[unitName] : null}
+                    onChange={(e) => {
+                      if (!!e) {
+                        handleSelectUnitName(e.label);
+                      } else {
+                        handleSelectUnitName("");
+                      }
+                    }}
                     placeholder="Tất cả"
                     isClearable={true}
                     components={{
@@ -417,6 +498,14 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                     options={genderOptions}
                     placeholder="Tất cả"
                     isClearable={true}
+                    value={!!genderType ? genderOptionsMap[genderType] : null}
+                    onChange={(e) => {
+                      if (!!e) {
+                        handleSelectGender(e.value);
+                      } else {
+                        handleSelectGender("");
+                      }
+                    }}
                     components={{
                       IndicatorSeparator: () => null,
                       DropdownIndicator: (props) => {
@@ -453,11 +542,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
             </Drawer.Body>
 
             <Drawer.Footer className="px-0 pt-[20px] font-roboto">
-              <Button className="w-1/2 text-center rounded-[100px] bg-[#EEE] text-[#1F2A37] font-medium hover:opacity-80 text-[15px]">
+              <Button
+                onClick={handleResetFilter}
+                className="w-1/2 text-center rounded-[100px] bg-[#EEE] text-[#1F2A37] font-medium hover:opacity-80 text-[15px]"
+              >
                 Xóa lọc
               </Button>
 
-              <Button className="w-1/2 text-center rounded-[100px] bg-[#0274FF] text-white font-medium hover:opacity-80 text-[15px]">
+              <Button
+                onClick={handleApplyFilter}
+                className="w-1/2 text-center rounded-[100px] bg-[#0274FF] text-white font-medium hover:opacity-80 text-[15px]"
+              >
                 Lọc thông tin
               </Button>
             </Drawer.Footer>
@@ -482,7 +577,14 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
 interface OwnProps {}
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
-  const { isOpen, cityId } = doctorsS.selectFilterMobileDrawer(state);
+  const { isOpen } = doctorsS.selectFilterMobileDrawer(state);
+  const {
+    cityId,
+    mainSpecialties: mainSpecialtyFilter,
+    unitName,
+    genderType,
+    districtId
+  } = doctorsS.selectFilterDoctors(state);
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const cities = doctorsS.selectCities(state);
   const districts = doctorsS.selectDistricts(state);
@@ -496,6 +598,10 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     cities,
     districts,
     trainingUnits,
+    mainSpecialtyFilter,
+    unitName,
+    genderType,
+    districtId,
   };
 };
 

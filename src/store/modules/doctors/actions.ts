@@ -112,23 +112,42 @@ const getDoctorsByFilter = () => {
   return async () => {
     try {
       const rootState = store.getState();
-      const mainSpecialtyFilter = S.selectMainSpecialtyFilter(rootState);
-      const searchValue = S.selectSearchValue(rootState);
+      const filterDoctors = S.selectFilterDoctors(rootState);
 
       let response;
 
-      if (!isEmpty(mainSpecialtyFilter) || !isEmpty(searchValue)) {
+      if (!isEmpty(filterDoctors)) {
+        const { mainSpecialties, doctorName, cityId, districtId, unitName, genderType, score, orderDate } = filterDoctors;
+        
         response = await axiosInstance.get(
           `${API_DOCTORS.introduction.doctors}`,
           {
             params: {
               page: 0,
               size: 10,
-              ...(!isEmpty(mainSpecialtyFilter) && {
-                mainSpecialties: mainSpecialtyFilter.join(","),
+              ...(!isEmpty(mainSpecialties) && {
+                mainSpecialties: mainSpecialties.join(","),
               }),
-              ...(!isEmpty(searchValue) && {
-                doctorName: searchValue,
+              ...(!!doctorName && {
+                doctorName: doctorName,
+              }),
+              ...(!!cityId && {
+                cityId: cityId,
+              }),
+              ...(!!districtId && {
+                districtId: districtId,
+              }),
+              ...(!!unitName && {
+                unitName: unitName,
+              }),
+              ...(!!genderType && {
+                genderType: genderType,
+              }),
+              ...(!!score && {
+                score: score,
+              }),
+              ...(!!orderDate && {
+                orderDate: orderDate,
               }),
             },
           }

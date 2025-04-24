@@ -35,7 +35,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   doctors,
   mainSpecialties,
   mainSpecialtyFilter,
-  searchValue,
+  doctorNameFilter,
 }) => {
   const [checkedFilters, setCheckedFilters] = useState<Record<string, boolean>>(
     {}
@@ -83,10 +83,10 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   const handleSelectMainSpecialty = (value: string) => {
     if (value === "ALL") {
       dispatch(doctorsA.setMainSpecialtyFilter([]));
-      dispatch(doctorsA.setSearchValue(""));
+      dispatch(doctorsA.setDoctorNameFilter(""));
       dispatch(doctorsA.getDoctors());
     } else {
-      const updatedMainSpecialtyFilter = mainSpecialtyFilter.includes(value)
+      const updatedMainSpecialtyFilter = mainSpecialtyFilter.some((item) => item == value)
         ? mainSpecialtyFilter.filter((item) => item !== value)
         : [...mainSpecialtyFilter, value];
       dispatch(doctorsA.setMainSpecialtyFilter(updatedMainSpecialtyFilter));
@@ -95,7 +95,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(doctorsA.setSearchValue(e.target.value));
+    dispatch(doctorsA.setDoctorNameFilter(e.target.value));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -164,7 +164,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                   placeholder="Tìm Bác sĩ - Điều dưỡng - NVYT"
                   className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base "
                   onChange={handleSearch}
-                  value={searchValue}
+                  value={doctorNameFilter}
                   onKeyDown={handleKeyDown}
                 />
               </div>
@@ -596,14 +596,14 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const doctors = doctorsS.selectDoctors(state);
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const mainSpecialtyFilter = doctorsS.selectMainSpecialtyFilter(state);
-  const searchValue = doctorsS.selectSearchValue(state);
+  const doctorNameFilter = doctorsS.selectDoctorNameFilter(state);
 
   return {
     ...ownProps,
     doctors,
     mainSpecialties,
     mainSpecialtyFilter,
-    searchValue,
+    doctorNameFilter,
   };
 };
 

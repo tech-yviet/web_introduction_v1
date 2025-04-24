@@ -11,12 +11,16 @@ export const initialState: T.ContainerState = {
   trainingUnits: [],
   filterDoctors: {
     mainSpecialties: [],
-    searchValue: "",
+    doctorName: "",
+    cityId: null,
+    districtId: null,
+    unitName: "",
+    genderType: "",
+    score: "",
+    orderDate: "",
   },
   filterMobileDrawer: {
     isOpen: false,
-    cityId: null,
-    districtId: null,
   },
 };
 
@@ -38,12 +42,6 @@ const slice = createSlice({
     setMainSpecialtyFilter: (state, action: PayloadAction<string[]>) => {
       state.filterDoctors.mainSpecialties = action.payload;
     },
-    setSearchMainSpecialtyFilterValue: (
-      state,
-      action: PayloadAction<string>
-    ) => {
-      state.filterDoctors.searchValue = action.payload;
-    },
     setCities: (state, action: PayloadAction<T.ContainerState["cities"]>) => {
       state.cities = action.payload;
     },
@@ -53,8 +51,8 @@ const slice = createSlice({
     ) => {
       state.districts = action.payload;
     },
-    setSearchValue: (state, action: PayloadAction<string>) => {
-      state.filterDoctors.searchValue = action.payload;
+    setDoctorNameFilter: (state, action: PayloadAction<string>) => {
+      state.filterDoctors.doctorName = action.payload;
     },
     openFilterMobileDrawer: (state) => {
       state.filterMobileDrawer.isOpen = true;
@@ -62,17 +60,32 @@ const slice = createSlice({
     closeFilterMobileDrawer: (state) => {
       state.filterMobileDrawer.isOpen = false;
     },
-    setCityIdFilterMobileDrawer: (state, action: PayloadAction<number>) => {
-      state.filterMobileDrawer.cityId = action.payload;
+    setCityIdFilter: (state, action: PayloadAction<number | null>) => {
+      state.filterDoctors.cityId = action.payload;
     },
-    setDistrictIdFilterMobileDrawer: (state, action: PayloadAction<number>) => {
-      state.filterMobileDrawer.districtId = action.payload;
+    setDistrictIdFilter: (state, action: PayloadAction<number | null>) => {
+      state.filterDoctors.districtId = action.payload;
     },
     setTrainingUnits: (
       state,
       action: PayloadAction<T.ContainerState["trainingUnits"]>
     ) => {
       state.trainingUnits = action.payload;
+    },
+    setUnitNameFilter: (state, action: PayloadAction<string>) => {
+      state.filterDoctors.unitName = action.payload;
+    },
+    setGenderFilter: (state, action: PayloadAction<string>) => {
+      state.filterDoctors.genderType = action.payload;
+    },
+    setScoreFilter: (state, action: PayloadAction<string>) => {
+      state.filterDoctors.score = action.payload;
+    },
+    setOrderDateFilter: (state, action: PayloadAction<string>) => {
+      state.filterDoctors.orderDate = action.payload;
+    },
+    resetFilter: (state) => {
+      state.filterDoctors = initialState.filterDoctors;
     },
   },
 });

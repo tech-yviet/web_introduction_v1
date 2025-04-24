@@ -62,12 +62,16 @@ export interface DoctorsState {
   trainingUnits: ITrainingUnit[];
   filterDoctors: {
     mainSpecialties: string[];
-    searchValue: string;
+    doctorName: string;
+    cityId: number | null;
+    districtId: number | null;
+    unitName: string | null;
+    genderType: string | null;
+    score: string | null;
+    orderDate: string | null;
   };
   filterMobileDrawer: {
     isOpen: boolean;
-    cityId: number | null;
-    districtId: number | null;
   };
 }
 
