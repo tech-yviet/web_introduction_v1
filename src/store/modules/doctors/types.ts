@@ -20,6 +20,14 @@ export interface IMainSpecialty {
   name: string;
 }
 
+export interface ICity {
+  id: number;
+  cityCode: number;
+  nameVi: string;
+  codeName: string;
+  numOrder: number;
+}
+
 export interface IFilterDoctor {
   id: string;
   value: string;
@@ -28,6 +36,7 @@ export interface IFilterDoctor {
 export interface DoctorsState {
   doctors: IDoctor[];
   mainSpecialties: IMainSpecialty[];
+  cities: ICity[];
   filterDoctors: {
     mainSpecialties: string[];
     searchValue: string;

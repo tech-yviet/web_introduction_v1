@@ -6,6 +6,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export const initialState: T.ContainerState = {
   doctors: [],
   mainSpecialties: [],
+  cities: [],
   filterDoctors: {
     mainSpecialties: [],
     searchValue: "",
@@ -32,6 +33,15 @@ const slice = createSlice({
     },
     setMainSpecialtyFilter: (state, action: PayloadAction<string[]>) => {
       state.filterDoctors.mainSpecialties = action.payload;
+    },
+    setSearchMainSpecialtyFilterValue: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      state.filterDoctors.searchValue = action.payload;
+    },
+    setCities: (state, action: PayloadAction<T.ContainerState["cities"]>) => {
+      state.cities = action.payload;
     },
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.filterDoctors.searchValue = action.payload;

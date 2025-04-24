@@ -5,12 +5,27 @@ import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA, doctorsS } from "@/store/modules/doctors";
 import { Button, Drawer, Portal } from "@chakra-ui/react";
 import Image from "next/image";
-import Select from "react-select";
+import Select, { components } from "react-select";
+import orderBy from "lodash/orderBy";
 
-const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
+const $FilterMobileDrawer: FC<PropsFromRedux> = ({
+  isOpen,
+  mainSpecialties,
+  cities,
+}) => {
   const handleClose = () => {
     dispatch(doctorsA.closeFilterMobileDrawer());
   };
+
+  const mainSpecialtyOptions = mainSpecialties.map((mainSpecialty) => ({
+    value: mainSpecialty.name,
+    label: mainSpecialty.description,
+  }));
+
+  const cityOptions = orderBy(cities, ["numOrder"], ["asc"]).map((city) => ({
+    value: city.cityCode,
+    label: city.nameVi,
+  }));
 
   return (
     <Drawer.Root
@@ -85,12 +100,25 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                   <div className="text-sm mb-1">Chuyên khoa </div>
 
                   <Select
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        border: "1px solid #B9BDC1",
+                        borderRadius: "8px",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        boxShadow: "4px 4px 16px 4px rgba(0, 0, 0, 0.10)",
+                      }),
+                    }}
                     isSearchable={true}
+                    options={mainSpecialtyOptions}
+                    placeholder="Tất cả"
                     components={{
                       IndicatorSeparator: () => null,
-                      DropdownIndicator: () => {
+                      DropdownIndicator: (props) => {
                         return (
-                          <div className="pr-[12px]">
+                          <div className="pr-[12px]" {...props}>
                             <Image
                               src="/svg/icons/arrow-down-ori.svg"
                               alt="arrow-down"
@@ -100,27 +128,19 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
-                      Placeholder: () => null,
-                      Input: (props) => {
-                        return (
-                          <div className="w-full h-full font-inter py-2.5 pl-[4px]">
-                            <input
-                              type="text"
-                              placeholder="Tất cả"
-                              className="outline-none w-full"
-                              {...props}
-                            />
-                          </div>
-                        );
-                      },
                       Control: (props) => {
                         return (
-                          <div
+                          <components.Control
                             {...props}
-                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                            className="w-full rounded-lg py-1.5 border"
                           >
                             {props.children}
-                          </div>
+                          </components.Control>
+                        );
+                      },
+                      Menu: (props) => {
+                        return (
+                          <components.Menu {...props} className="border-l " />
                         );
                       },
                     }}
@@ -128,15 +148,28 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                 </div>
 
                 <div>
-                  <div className="text-sm mb-1">Tỉnh/Thành phố </div>
+                  <div className="text-sm mb-1">Tỉnh/Thành phố</div>
 
                   <Select
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        border: "1px solid #B9BDC1",
+                        borderRadius: "8px",
+                      }),
+                      menu: (base) => ({
+                        ...base,
+                        boxShadow: "4px 4px 16px 4px rgba(0, 0, 0, 0.10)",
+                      }),
+                    }}
                     isSearchable={true}
+                    options={cityOptions}
+                    placeholder="Tất cả"
                     components={{
                       IndicatorSeparator: () => null,
-                      DropdownIndicator: () => {
+                      DropdownIndicator: (props) => {
                         return (
-                          <div className="pr-[12px]">
+                          <div className="pr-[12px]" {...props}>
                             <Image
                               src="/svg/icons/arrow-down-ori.svg"
                               alt="arrow-down"
@@ -146,27 +179,26 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
-                      Placeholder: () => null,
-                      Input: (props) => {
-                        return (
-                          <div className="w-full h-full font-inter py-2.5 pl-[4px]">
-                            <input
-                              type="text"
-                              placeholder="Tất cả"
-                              className="outline-none w-full"
-                              {...props}
-                            />
-                          </div>
-                        );
-                      },
                       Control: (props) => {
                         return (
-                          <div
+                          <components.Control
                             {...props}
-                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                            className="w-full rounded-lg py-1.5 border"
                           >
                             {props.children}
-                          </div>
+                          </components.Control>
+                        );
+                      },
+                      // Option: (props) => {
+                      //   return (
+                      //     <components.Option {...props} className="border">
+                      //       {props.children}
+                      //     </components.Option>
+                      //   );
+                      // },
+                      Menu: (props) => {
+                        return (
+                          <components.Menu {...props} className="border-l " />
                         );
                       },
                     }}
@@ -392,10 +424,14 @@ interface OwnProps {}
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const isOpen = doctorsS.selectFilterMobileDrawer(state);
+  const mainSpecialties = doctorsS.selectMainSpecialties(state);
+  const cities = doctorsS.selectCities(state);
 
   return {
     ...ownProps,
     isOpen,
+    mainSpecialties,
+    cities,
   };
 };
 

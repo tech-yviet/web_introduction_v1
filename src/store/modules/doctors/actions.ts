@@ -42,6 +42,25 @@ const getMainSpecialties = () => {
   };
 };
 
+const getCities = () => {
+  return async () => {
+    try {
+      const response = await axiosInstance.get(
+        `${API_DOCTORS.introduction.cities}`
+      );
+
+      if (response.status === 200) {
+        dispatch(A.setCities(response.data.data));
+      } else {
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      dispatch(A.setCities([]));
+      console.log(error);
+    }
+  };
+};
+
 const getDoctorsByFilter = () => {
   return async () => {
     try {
@@ -89,6 +108,7 @@ const init = () => {
   return async () => {
     dispatch(getDoctors());
     dispatch(getMainSpecialties());
+    dispatch(getCities());
   };
 };
 
