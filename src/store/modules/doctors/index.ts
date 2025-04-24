@@ -8,6 +8,7 @@ export const initialState: T.ContainerState = {
   mainSpecialties: [],
   filterDoctors: {
     mainSpecialties: [],
+    searchValue: "",
   },
 };
 
@@ -28,6 +29,9 @@ const slice = createSlice({
     },
     setMainSpecialtyFilter: (state, action: PayloadAction<string[]>) => {
       state.filterDoctors.mainSpecialties = action.payload;
+    },
+    setSearchValue: (state, action: PayloadAction<string>) => {
+      state.filterDoctors.searchValue = action.payload;
     },
   },
 });

@@ -17,9 +17,9 @@ const CardDoctor: FC<CardDoctorProps> = ({ doctor, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="flex gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group"
+      className="flex gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group md:h-[136px]"
     >
-      <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px]">
+      <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px] flex items-end">
         <Image
           src={doctor?.urlAvatar}
           alt={`${doctor.fullName}`}
@@ -29,7 +29,7 @@ const CardDoctor: FC<CardDoctorProps> = ({ doctor, index }) => {
         />
       </div>
 
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col justify-center">
         <div className="text-[#1F2A37] font-medium mb-2 md:text-lg md:mb-[10px]">{`${doctor.fullName}`}</div>
 
         <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E] md:text-sm md:gap-[6px]">

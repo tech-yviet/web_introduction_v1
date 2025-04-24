@@ -30,6 +30,7 @@ export interface DoctorsState {
   mainSpecialties: IMainSpecialty[];
   filterDoctors: {
     mainSpecialties: string[];
+    searchValue: string;
   };
 }
 

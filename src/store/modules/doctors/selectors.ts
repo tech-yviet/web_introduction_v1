@@ -24,10 +24,16 @@ const selectMainSpecialtyFilter = createSelector(
   (state) => state.filterDoctors.mainSpecialties
 );
 
+const selectSearchValue = createSelector(
+  selectDomain,
+  (state) => state.filterDoctors.searchValue
+);
+
 export const selectors = {
   selectDomain,
   selectDoctors,
   selectMainSpecialties,
   selectFilterDoctors,
   selectMainSpecialtyFilter,
+  selectSearchValue,
 };
