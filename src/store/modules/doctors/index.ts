@@ -10,6 +10,9 @@ export const initialState: T.ContainerState = {
     mainSpecialties: [],
     searchValue: "",
   },
+  filterMobileDrawer: {
+    isOpen: false,
+  },
 };
 
 // ==========================================================================================
@@ -32,6 +35,12 @@ const slice = createSlice({
     },
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.filterDoctors.searchValue = action.payload;
+    },
+    openFilterMobileDrawer: (state) => {
+      state.filterMobileDrawer.isOpen = true;
+    },
+    closeFilterMobileDrawer: (state) => {
+      state.filterMobileDrawer.isOpen = false;
     },
   },
 });

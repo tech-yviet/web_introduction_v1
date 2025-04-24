@@ -21,6 +21,16 @@ const LazyMobileDrawer = dynamic(
   }
 );
 
+const LazyFilterMobileDrawer = dynamic(
+  () =>
+    import("./components/FilterMobileDrawer").then(
+      (mod) => mod.FilterMobileDrawer
+    ),
+  {
+    ssr: false,
+  }
+);
+
 const $DoctorsFeature: FC<PropsFromRedux> = ({
   doctors,
   mainSpecialties,
@@ -94,6 +104,10 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     }
   };
 
+  const handleToggleFilterMobileDrawer = () => {
+    dispatch(doctorsA.openFilterMobileDrawer());
+  };
+
   return (
     <>
       <HeaderDesktop isFixed={true} />
@@ -155,7 +169,10 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                 />
               </div>
 
-              <button className="md:hidden ml-[11px]">
+              <button
+                className="md:hidden ml-[11px]"
+                onClick={handleToggleFilterMobileDrawer}
+              >
                 <Image
                   src="/svg/icons/filter.svg"
                   alt="filter"
@@ -567,6 +584,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
         <FooterDesktop />
 
         <LazyMobileDrawer />
+        <LazyFilterMobileDrawer />
       </div>
     </>
   );

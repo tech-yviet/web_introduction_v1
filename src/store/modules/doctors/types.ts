@@ -32,6 +32,9 @@ export interface DoctorsState {
     mainSpecialties: string[];
     searchValue: string;
   };
+  filterMobileDrawer: {
+    isOpen: boolean;
+  };
 }
 
 export type ContainerState = DoctorsState;

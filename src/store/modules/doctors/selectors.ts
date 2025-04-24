@@ -29,6 +29,11 @@ const selectSearchValue = createSelector(
   (state) => state.filterDoctors.searchValue
 );
 
+const selectFilterMobileDrawer = createSelector(
+  selectDomain,
+  (state) => state.filterMobileDrawer.isOpen
+);
+
 export const selectors = {
   selectDomain,
   selectDoctors,
@@ -36,4 +41,5 @@ export const selectors = {
   selectFilterDoctors,
   selectMainSpecialtyFilter,
   selectSearchValue,
+  selectFilterMobileDrawer,
 };
