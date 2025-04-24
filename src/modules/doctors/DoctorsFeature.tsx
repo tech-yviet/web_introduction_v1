@@ -140,7 +140,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                 />
               </div>
 
-              <div className="md:hidden">
+              <div className="md:hidden ml-[11px]">
                 <Image
                   src="/svg/icons/filter.svg"
                   alt="filter"

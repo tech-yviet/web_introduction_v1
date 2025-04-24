@@ -13,10 +13,10 @@ const HomeFeature = () => {
     <div className="h-full md:min-w-[1200px] lg:max-w-full relative overflow-hidden ">
       <Hero />
 
-      <div className="md:hidden">
+      <div className="md:hidden font-roboto">
         <Search
           placeholder="Tìm thuốc, dịch vụ, Bác sĩ, Phòng k..."
-          inputClassName="bg-transparent outline-none w-full text-sm font-normal leading-[22px] w-[227px]"
+          inputClassName="bg-transparent outline-none w-full text-sm font-normal leading-[22px] w-[227px] truncate"
           className="mt-[11px] p-3 flex items-center bg-white rounded-[40px] w-[359px] mx-auto h-[48px]"
         />
       </div>
