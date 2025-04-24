@@ -61,6 +61,25 @@ const getCities = () => {
   };
 };
 
+const getDistricts = (id: number) => {
+  return async () => {
+    try {
+      const response = await axiosInstance.get(
+        `${API_DOCTORS.introduction.cities}/${id}/districts`
+      );
+
+      if (response.status === 200) {
+        dispatch(A.setDistricts(response.data.data));
+      } else {
+        console.log(response.data.message);
+      }
+    } catch (error) {
+      dispatch(A.setDistricts([]));
+      console.log(error);
+    }
+  };
+};
+
 const getDoctorsByFilter = () => {
   return async () => {
     try {
@@ -123,4 +142,5 @@ export const extendActions = {
   destroy,
   getDoctorsByFilter,
   getDoctors,
+  getDistricts,
 };

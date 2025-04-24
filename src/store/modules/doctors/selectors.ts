@@ -21,6 +21,8 @@ const selectFilterDoctors = createSelector(
   (state) => state.filterDoctors
 );
 
+const selectDistricts = createSelector(selectDomain, (state) => state.districts);
+
 const selectMainSpecialtyFilter = createSelector(
   selectDomain,
   (state) => state.filterDoctors.mainSpecialties
@@ -33,7 +35,7 @@ const selectSearchValue = createSelector(
 
 const selectFilterMobileDrawer = createSelector(
   selectDomain,
-  (state) => state.filterMobileDrawer.isOpen
+  (state) => state.filterMobileDrawer
 );
 
 export const selectors = {
@@ -45,4 +47,5 @@ export const selectors = {
   selectSearchValue,
   selectFilterMobileDrawer,
   selectCities,
+  selectDistricts,
 };

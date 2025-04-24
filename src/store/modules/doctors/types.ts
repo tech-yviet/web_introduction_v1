@@ -28,6 +28,21 @@ export interface ICity {
   numOrder: number;
 }
 
+export interface IDistrict {
+  activated: boolean;
+  deleted: boolean;
+  createdAt: string;
+  updatedAt: string;
+  createdBy: string;
+  lastModifiedBy: string;
+  id: number;
+  cityId: number;
+  districtCode: number;
+  nameVi: string;
+  codeName: string;
+  numOrder: number;
+}
+
 export interface IFilterDoctor {
   id: string;
   value: string;
@@ -37,12 +52,14 @@ export interface DoctorsState {
   doctors: IDoctor[];
   mainSpecialties: IMainSpecialty[];
   cities: ICity[];
+  districts: IDistrict[];
   filterDoctors: {
     mainSpecialties: string[];
     searchValue: string;
   };
   filterMobileDrawer: {
     isOpen: boolean;
+    cityId: number | null;
   };
 }
 
