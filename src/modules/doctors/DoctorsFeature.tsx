@@ -25,6 +25,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   doctors,
   mainSpecialties,
   mainSpecialtyFilter,
+  searchValue,
 }) => {
   const [checkedFilters, setCheckedFilters] = useState<Record<string, boolean>>(
     {}
@@ -72,13 +73,24 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   const handleSelectMainSpecialty = (value: string) => {
     if (value === "ALL") {
       dispatch(doctorsA.setMainSpecialtyFilter([]));
+      dispatch(doctorsA.setSearchValue(""));
       dispatch(doctorsA.getDoctors());
     } else {
       const updatedMainSpecialtyFilter = mainSpecialtyFilter.includes(value)
         ? mainSpecialtyFilter.filter((item) => item !== value)
         : [...mainSpecialtyFilter, value];
       dispatch(doctorsA.setMainSpecialtyFilter(updatedMainSpecialtyFilter));
-      dispatch(doctorsA.getDoctorsByMainSpecialty());
+      dispatch(doctorsA.getDoctorsByFilter());
+    }
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(doctorsA.setSearchValue(e.target.value));
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      dispatch(doctorsA.getDoctorsByFilter());
     }
   };
 
@@ -137,17 +149,20 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                   type="text"
                   placeholder="Tìm Bác sĩ - Điều dưỡng - NVYT"
                   className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base "
+                  onChange={handleSearch}
+                  value={searchValue}
+                  onKeyDown={handleKeyDown}
                 />
               </div>
 
-              <div className="md:hidden ml-[11px]">
+              <button className="md:hidden ml-[11px]">
                 <Image
                   src="/svg/icons/filter.svg"
                   alt="filter"
                   width={16}
                   height={16}
                 />
-              </div>
+              </button>
 
               <div className="mx-[8px] md:hidden">
                 <Image
@@ -563,12 +578,14 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const doctors = doctorsS.selectDoctors(state);
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const mainSpecialtyFilter = doctorsS.selectMainSpecialtyFilter(state);
+  const searchValue = doctorsS.selectSearchValue(state);
 
   return {
     ...ownProps,
     doctors,
     mainSpecialties,
     mainSpecialtyFilter,
+    searchValue,
   };
 };
 

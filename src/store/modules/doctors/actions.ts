@@ -2,7 +2,7 @@ import axiosInstance from "@/core/axiosInstance";
 import { dispatch, store } from "@/store";
 import { doctorsA as A, doctorsS as S } from ".";
 import { API_DOCTORS } from "@/core/config";
-import { isEmpty } from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 const getDoctors = () => {
   return async () => {
@@ -42,18 +42,30 @@ const getMainSpecialties = () => {
   };
 };
 
-const getDoctorsByMainSpecialty = () => {
+const getDoctorsByFilter = () => {
   return async () => {
     try {
       const rootState = store.getState();
       const mainSpecialtyFilter = S.selectMainSpecialtyFilter(rootState);
+      const searchValue = S.selectSearchValue(rootState);
+
       let response;
 
-      if (!isEmpty(mainSpecialtyFilter)) {
+      if (!isEmpty(mainSpecialtyFilter) || !isEmpty(searchValue)) {
         response = await axiosInstance.get(
-          `${
-            API_DOCTORS.introduction.doctors
-          }?page=0&size=10&mainSpecialties=${mainSpecialtyFilter.join(",")}`
+          `${API_DOCTORS.introduction.doctors}`,
+          {
+            params: {
+              page: 0,
+              size: 10,
+              ...(!isEmpty(mainSpecialtyFilter) && {
+                mainSpecialties: mainSpecialtyFilter.join(","),
+              }),
+              ...(!isEmpty(searchValue) && {
+                doctorName: searchValue,
+              }),
+            },
+          }
         );
       } else {
         response = await axiosInstance.get(
@@ -89,6 +101,6 @@ const destroy = () => {
 export const extendActions = {
   init,
   destroy,
-  getDoctorsByMainSpecialty,
+  getDoctorsByFilter,
   getDoctors,
 };
