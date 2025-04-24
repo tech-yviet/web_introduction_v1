@@ -67,8 +67,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
+                      Control: (props) => {
+                        return (
+                          <div
+                            {...props}
+                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                          >
+                            {props.children}
+                          </div>
+                        );
+                      },
                     }}
-                    className="rounded-lg border-[#B9BDC1]"
                   />
                 </div>
 
@@ -104,8 +113,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
+                      Control: (props) => {
+                        return (
+                          <div
+                            {...props}
+                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                          >
+                            {props.children}
+                          </div>
+                        );
+                      },
                     }}
-                    className="rounded-lg border-[#B9BDC1]"
                   />
                 </div>
 
@@ -141,8 +159,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
+                      Control: (props) => {
+                        return (
+                          <div
+                            {...props}
+                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                          >
+                            {props.children}
+                          </div>
+                        );
+                      },
                     }}
-                    className="rounded-lg border-[#B9BDC1]"
                   />
                 </div>
 
@@ -178,8 +205,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
+                      Control: (props) => {
+                        return (
+                          <div
+                            {...props}
+                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                          >
+                            {props.children}
+                          </div>
+                        );
+                      },
                     }}
-                    className="rounded-lg border-[#B9BDC1]"
                   />
                 </div>
 
@@ -217,8 +253,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
+                      Control: (props) => {
+                        return (
+                          <div
+                            {...props}
+                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                          >
+                            {props.children}
+                          </div>
+                        );
+                      },
                     }}
-                    className="rounded-lg border-[#B9BDC1]"
                   />
                 </div>
 
@@ -254,8 +299,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
+                      Control: (props) => {
+                        return (
+                          <div
+                            {...props}
+                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                          >
+                            {props.children}
+                          </div>
+                        );
+                      },
                     }}
-                    className="rounded-lg border-[#B9BDC1]"
                   />
                 </div>
 
@@ -291,8 +345,17 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({ isOpen }) => {
                           </div>
                         );
                       },
+                      Control: (props) => {
+                        return (
+                          <div
+                            {...props}
+                            className="rounded-lg border-[#B9BDC1] border flex items-center"
+                          >
+                            {props.children}
+                          </div>
+                        );
+                      },
                     }}
-                    className="rounded-lg border-[#B9BDC1]"
                   />
                 </div>
               </div>
