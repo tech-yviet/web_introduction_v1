@@ -568,11 +568,12 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
           <div className="mt-4 flex justify-end">
             <Pagination.Root
-              count={totalPages}
+              count={totalPages || 1}
               pageSize={pageSize}
-              defaultPage={currentPage}
+              defaultPage={1}
+              page={Number(currentPage || 0) + 1}
             >
-              <ButtonGroup variant="ghost" size="sm">
+              <ButtonGroup variant="ghost" size="sm" className="gap-1">
                 <Pagination.PrevTrigger asChild>
                   <IconButton
                     disabled={!prevPage}
