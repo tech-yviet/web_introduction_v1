@@ -238,6 +238,16 @@ const datePickerCustomStyles = `
     background-color: #0274FF;
     color: white;
     font-weight: 500;
+    
+  }
+
+  .react-datepicker__day--disabled {
+    color: #ccc !important;
+    cursor: not-allowed !important;
+  }
+
+  .react-datepicker__day--disabled:hover {
+    background-color: transparent !important;
   }
 `;
 
@@ -444,8 +454,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           return weekDays[day] || day;
                         }}
                         selected={selectedDate}
+                        minDate={new Date()}
                         customInput={
-                          <div 
+                          <div
                             className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2 px-3"
                             onClick={(e) => {
                               if (!!selectedDate) {
@@ -500,13 +511,22 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           changeMonth,
                           changeYear,
                         }) => {
+                          const currentDate = new Date();
+                          const isCurrentMonthOrBefore =
+                            date.getFullYear() === currentDate.getFullYear() &&
+                            date.getMonth() <= currentDate.getMonth();
+
                           return (
                             <div className="flex items-center justify-between mb-[20px]">
                               <button
                                 onClick={decreaseMonth}
                                 disabled={prevMonthButtonDisabled}
                                 type="button"
-                                className="text-[#0274FF]"
+                                className={`text-[#0274FF] ${
+                                  isCurrentMonthOrBefore
+                                    ? "opacity-30 cursor-not-allowed"
+                                    : ""
+                                }`}
                               >
                                 <Image
                                   src="/svg/icons/chevron-left.svg"
@@ -531,22 +551,47 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                                         Tháng
                                       </div>
                                       <div className="month-year-grid">
-                                        {Array.from({ length: 12 }, (_, i) => (
-                                          <div
-                                            key={i}
-                                            className={`month-year-item ${
-                                              date.getMonth() === i
-                                                ? "selected"
-                                                : ""
-                                            }`}
-                                            onClick={() => {
-                                              changeMonth(i);
-                                              setShowMenu(false);
-                                            }}
-                                          >
-                                            {i + 1}
-                                          </div>
-                                        ))}
+                                        {Array.from({ length: 12 }, (_, i) => {
+                                          const currentDate = new Date();
+                                          const currentYear =
+                                            currentDate.getFullYear();
+                                          const currentMonth =
+                                            currentDate.getMonth();
+                                          const isDisabled =
+                                            date.getFullYear() ===
+                                              currentYear && i < currentMonth;
+                                          const isSelected =
+                                            date.getMonth() === i;
+
+                                          return (
+                                            <div
+                                              key={i}
+                                              className={`month-year-item ${
+                                                isSelected ? "selected" : ""
+                                              } ${
+                                                isDisabled ? "disabled" : ""
+                                              }`}
+                                              onClick={() => {
+                                                if (!isDisabled) {
+                                                  changeMonth(i);
+                                                  setShowMenu(false);
+                                                }
+                                              }}
+                                              style={{
+                                                cursor: isDisabled
+                                                  ? "not-allowed"
+                                                  : "pointer",
+                                                color: isDisabled
+                                                  ? "#ccc"
+                                                  : isSelected
+                                                  ? "#fff"
+                                                  : "#1F2937",
+                                              }}
+                                            >
+                                              {i + 1}
+                                            </div>
+                                          );
+                                        })}
                                       </div>
                                     </div>
 
@@ -555,10 +600,11 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                                         Năm
                                       </div>
                                       <div className="month-year-grid">
-                                        {Array.from(
-                                          { length: 12 },
-                                          (_, i) => date.getFullYear() - 5 + i
-                                        ).map((year) => (
+                                        {Array.from({ length: 12 }, (_, i) => {
+                                          const currentYear =
+                                            new Date().getFullYear();
+                                          return currentYear + i;
+                                        }).map((year) => (
                                           <div
                                             key={year}
                                             className={`month-year-item ${
