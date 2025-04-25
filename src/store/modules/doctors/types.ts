@@ -54,8 +54,21 @@ export type ITrainingUnit = {
   description: string;
 };
 
+export interface IPagination {
+  totalItems: number;
+  sorted: boolean;
+  offset: number;
+  nextPage: number | null;
+  totalPages: number;
+  pageSize: number;
+  prevPage: number | null;
+  sortedBy: string;
+  currentPage: number;
+}
+
 export interface DoctorsState {
   doctors: IDoctor[];
+  pagination: IPagination;
   mainSpecialties: IMainSpecialty[];
   cities: ICity[];
   districts: IDistrict[];

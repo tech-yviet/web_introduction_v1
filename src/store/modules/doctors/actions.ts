@@ -5,21 +5,25 @@ import { API_DOCTORS } from "@/core/config";
 import isEmpty from "lodash/isEmpty";
 import dayjs from "dayjs";
 
-const getDoctors = () => {
+const getDoctors = (page?: number, size?: number) => {
   return async () => {
     try {
+      const rootState = store.getState();
+      const { currentPage, pageSize } = S.selectPagination(rootState);
+
       const response = await axiosInstance.get(
         `${API_DOCTORS.introduction.doctors}`,
         {
           params: {
-            page: 0,
-            size: 10,
+            page: page || currentPage,
+            size: size || pageSize,
           },
         }
       );
 
       if (response.status === 200) {
         dispatch(A.setDoctors(response.data.data.content));
+        dispatch(A.setPagination(response.data.data.pagination));
       } else {
         console.log(response.data.message);
       }

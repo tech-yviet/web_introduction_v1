@@ -9,6 +9,11 @@ const selectDoctors = createSelector(selectDomain, (state) =>
   uniqBy(state.doctors, "doctorId")
 );
 
+const selectPagination = createSelector(
+  selectDomain,
+  (state) => state.pagination
+);
+
 const selectMainSpecialties = createSelector(
   selectDomain,
   (state) => state.mainSpecialties
@@ -21,7 +26,10 @@ const selectFilterDoctors = createSelector(
   (state) => state.filterDoctors
 );
 
-const selectDistricts = createSelector(selectDomain, (state) => state.districts);
+const selectDistricts = createSelector(
+  selectDomain,
+  (state) => state.districts
+);
 
 const selectTrainingUnits = createSelector(
   selectDomain,
@@ -53,5 +61,6 @@ export const selectors = {
   selectFilterMobileDrawer,
   selectCities,
   selectDistricts,
-  selectTrainingUnits
+  selectTrainingUnits,
+  selectPagination,
 };

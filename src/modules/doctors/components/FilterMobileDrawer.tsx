@@ -435,7 +435,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
             callback([]);
           }
         },
-        1000
+        500
       ),
     []
   );

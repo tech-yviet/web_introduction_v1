@@ -5,6 +5,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const initialState: T.ContainerState = {
   doctors: [],
+  pagination: {
+    totalItems: 0,
+    sorted: false,
+    offset: 0,
+    nextPage: null,
+    totalPages: 0,
+    pageSize: 10,
+    prevPage: null,
+    sortedBy: "empty",
+    currentPage: 0,
+  },
   mainSpecialties: [],
   cities: [],
   districts: [],
@@ -86,6 +97,12 @@ const slice = createSlice({
     },
     resetFilter: (state) => {
       state.filterDoctors = initialState.filterDoctors;
+    },
+    setPagination: (
+      state,
+      action: PayloadAction<T.ContainerState["pagination"]>
+    ) => {
+      state.pagination = action.payload;
     },
   },
 });

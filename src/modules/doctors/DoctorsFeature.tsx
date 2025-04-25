@@ -36,6 +36,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   mainSpecialties,
   mainSpecialtyFilter,
   doctorNameFilter,
+  currentPage,
+  totalPages,
 }) => {
   const [checkedFilters, setCheckedFilters] = useState<Record<string, boolean>>(
     {}
@@ -536,15 +538,23 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 md:flex-1">
-              {doctors.map((doctor, index) => (
-                <CardDoctor
-                  key={doctor.doctorId}
-                  doctor={doctor}
-                  index={index}
-                />
-              ))}
-            </div>
+            {!isEmpty(doctors) ? (
+              <div className="flex flex-col gap-3 md:flex-1">
+                {doctors.map((doctor, index) => (
+                  <CardDoctor
+                    key={doctor.doctorId}
+                    doctor={doctor}
+                    index={index}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="my-10 md:flex-1">
+                <div className="text-center font-medium text-[#1F2A37]">
+                  Không tìm thấy kết quả
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="mt-4 flex justify-end">
@@ -598,6 +608,7 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const mainSpecialtyFilter = doctorsS.selectMainSpecialtyFilter(state);
   const doctorNameFilter = doctorsS.selectDoctorNameFilter(state);
+  const { currentPage, totalPages } = doctorsS.selectPagination(state);
 
   return {
     ...ownProps,
@@ -605,6 +616,8 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     mainSpecialties,
     mainSpecialtyFilter,
     doctorNameFilter,
+    currentPage,
+    totalPages,
   };
 };
 
