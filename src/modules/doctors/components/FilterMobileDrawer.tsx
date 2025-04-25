@@ -1,14 +1,15 @@
 "use client";
 
-import { FC, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA, doctorsS } from "@/store/modules/doctors";
-import { Box, Button, Drawer, Portal } from "@chakra-ui/react";
+import { Button, Drawer, Portal } from "@chakra-ui/react";
 import Image from "next/image";
 import Select, { components } from "react-select";
 import orderBy from "lodash/orderBy";
 import keyBy from "lodash/keyBy";
 import DatePicker from "react-datepicker";
+import dayjs from "dayjs";
 
 const CustomDropdownIndicator = (props: any) => {
   return (
@@ -176,6 +177,68 @@ const datePickerCustomStyles = `
     color: #0274FF;
     margin-bottom: 16px;
   }
+
+  .month-year-select {
+    background: white;
+    // border: 1px solid #E5E7EB;
+    // border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    color: #1F2937;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .month-year-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 16px;
+    min-width: 280px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .month-year-section {
+    flex: 1;
+  }
+
+  .month-year-section-title {
+    color: #6B7280;
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .month-year-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .month-year-item {
+    padding: 8px;
+    cursor: pointer;
+    color: #1F2937;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  .month-year-item:hover {
+    background-color: #E6F0FF;
+  }
+
+  .month-year-item.selected {
+    background-color: #0274FF;
+    color: white;
+    font-weight: 500;
+  }
 `;
 
 const $FilterMobileDrawer: FC<PropsFromRedux> = ({
@@ -190,6 +253,22 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
   genderType,
   districtId,
 }) => {
+  const [showMenu, setShowMenu] = React.useState(false);
+  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
+
+  const menuRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const mainSpecialtyOptions = useMemo(() => {
     return orderBy(mainSpecialties, ["numOrder"], ["asc"]).map(
       (mainSpecialty) => ({
@@ -315,6 +394,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
         onOpenChange={handleClose}
         placement="bottom"
         preventScroll
+        initialFocusEl={() => null}
       >
         <Portal>
           <Drawer.Backdrop />
@@ -345,6 +425,11 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Tất cả"
                         autoFocus={false}
+                        onChange={(date) => {
+                          if (!!date) {
+                            setSelectedDate(date);
+                          }
+                        }}
                         showPopperArrow={false}
                         formatWeekDay={(day) => {
                           const weekDays: { [key: string]: string } = {
@@ -358,14 +443,46 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           };
                           return weekDays[day] || day;
                         }}
+                        selected={selectedDate}
                         customInput={
-                          <div className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2.5 px-3">
+                          <div 
+                            className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2 px-3"
+                            onClick={(e) => {
+                              if (!!selectedDate) {
+                                e.preventDefault();
+                                setSelectedDate(null);
+                              }
+                            }}
+                          >
                             <input
                               type="text"
                               className="w-full outline-none border-none"
                               placeholder="Tất cả"
                               autoFocus={false}
+                              value={
+                                !!selectedDate
+                                  ? dayjs(selectedDate).format("DD/MM/YYYY")
+                                  : ""
+                              }
                             />
+
+                            {!!selectedDate && (
+                              <button
+                                className="p-2 mr-1 z-10"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setSelectedDate(null);
+                                }}
+                              >
+                                <Image
+                                  src="/svg/icons/close.svg"
+                                  alt="close"
+                                  width={10}
+                                  height={10}
+                                />
+                              </button>
+                            )}
+
                             <Image
                               src="/svg/icons/arrow-down-ori.svg"
                               alt="arrow-down"
@@ -380,43 +497,106 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           increaseMonth,
                           prevMonthButtonDisabled,
                           nextMonthButtonDisabled,
-                        }) => (
-                          <div className="flex items-center justify-between  mb-[20px]">
-                            <button
-                              onClick={decreaseMonth}
-                              disabled={prevMonthButtonDisabled}
-                              type="button"
-                              className="text-[#0274FF]"
-                            >
-                              <Image
-                                src="/svg/icons/chevron-left.svg"
-                                alt="previous"
-                                width={20}
-                                height={20}
-                              />
-                            </button>
+                          changeMonth,
+                          changeYear,
+                        }) => {
+                          return (
+                            <div className="flex items-center justify-between mb-[20px]">
+                              <button
+                                onClick={decreaseMonth}
+                                disabled={prevMonthButtonDisabled}
+                                type="button"
+                                className="text-[#0274FF]"
+                              >
+                                <Image
+                                  src="/svg/icons/chevron-left.svg"
+                                  alt="previous"
+                                  width={20}
+                                  height={20}
+                                />
+                              </button>
 
-                            <div className="text-[#0274FF] font-bold font-inter">
-                              {`Tháng ${
-                                date.getMonth() + 1
-                              }, ${date.getFullYear()}`}
+                              <div className="relative" ref={menuRef}>
+                                <div
+                                  className="text-[#0274FF] font-bold font-inter cursor-pointer"
+                                  onClick={() => setShowMenu(!showMenu)}
+                                >
+                                  Tháng {date.getMonth() + 1},{" "}
+                                  {date.getFullYear()}
+                                </div>
+                                {showMenu && (
+                                  <div className="month-year-menu">
+                                    <div className="month-year-section">
+                                      <div className="month-year-section-title">
+                                        Tháng
+                                      </div>
+                                      <div className="month-year-grid">
+                                        {Array.from({ length: 12 }, (_, i) => (
+                                          <div
+                                            key={i}
+                                            className={`month-year-item ${
+                                              date.getMonth() === i
+                                                ? "selected"
+                                                : ""
+                                            }`}
+                                            onClick={() => {
+                                              changeMonth(i);
+                                              setShowMenu(false);
+                                            }}
+                                          >
+                                            {i + 1}
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+
+                                    <div className="month-year-section">
+                                      <div className="month-year-section-title">
+                                        Năm
+                                      </div>
+                                      <div className="month-year-grid">
+                                        {Array.from(
+                                          { length: 12 },
+                                          (_, i) => date.getFullYear() - 5 + i
+                                        ).map((year) => (
+                                          <div
+                                            key={year}
+                                            className={`month-year-item ${
+                                              date.getFullYear() === year
+                                                ? "selected"
+                                                : ""
+                                            }`}
+                                            onClick={() => {
+                                              changeYear(year);
+                                              setShowMenu(false);
+                                            }}
+                                          >
+                                            {year}
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+
+                              <button
+                                onClick={increaseMonth}
+                                disabled={nextMonthButtonDisabled}
+                                type="button"
+                                className="text-[#0274FF]"
+                              >
+                                <Image
+                                  src="/svg/icons/chevron-left.svg"
+                                  alt="next"
+                                  width={20}
+                                  height={20}
+                                  className="rotate-180"
+                                />
+                              </button>
                             </div>
-
-                            <button
-                              onClick={increaseMonth}
-                              disabled={nextMonthButtonDisabled}
-                              type="button"
-                              className="text-[#0274FF]"
-                            >
-                              <Image
-                                src="/svg/icons/arrow-right.svg"
-                                alt="next"
-                                width={20}
-                                height={20}
-                              />
-                            </button>
-                          </div>
-                        )}
+                          );
+                        }}
                       />
                     </div>
                   </div>
