@@ -3,6 +3,7 @@ import { dispatch, store } from "@/store";
 import { doctorsA as A, doctorsS as S } from ".";
 import { API_DOCTORS } from "@/core/config";
 import isEmpty from "lodash/isEmpty";
+import dayjs from "dayjs";
 
 const getDoctors = () => {
   return async () => {
@@ -117,8 +118,17 @@ const getDoctorsByFilter = () => {
       let response;
 
       if (!isEmpty(filterDoctors)) {
-        const { mainSpecialties, doctorName, cityId, districtId, unitName, genderType, score, orderDate } = filterDoctors;
-        
+        const {
+          mainSpecialties,
+          doctorName,
+          cityId,
+          districtId,
+          unitName,
+          genderType,
+          score,
+          orderDate,
+        } = filterDoctors;
+
         response = await axiosInstance.get(
           `${API_DOCTORS.introduction.doctors}`,
           {
@@ -147,7 +157,7 @@ const getDoctorsByFilter = () => {
                 score: score,
               }),
               ...(!!orderDate && {
-                orderDate: orderDate,
+                orderDate: dayjs(orderDate).format("DD/MM/YYYY"),
               }),
             },
           }

@@ -262,9 +262,10 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
   unitName,
   genderType,
   districtId,
+  orderDate,
 }) => {
   const [showMenu, setShowMenu] = React.useState(false);
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
+  // const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
 
   const menuRef = React.useRef<HTMLDivElement>(null);
 
@@ -356,6 +357,14 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
     };
   }, []);
 
+  const handleSelectDate = (date: Date | null) => {
+    if (!!date) {
+      dispatch(doctorsA.setOrderDateFilter(date));
+    } else {
+      dispatch(doctorsA.setOrderDateFilter(null));
+    }
+  };
+
   const handleSelectMainSpecialty = (mainSpecialty: string) => {
     dispatch(doctorsA.setMainSpecialtyFilter([mainSpecialty]));
   };
@@ -437,7 +446,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         autoFocus={false}
                         onChange={(date) => {
                           if (!!date) {
-                            setSelectedDate(date);
+                            handleSelectDate(date);
                           }
                         }}
                         showPopperArrow={false}
@@ -453,15 +462,14 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           };
                           return weekDays[day] || day;
                         }}
-                        selected={selectedDate}
                         minDate={new Date()}
                         customInput={
                           <div
                             className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2 px-3"
                             onClick={(e) => {
-                              if (!!selectedDate) {
+                              if (!!orderDate) {
                                 e.preventDefault();
-                                setSelectedDate(null);
+                                handleSelectDate(null);
                               }
                             }}
                           >
@@ -471,18 +479,18 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                               placeholder="Tất cả"
                               autoFocus={false}
                               value={
-                                !!selectedDate
-                                  ? dayjs(selectedDate).format("DD/MM/YYYY")
+                                !!orderDate
+                                  ? dayjs(orderDate).format("DD/MM/YYYY")
                                   : ""
                               }
                             />
 
-                            {!!selectedDate && (
+                            {!!orderDate && (
                               <button
                                 className="p-2 mr-1 z-10"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  setSelectedDate(null);
+                                  handleSelectDate(null);
                                 }}
                               >
                                 <Image
@@ -854,6 +862,7 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     unitName,
     genderType,
     districtId,
+    orderDate,
   } = doctorsS.selectFilterDoctors(state);
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const cities = doctorsS.selectCities(state);
@@ -872,6 +881,7 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     unitName,
     genderType,
     districtId,
+    orderDate,
   };
 };
 

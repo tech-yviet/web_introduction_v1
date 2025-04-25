@@ -17,7 +17,7 @@ export const initialState: T.ContainerState = {
     unitName: "",
     genderType: "",
     score: "",
-    orderDate: "",
+    orderDate: null,
   },
   filterMobileDrawer: {
     isOpen: false,
@@ -81,7 +81,7 @@ const slice = createSlice({
     setScoreFilter: (state, action: PayloadAction<string>) => {
       state.filterDoctors.score = action.payload;
     },
-    setOrderDateFilter: (state, action: PayloadAction<string>) => {
+    setOrderDateFilter: (state, action: PayloadAction<Date | null>) => {
       state.filterDoctors.orderDate = action.payload;
     },
     resetFilter: (state) => {

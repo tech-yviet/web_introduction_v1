@@ -68,7 +68,7 @@ export interface DoctorsState {
     unitName: string | null;
     genderType: string | null;
     score: string | null;
-    orderDate: string | null;
+    orderDate: Date | null;
   };
   filterMobileDrawer: {
     isOpen: boolean;
