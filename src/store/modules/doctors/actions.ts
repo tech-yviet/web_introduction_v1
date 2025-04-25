@@ -9,7 +9,13 @@ const getDoctors = () => {
   return async () => {
     try {
       const response = await axiosInstance.get(
-        `${API_DOCTORS.introduction.doctors}?page=0&size=10`
+        `${API_DOCTORS.introduction.doctors}`,
+        {
+          params: {
+            page: 0,
+            size: 10,
+          },
+        }
       );
 
       if (response.status === 200) {
@@ -133,8 +139,6 @@ const getDoctorsByFilter = () => {
           `${API_DOCTORS.introduction.doctors}`,
           {
             params: {
-              page: 0,
-              size: 10,
               ...(!isEmpty(mainSpecialties) && {
                 mainSpecialties: mainSpecialties.join(","),
               }),
