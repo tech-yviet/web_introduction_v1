@@ -5,7 +5,13 @@ import dynamic from "next/dynamic";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA, doctorsS } from "@/store/modules/doctors";
 import Footer from "@/layouts/Footer";
-import { Button, ButtonGroup, Checkbox, IconButton } from "@chakra-ui/react";
+import {
+  Button,
+  ButtonGroup,
+  Checkbox,
+  IconButton,
+  Pagination,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { appA } from "@/store/modules/app";
 import HeaderDesktop from "@/layouts/components/HeaderDesktop";
@@ -38,6 +44,9 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   doctorNameFilter,
   currentPage,
   totalPages,
+  pageSize,
+  prevPage,
+  nextPage,
 }) => {
   const [checkedFilters, setCheckedFilters] = useState<Record<string, boolean>>(
     {}
@@ -558,36 +567,59 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
           </div>
 
           <div className="mt-4 flex justify-end">
-            <ButtonGroup className="gap-1">
-              <IconButton className="w-[41px] h-[41px] bg-white rounded-[7.455px]">
-                <Image
-                  src="/svg/icons/arrow-left.svg"
-                  alt="arrow-left"
-                  width={14.909}
-                  height={14.909}
-                />
-              </IconButton>
+            <Pagination.Root
+              count={totalPages}
+              pageSize={pageSize}
+              defaultPage={currentPage}
+            >
+              <ButtonGroup variant="ghost" size="sm">
+                <Pagination.PrevTrigger asChild>
+                  <IconButton
+                    disabled={!prevPage}
+                    className="w-[41px] h-[41px] bg-white rounded-[7.455px]"
+                  >
+                    <Image
+                      src="/svg/icons/arrow-left.svg"
+                      alt="arrow-left"
+                      width={14.909}
+                      height={14.909}
+                    />
+                  </IconButton>
+                </Pagination.PrevTrigger>
 
-              {[1, 2, 3, "...", 25].map((item, index) => (
-                <IconButton
-                  key={index}
-                  className={`${
-                    index === 0 ? "bg-[#3590FF] text-white" : "bg-white"
-                  } w-[41px] h-[41px] rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white`}
-                >
-                  {item}
-                </IconButton>
-              ))}
-
-              <IconButton className="w-[41px] h-[41px] bg-white rounded-[7.455px]">
-                <Image
-                  src="/svg/icons/arrow-right.svg"
-                  alt="arrow-right"
-                  width={14.909}
-                  height={14.909}
+                <Pagination.Items
+                  render={(page) => (
+                    <IconButton
+                      _selected={{
+                        bg: "#0274FF",
+                        color: "white",
+                      }}
+                      _currentPage={{
+                        bg: "#0274FF",
+                        color: "white",
+                      }}
+                      className="w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white"
+                    >
+                      {page.value}
+                    </IconButton>
+                  )}
                 />
-              </IconButton>
-            </ButtonGroup>
+
+                <Pagination.NextTrigger asChild>
+                  <IconButton
+                    disabled={!nextPage}
+                    className="w-[41px] h-[41px] bg-white rounded-[7.455px]"
+                  >
+                    <Image
+                      src="/svg/icons/arrow-right.svg"
+                      alt="arrow-right"
+                      width={14.909}
+                      height={14.909}
+                    />
+                  </IconButton>
+                </Pagination.NextTrigger>
+              </ButtonGroup>
+            </Pagination.Root>
           </div>
         </div>
 
@@ -608,7 +640,8 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const mainSpecialtyFilter = doctorsS.selectMainSpecialtyFilter(state);
   const doctorNameFilter = doctorsS.selectDoctorNameFilter(state);
-  const { currentPage, totalPages } = doctorsS.selectPagination(state);
+  const { currentPage, totalPages, pageSize, prevPage, nextPage } =
+    doctorsS.selectPagination(state);
 
   return {
     ...ownProps,
@@ -618,6 +651,9 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     doctorNameFilter,
     currentPage,
     totalPages,
+    pageSize,
+    prevPage,
+    nextPage,
   };
 };
 
