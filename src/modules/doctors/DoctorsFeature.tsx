@@ -82,11 +82,12 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
   const handleSelectMainSpecialty = (value: string) => {
     if (value === "ALL") {
-      dispatch(doctorsA.setMainSpecialtyFilter([]));
-      dispatch(doctorsA.setDoctorNameFilter(""));
+      dispatch(doctorsA.resetFilter());
       dispatch(doctorsA.getDoctors());
     } else {
-      const updatedMainSpecialtyFilter = mainSpecialtyFilter.some((item) => item == value)
+      const updatedMainSpecialtyFilter = mainSpecialtyFilter.some(
+        (item) => item == value
+      )
         ? mainSpecialtyFilter.filter((item) => item !== value)
         : [...mainSpecialtyFilter, value];
       dispatch(doctorsA.setMainSpecialtyFilter(updatedMainSpecialtyFilter));

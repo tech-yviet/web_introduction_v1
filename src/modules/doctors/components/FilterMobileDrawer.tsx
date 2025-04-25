@@ -10,6 +10,10 @@ import orderBy from "lodash/orderBy";
 import keyBy from "lodash/keyBy";
 import DatePicker from "react-datepicker";
 import dayjs from "dayjs";
+import AsyncSelect from "react-select/async";
+import axiosInstance from "@/core/axiosInstance";
+import { API_DOCTORS } from "@/core/config";
+import debounce from "lodash/debounce";
 
 const CustomDropdownIndicator = (props: any) => {
   return (
@@ -265,8 +269,6 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
   orderDate,
 }) => {
   const [showMenu, setShowMenu] = React.useState(false);
-  // const [selectedDate, setSelectedDate] = React.useState<Date | null>(null);
-
   const menuRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -322,10 +324,6 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
     }));
   }, [trainingUnits]);
 
-  const trainingUnitOptionsMap = useMemo(() => {
-    return keyBy(trainingUnitOptions, "value");
-  }, [trainingUnitOptions]);
-
   const genderOptions = useMemo(() => {
     return [
       { value: "MALE", label: "Nam" },
@@ -375,6 +373,8 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
 
     if (!!cityId) {
       dispatch(doctorsA.getDistricts(cityId));
+    } else {
+      dispatch(doctorsA.setDistricts([]));
     }
   };
 
@@ -404,6 +404,45 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
     dispatch(doctorsA.getDoctorsByFilter());
     dispatch(doctorsA.closeFilterMobileDrawer());
   };
+
+  const debouncedLoadOptions = useMemo(
+    () =>
+      debounce(async (inputValue: string, callback: (options: any[]) => void) => {
+        try {
+          const response = await axiosInstance.get(
+            `${API_DOCTORS.introduction.trainingUnits}`,
+            {
+              params: {
+                page: 0,
+                size: 10,
+                ...(inputValue && {
+                  search: inputValue,
+                }),
+              },
+            }
+          );
+
+          if (response.status === 200) {
+            const options = response.data.data.content.map((unit: any) => ({
+              value: unit.id,
+              label: unit.name,
+            }));
+            callback(options);
+          } else {
+            callback([]);
+          }
+        } catch (error) {
+          console.log(error);
+          callback([]);
+        }
+      }, 1000),
+    []
+  );
+
+  const loadOptions = (inputValue: string) =>
+    new Promise<any[]>((resolve) => {
+      debouncedLoadOptions(inputValue, resolve);
+    });
 
   return (
     <>
@@ -747,22 +786,21 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                       Bệnh viện/Phòng khám công tác
                     </div>
 
-                    <Select
+                    <AsyncSelect
+                      loadOptions={loadOptions}
+                      cacheOptions={false}
                       styles={customStyles}
-                      isSearchable={true}
-                      options={trainingUnitOptions}
-                      value={
-                        !!unitName ? trainingUnitOptionsMap[unitName] : null
-                      }
-                      onChange={(e) => {
-                        if (!!e) {
-                          handleSelectUnitName(e.label);
+                      defaultOptions={trainingUnitOptions}
+                      placeholder="Tất cả"
+                      isClearable={true}
+                      value={!!unitName ? { value: "", label: unitName } : null}
+                      onChange={(option: any) => {
+                        if (option) {
+                          handleSelectUnitName(option.label);
                         } else {
                           handleSelectUnitName("");
                         }
                       }}
-                      placeholder="Tất cả"
-                      isClearable={true}
                       components={{
                         IndicatorSeparator: () => null,
                         DropdownIndicator: CustomDropdownIndicator,
@@ -770,6 +808,8 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Option: CustomOption,
                         MenuList: CustomMenuList,
                       }}
+                      noOptionsMessage={() => "Không tìm thấy kết quả"}
+                      loadingMessage={() => "Đang tìm kiếm..."}
                     />
                   </div>
 
