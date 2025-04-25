@@ -407,35 +407,36 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
 
   const debouncedLoadOptions = useMemo(
     () =>
-      debounce(async (inputValue: string, callback: (options: any[]) => void) => {
-        try {
-          const response = await axiosInstance.get(
-            `${API_DOCTORS.introduction.trainingUnits}`,
-            {
-              params: {
-                page: 0,
-                size: 10,
-                ...(inputValue && {
-                  search: inputValue,
-                }),
-              },
-            }
-          );
+      debounce(
+        async (inputValue: string, callback: (options: any[]) => void) => {
+          try {
+            const response = await axiosInstance.get(
+              `${API_DOCTORS.introduction.trainingUnits}`,
+              {
+                params: {
+                  ...(inputValue && {
+                    search: inputValue,
+                  }),
+                },
+              }
+            );
 
-          if (response.status === 200) {
-            const options = response.data.data.content.map((unit: any) => ({
-              value: unit.id,
-              label: unit.name,
-            }));
-            callback(options);
-          } else {
+            if (response.status === 200) {
+              const options = response.data.data.content.map((unit: any) => ({
+                value: unit.id,
+                label: unit.name,
+              }));
+              callback(options);
+            } else {
+              callback([]);
+            }
+          } catch (error) {
+            console.log(error);
             callback([]);
           }
-        } catch (error) {
-          console.log(error);
-          callback([]);
-        }
-      }, 1000),
+        },
+        1000
+      ),
     []
   );
 
