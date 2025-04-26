@@ -54,214 +54,18 @@ const CustomMenuList = (props: any) => {
   );
 };
 
-const datePickerCustomStyles = `
-  .react-datepicker-wrapper {
-    width: 100%;
-  }
-
-  .react-datepicker-popper {
-    width: 100% !important;
-    left: 0 !important;
-    margin-top: 8px !important;
-    position: relative !important;
-    transform: none !important;
-  }
-
-  .react-datepicker {
-    font-family: inherit;
-    border: 1px solid #38B6FF;
-    border-radius: 11.162px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    width: 100%;
-    background: white;
-  }
-
-  .react-datepicker__header {
-    background-color: white;
-    border-bottom: none;
-    padding: 0;
-  }
-
-  .react-datepicker__month-container {
-    width: 100%;
-  }
-
-  .react-datepicker__day-names {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px;
-    margin-bottom: 8px;
-  }
-
-  .react-datepicker__day-name {
-    color: #0274FF;
-    font-weight: 500;
-    width: 36px;
-    margin: 0;
-    text-align: center;
-  }
-
-  .react-datepicker__month {
-    margin: 0;
-  }
-
-  .react-datepicker__week {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px;
-  }
-
-  .react-datepicker__day {
-    margin: 0;
-    width: 33px;
-    height: 33px;
-    border-radius: 50%;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .react-datepicker__day:not([aria-disabled=true]):hover {
-    background-color: #E6F0FF;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  .react-datepicker__day:hover {
-    background-color: #E6F0FF;
-  }
-
-  .react-datepicker__day--selected {
-    background-color: #0274FF !important;
-    color: white !important;
-  }
-
-  .react-datepicker__day--highlighted {
-    background-color: transparent;
-    color: inherit;
-  }
-
-  .react-datepicker__day--keyboard-selected {
-    background-color: #0274FF !important;
-    color: white !important;
-  }
-
-  .react-datepicker__day--highlighted::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    width: 8px;
-    height: 8px;
-    background-color: #22C55E;
-    border-radius: 50%;
-  }
-
-  .react-datepicker__navigation {
-    top: 16px;
-    color: #0274FF;
-  }
-
-  .react-datepicker__navigation--previous {
-    left: 20px;
-  }
-
-  .react-datepicker__navigation--next {
-    right: 20px;
-  }
-
-  .react-datepicker__current-month {
-    font-weight: 500;
-    font-size: 16px;
-    color: #0274FF;
-    margin-bottom: 16px;
-  }
-
-  .month-year-select {
-    background: white;
-    // border: 1px solid #E5E7EB;
-    // border-radius: 8px;
-    padding: 8px;
-    font-size: 14px;
-    color: #1F2937;
-    cursor: pointer;
-    outline: none;
-  }
-
-  .month-year-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 1000;
-    padding: 16px;
-    min-width: 280px;
-    display: flex;
-    gap: 16px;
-  }
-
-  .month-year-section {
-    flex: 1;
-  }
-
-  .month-year-section-title {
-    color: #6B7280;
-    font-size: 12px;
-    margin-bottom: 8px;
-    font-weight: 500;
-  }
-
-  .month-year-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  .month-year-item {
-    padding: 8px;
-    cursor: pointer;
-    color: #1F2937;
-    font-size: 14px;
-    text-align: center;
-    border-radius: 4px;
-  }
-
-  .month-year-item:hover {
-    background-color: #E6F0FF;
-  }
-
-  .month-year-item.selected {
-    background-color: #0274FF;
-    color: white;
-    font-weight: 500;
-    
-  }
-
-  .react-datepicker__day--disabled {
-    color: #ccc !important;
-    cursor: not-allowed !important;
-  }
-
-  .react-datepicker__day--disabled:hover {
-    background-color: transparent !important;
-  }
-`;
+const CustomPlaceholder = (props: any) => {
+  return (
+    <components.Placeholder {...props}>
+      <div className="text-[#B9BDC1] font-inter">{props.children}</div>
+    </components.Placeholder>
+  );
+};
 
 const $FilterDesktop: FC<PropsFromRedux> = ({
-  isOpen,
-  mainSpecialties,
   cities,
   districts,
   trainingUnits,
-  mainSpecialtyFilter,
   cityId,
   unitName,
   genderType,
@@ -281,19 +85,6 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const mainSpecialtyOptions = useMemo(() => {
-    return orderBy(mainSpecialties, ["numOrder"], ["asc"]).map(
-      (mainSpecialty) => ({
-        value: mainSpecialty.name,
-        label: mainSpecialty.description,
-      })
-    );
-  }, [mainSpecialties]);
-
-  const mainSpecialtyOptionsMap = useMemo(() => {
-    return keyBy(mainSpecialtyOptions, "value");
-  }, [mainSpecialtyOptions]);
 
   const cityOptions = useMemo(() => {
     return orderBy(cities, ["numOrder"], ["asc"]).map((city) => ({
@@ -363,10 +154,6 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
     }
   };
 
-  const handleSelectMainSpecialty = (mainSpecialty: string) => {
-    dispatch(doctorsA.setMainSpecialtyFilter([mainSpecialty]));
-  };
-
   const handleSelectCity = (cityId: number | null) => {
     dispatch(doctorsA.setCityIdFilter(cityId));
     dispatch(doctorsA.setDistrictIdFilter(null));
@@ -393,11 +180,6 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
   const handleResetFilter = () => {
     dispatch(doctorsA.resetFilter());
     dispatch(doctorsA.getDoctors());
-  };
-
-  const handleClose = () => {
-    dispatch(doctorsA.closeFilterMobileDrawer());
-    dispatch(doctorsA.resetFilter());
   };
 
   const handleApplyFilter = () => {
@@ -452,210 +234,335 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
           Tuỳ chọn nâng cao
         </div>
 
+        <div className="relative mt-[24px]">
+          <DatePicker
+            dateFormat="dd/MM/yyyy"
+            autoFocus={false}
+            onChange={(date) => {
+              if (!!date) {
+                handleSelectDate(date);
+              }
+            }}
+            showPopperArrow={false}
+            formatWeekDay={(day) => {
+              const weekDays: { [key: string]: string } = {
+                Monday: "T2",
+                Tuesday: "T3",
+                Wednesday: "T4",
+                Thursday: "T5",
+                Friday: "T6",
+                Saturday: "T7",
+                Sunday: "CN",
+              };
+              return weekDays[day] || day;
+            }}
+            minDate={new Date()}
+            customInput={
+              <div
+                className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2.5 px-3"
+                onClick={(e) => {
+                  if (!!orderDate) {
+                    e.preventDefault();
+                    handleSelectDate(null);
+                  }
+                }}
+              >
+                <input
+                  type="text"
+                  className="w-full outline-none border-none placeholder:text-[#B9BDC1]"
+                  placeholder="Ngày đặt lịch hẹn"
+                  autoFocus={false}
+                  value={
+                    !!orderDate ? dayjs(orderDate).format("DD/MM/YYYY") : ""
+                  }
+                />
+
+                {!!orderDate && (
+                  <button
+                    className="p-2 mr-1 z-10"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSelectDate(null);
+                    }}
+                  >
+                    <Image
+                      src="/svg/icons/close.svg"
+                      alt="close"
+                      width={10}
+                      height={10}
+                    />
+                  </button>
+                )}
+
+                <Image
+                  src="/svg/icons/arrow-down-ori.svg"
+                  alt="arrow-down"
+                  width={24}
+                  height={24}
+                />
+              </div>
+            }
+            renderCustomHeader={({
+              date,
+              decreaseMonth,
+              increaseMonth,
+              prevMonthButtonDisabled,
+              nextMonthButtonDisabled,
+              changeMonth,
+              changeYear,
+            }) => {
+              const currentDate = new Date();
+              const isCurrentMonthOrBefore =
+                date.getFullYear() === currentDate.getFullYear() &&
+                date.getMonth() <= currentDate.getMonth();
+
+              return (
+                <div className="flex items-center justify-between mb-[20px]">
+                  <button
+                    onClick={decreaseMonth}
+                    disabled={prevMonthButtonDisabled}
+                    type="button"
+                    className={`text-[#0274FF] ${
+                      isCurrentMonthOrBefore
+                        ? "opacity-30 cursor-not-allowed"
+                        : ""
+                    }`}
+                  >
+                    <Image
+                      src="/svg/icons/chevron-left.svg"
+                      alt="previous"
+                      width={20}
+                      height={20}
+                    />
+                  </button>
+
+                  <div className="relative" ref={menuRef}>
+                    <div
+                      className="text-[#0274FF] font-bold font-inter cursor-pointer"
+                      onClick={() => setShowMenu(!showMenu)}
+                    >
+                      Tháng {date.getMonth() + 1}, {date.getFullYear()}
+                    </div>
+                    {showMenu && (
+                      <div className="month-year-menu">
+                        <div className="month-year-section">
+                          <div className="month-year-section-title">Tháng</div>
+                          <div className="month-year-grid">
+                            {Array.from({ length: 12 }, (_, i) => {
+                              const currentDate = new Date();
+                              const currentYear = currentDate.getFullYear();
+                              const currentMonth = currentDate.getMonth();
+                              const isDisabled =
+                                date.getFullYear() === currentYear &&
+                                i < currentMonth;
+                              const isSelected = date.getMonth() === i;
+
+                              return (
+                                <div
+                                  key={i}
+                                  className={`month-year-item ${
+                                    isSelected ? "selected" : ""
+                                  } ${isDisabled ? "disabled" : ""}`}
+                                  onClick={() => {
+                                    if (!isDisabled) {
+                                      changeMonth(i);
+                                      setShowMenu(false);
+                                    }
+                                  }}
+                                  style={{
+                                    cursor: isDisabled
+                                      ? "not-allowed"
+                                      : "pointer",
+                                    color: isDisabled
+                                      ? "#ccc"
+                                      : isSelected
+                                      ? "#fff"
+                                      : "#1F2937",
+                                  }}
+                                >
+                                  {i + 1}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        <div className="month-year-section">
+                          <div className="month-year-section-title">Năm</div>
+                          <div className="month-year-grid">
+                            {Array.from({ length: 12 }, (_, i) => {
+                              const currentYear = new Date().getFullYear();
+                              return currentYear + i;
+                            }).map((year) => (
+                              <div
+                                key={year}
+                                className={`month-year-item ${
+                                  date.getFullYear() === year ? "selected" : ""
+                                }`}
+                                onClick={() => {
+                                  changeYear(year);
+                                  setShowMenu(false);
+                                }}
+                              >
+                                {year}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    onClick={increaseMonth}
+                    disabled={nextMonthButtonDisabled}
+                    type="button"
+                    className="text-[#0274FF]"
+                  >
+                    <Image
+                      src="/svg/icons/chevron-left.svg"
+                      alt="next"
+                      width={20}
+                      height={20}
+                      className="rotate-180"
+                    />
+                  </button>
+                </div>
+              );
+            }}
+          />
+        </div>
+
         <Select
+          styles={customStyles}
+          isClearable={true}
           isSearchable={true}
+          options={cityOptions}
+          placeholder="Tỉnh/Thành phố"
+          className="mt-[24px]"
           components={{
             IndicatorSeparator: () => null,
-            DropdownIndicator: () => {
-              return (
-                <div className="pr-[12px]">
-                  <Image
-                    src="/svg/icons/arrow-down-ori.svg"
-                    alt="arrow-down"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-              );
-            },
-            Placeholder: () => null,
-            Input: (props) => {
-              return (
-                <div className="w-full h-full font-inter py-2 pl-[4px]">
-                  <input
-                    type="text"
-                    placeholder="Ngày đặt lịch hẹn"
-                    className="outline-none w-full"
-                    {...props}
-                  />
-                </div>
-              );
-            },
+            DropdownIndicator: CustomDropdownIndicator,
+            Control: CustomControl,
+            Option: CustomOption,
+            MenuList: CustomMenuList,
+            Placeholder: CustomPlaceholder,
           }}
-          className=" mt-[24px] rounded-lg"
+          onChange={(e) => {
+            if (!!e) {
+              handleSelectCity(e.value);
+            } else {
+              handleSelectCity(null);
+            }
+          }}
+          value={!!cityId ? cityOptionsMap[cityId] : null}
         />
 
         <Select
+          styles={customStyles}
+          isClearable={true}
+          options={districtOptions}
           isSearchable={true}
+          placeholder="Quận/Huyện"
+          className="mt-[24px]"
           components={{
             IndicatorSeparator: () => null,
-            DropdownIndicator: () => {
-              return (
-                <div className="pr-[12px]">
-                  <Image
-                    src="/svg/icons/arrow-down-ori.svg"
-                    alt="arrow-down"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-              );
-            },
-            Placeholder: () => null,
-            Input: (props) => {
-              return (
-                <div className="w-full h-full font-inter py-2 pl-[4px]">
-                  <input
-                    type="text"
-                    placeholder="Tỉnh/Thành phố"
-                    className="outline-none w-full"
-                    {...props}
-                  />
-                </div>
-              );
-            },
+            DropdownIndicator: CustomDropdownIndicator,
+            Control: CustomControl,
+            Option: CustomOption,
+            MenuList: CustomMenuList,
+            Placeholder: CustomPlaceholder,
           }}
-          className=" mt-[24px] rounded-lg"
+          onChange={(e) => {
+            if (!!e) {
+              handleSelectDistrict(e.value);
+            } else {
+              handleSelectDistrict(null);
+            }
+          }}
+          value={!!districtId ? districtOptionsMap[districtId] : null}
+        />
+
+        <AsyncSelect
+          loadOptions={loadOptions}
+          cacheOptions={false}
+          styles={customStyles}
+          defaultOptions={trainingUnitOptions}
+          className="mt-[24px]"
+          placeholder="Bệnh viện/ Phòng khám công tác"
+          isClearable={true}
+          value={!!unitName ? { value: "", label: unitName } : null}
+          onChange={(option: any) => {
+            if (option) {
+              handleSelectUnitName(option.label);
+            } else {
+              handleSelectUnitName("");
+            }
+          }}
+          components={{
+            IndicatorSeparator: () => null,
+            DropdownIndicator: CustomDropdownIndicator,
+            Control: CustomControl,
+            Option: CustomOption,
+            MenuList: CustomMenuList,
+            Placeholder: CustomPlaceholder,
+          }}
+          noOptionsMessage={() => "Không tìm thấy kết quả"}
+          loadingMessage={() => "Đang tìm kiếm..."}
         />
 
         <Select
+          styles={customStyles}
           isSearchable={true}
+          placeholder="Điểm đánh giá"
+          className="mt-[24px]"
           components={{
             IndicatorSeparator: () => null,
-            DropdownIndicator: () => {
-              return (
-                <div className="pr-[12px]">
-                  <Image
-                    src="/svg/icons/arrow-down-ori.svg"
-                    alt="arrow-down"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-              );
-            },
-            Placeholder: () => null,
-            Input: (props) => {
-              return (
-                <div className="w-full h-full font-inter py-2 pl-[4px]">
-                  <input
-                    type="text"
-                    placeholder="Quận/Huyện"
-                    className="outline-none w-full"
-                    {...props}
-                  />
-                </div>
-              );
-            },
+            DropdownIndicator: CustomDropdownIndicator,
+            Control: CustomControl,
+            Option: CustomOption,
+            MenuList: CustomMenuList,
+            Placeholder: CustomPlaceholder,
           }}
-          className=" mt-[24px] rounded-lg"
         />
 
         <Select
+          styles={customStyles}
           isSearchable={true}
+          options={genderOptions}
+          placeholder="Giới tính"
+          isClearable={true}
+          value={!!genderType ? genderOptionsMap[genderType] : null}
+          onChange={(e) => {
+            if (!!e) {
+              handleSelectGender(e.value);
+            } else {
+              handleSelectGender("");
+            }
+          }}
           components={{
             IndicatorSeparator: () => null,
-            DropdownIndicator: () => {
-              return (
-                <div className="pr-[12px]">
-                  <Image
-                    src="/svg/icons/arrow-down-ori.svg"
-                    alt="arrow-down"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-              );
-            },
-            Placeholder: () => null,
-            Input: (props) => {
-              return (
-                <div className="w-full h-full font-inter py-2 pl-[4px]">
-                  <input
-                    type="text"
-                    placeholder="Bệnh viện/ Phòng khám công tác"
-                    className="outline-none w-full"
-                    {...props}
-                  />
-                </div>
-              );
-            },
+            DropdownIndicator: CustomDropdownIndicator,
+            Control: CustomControl,
+            Option: CustomOption,
+            MenuList: CustomMenuList,
+            Placeholder: CustomPlaceholder,
           }}
-          className=" mt-[24px] rounded-lg"
-        />
-
-        <Select
-          isSearchable={true}
-          components={{
-            IndicatorSeparator: () => null,
-            DropdownIndicator: () => {
-              return (
-                <div className="pr-[12px]">
-                  <Image
-                    src="/svg/icons/arrow-down-ori.svg"
-                    alt="arrow-down"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-              );
-            },
-            Placeholder: () => null,
-            Input: (props) => {
-              return (
-                <div className="w-full h-full font-inter py-2 pl-[4px]">
-                  <input
-                    type="text"
-                    placeholder="Điểm đánh giá"
-                    className="outline-none w-full"
-                    {...props}
-                  />
-                </div>
-              );
-            },
-          }}
-          className=" mt-[24px] rounded-lg"
-        />
-
-        <Select
-          isSearchable={true}
-          components={{
-            IndicatorSeparator: () => null,
-            DropdownIndicator: () => {
-              return (
-                <div className="pr-[12px]">
-                  <Image
-                    src="/svg/icons/arrow-down-ori.svg"
-                    alt="arrow-down"
-                    width={24}
-                    height={24}
-                  />
-                </div>
-              );
-            },
-            Placeholder: () => null,
-            Input: (props) => {
-              return (
-                <div className="w-full h-full font-inter py-2 pl-[4px]">
-                  <input
-                    type="text"
-                    placeholder="Giới tính"
-                    className="outline-none w-full"
-                    {...props}
-                  />
-                </div>
-              );
-            },
-          }}
-          className=" mt-[24px] rounded-lg"
+          className="mt-[24px]"
         />
 
         <div className="mt-[24px] flex gap-2 font-roboto">
-          <Button className="w-1/2 text-center rounded-[100px] bg-[#EEE] text-[#1F2A37] font-medium hover:opacity-80">
+          <Button
+            onClick={handleResetFilter}
+            className="w-1/2 text-center rounded-[100px] bg-[#EEE] text-[#1F2A37] font-medium hover:opacity-80"
+          >
             Xóa lọc
           </Button>
 
-          <Button className="w-1/2 text-center rounded-[100px] bg-[#0274FF] text-white font-medium hover:opacity-80">
+          <Button
+            onClick={handleApplyFilter}
+            className="w-1/2 text-center rounded-[100px] bg-[#0274FF] text-white font-medium hover:opacity-80"
+          >
             Lọc
           </Button>
         </div>
@@ -667,15 +574,8 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
 interface OwnProps {}
 
 const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
-  const { isOpen } = doctorsS.selectFilterMobileDrawer(state);
-  const {
-    cityId,
-    mainSpecialties: mainSpecialtyFilter,
-    unitName,
-    genderType,
-    districtId,
-    orderDate,
-  } = doctorsS.selectFilterDoctors(state);
+  const { cityId, unitName, genderType, districtId, orderDate } =
+    doctorsS.selectFilterDoctors(state);
   const mainSpecialties = doctorsS.selectMainSpecialties(state);
   const cities = doctorsS.selectCities(state);
   const districts = doctorsS.selectDistricts(state);
@@ -683,13 +583,11 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
 
   return {
     ...ownProps,
-    isOpen,
     cityId,
     mainSpecialties,
     cities,
     districts,
     trainingUnits,
-    mainSpecialtyFilter,
     unitName,
     genderType,
     districtId,
