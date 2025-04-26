@@ -16,10 +16,11 @@ import Image from "next/image";
 import { appA } from "@/store/modules/app";
 import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import FooterDesktop from "@/layouts/components/FooterDesktop";
-import Select from "react-select";
 import CardDoctor from "./components/CardDoctor";
 import isEmpty from "lodash/isEmpty";
 import { FilterDesktop } from "./components/FilterDesktop";
+import { MdOutlineCheck } from "react-icons/md";
+import { FiMinus } from "react-icons/fi";
 
 const LazyMobileDrawer = dynamic(
   () => import("@/components/drawer/MobileDrawer"),
@@ -37,6 +38,8 @@ const LazyFilterMobileDrawer = dynamic(
     ssr: false,
   }
 );
+
+const ALL_FILTER_ID = "ALL";
 
 const $DoctorsFeature: FC<PropsFromRedux> = ({
   doctors,
@@ -69,12 +72,13 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
   const specialtiesFilter = useMemo(() => {
     const mergedMainSpecialties = [
-      { description: "Tất cả", name: "ALL" },
+      { description: "Tất cả", name: ALL_FILTER_ID },
       ...mainSpecialties,
     ];
 
     let specialties = mergedMainSpecialties.map((specialty, index) => {
-      const isAll = specialty.name === "ALL" && !!isEmpty(mainSpecialtyFilter);
+      const isAll =
+        specialty.name === ALL_FILTER_ID && !!isEmpty(mainSpecialtyFilter);
       const isSelected =
         mainSpecialtyFilter.some((item) => item === specialty.name) || isAll;
 
@@ -96,7 +100,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   }, [mainSpecialties, mainSpecialtyFilter, searchMainSpecialty]);
 
   const handleSelectMainSpecialty = (value: string) => {
-    if (value === "ALL") {
+    if (value === ALL_FILTER_ID) {
       dispatch(doctorsA.resetFilter());
       dispatch(doctorsA.getDoctors());
     } else {
@@ -111,7 +115,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   };
 
   const handleCheckboxChange = (filter: any) => {
-    if (filter.value === "ALL") {
+    if (filter.value === ALL_FILTER_ID) {
       const newState = !checkedFilters[filter.id];
 
       const newCheckedFilters = {
@@ -137,10 +141,12 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
         [filter.id]: !checkedFilters[filter.id],
       } as Record<string, boolean>;
 
-      const allFilter = specialtiesFilter.find((f) => f.value === "ALL");
+      const allFilter = specialtiesFilter.find(
+        (f) => f.value === ALL_FILTER_ID
+      );
       if (allFilter) {
         const allOthersChecked = specialtiesFilter
-          .filter((f) => f.value !== "ALL")
+          .filter((f) => f.value !== ALL_FILTER_ID)
           .every((f) => newCheckedFilters[f.id]);
 
         newCheckedFilters[allFilter.id] = allOthersChecked;
@@ -149,7 +155,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
       setCheckedFilters(newCheckedFilters);
 
       const selectedSpecialties = specialtiesFilter
-        .filter((f) => f.value !== "ALL" && newCheckedFilters[f.id])
+        .filter((f) => f.value !== ALL_FILTER_ID && newCheckedFilters[f.id])
         .map((f) => f.value);
 
       dispatch(doctorsA.setMainSpecialtyFilter(selectedSpecialties));
@@ -367,21 +373,46 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                       <Checkbox.Root
                         key={filter.id}
                         className="flex hover:cursor-pointer gap-3"
-                        checked={checkedFilters[filter.id]}
+                        checked={
+                          filter.value === ALL_FILTER_ID
+                            ? specialtiesFilter
+                                .filter((f) => f.value !== ALL_FILTER_ID)
+                                .some((f) => checkedFilters[f.id])
+                            : checkedFilters[filter.id]
+                        }
                         onCheckedChange={() => handleCheckboxChange(filter)}
                       >
                         <Checkbox.HiddenInput />
 
-                        {!!checkedFilters[filter.id] ? (
+                        {filter.value === ALL_FILTER_ID ? (
+                          <Checkbox.Control
+                            className={`w-6 h-6 rounded-md ${
+                              specialtiesFilter
+                                .filter((f) => f.value !== ALL_FILTER_ID)
+                                .some((f) => checkedFilters[f.id])
+                                ? "bg-[#0274FF]"
+                                : "bg-white border border-[rgba(185,189,193,0.50)]"
+                            }`}
+                          >
+                            {specialtiesFilter
+                              .filter((f) => f.value !== ALL_FILTER_ID)
+                              .some((f) => checkedFilters[f.id]) &&
+                              (specialtiesFilter
+                                .filter((f) => f.value !== ALL_FILTER_ID)
+                                .every((f) => checkedFilters[f.id]) ? (
+                                <MdOutlineCheck
+                                  size={20}
+                                  className="text-white"
+                                />
+                              ) : (
+                                <FiMinus size={20} className="text-white" />
+                              ))}
+                          </Checkbox.Control>
+                        ) : checkedFilters[filter.id] ? (
                           <Checkbox.Control
                             className={`w-6 h-6 rounded-md bg-[#0274FF]`}
                           >
-                            <Image
-                              src="/svg/icons/choose.svg"
-                              alt="choose"
-                              width={24}
-                              height={24}
-                            />
+                            <MdOutlineCheck size={20} className="text-white" />
                           </Checkbox.Control>
                         ) : (
                           <Checkbox.Control
