@@ -475,62 +475,64 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
             )}
           </div>
 
-          <div className="mt-4 flex justify-end">
-            <Pagination.Root
-              count={totalPages || 1}
-              pageSize={pageSize}
-              defaultPage={1}
-              page={Number(currentPage || 0) + 1}
-            >
-              <ButtonGroup variant="ghost" size="sm" className="gap-1">
-                <Pagination.PrevTrigger asChild>
-                  <IconButton
-                    disabled={!prevPage}
-                    className="w-[41px] h-[41px] bg-white rounded-[7.455px]"
-                  >
-                    <Image
-                      src="/svg/icons/arrow-left.svg"
-                      alt="arrow-left"
-                      width={14.909}
-                      height={14.909}
-                    />
-                  </IconButton>
-                </Pagination.PrevTrigger>
-
-                <Pagination.Items
-                  render={(page) => (
+          {!isEmpty(doctors) && (
+            <div className="mt-4 flex justify-end">
+              <Pagination.Root
+                count={totalPages || 1}
+                pageSize={pageSize}
+                defaultPage={1}
+                page={Number(currentPage || 0) + 1}
+              >
+                <ButtonGroup variant="ghost" size="sm" className="gap-1">
+                  <Pagination.PrevTrigger asChild>
                     <IconButton
-                      _selected={{
-                        bg: "#0274FF",
-                        color: "white",
-                      }}
-                      _currentPage={{
-                        bg: "#0274FF",
-                        color: "white",
-                      }}
-                      className="w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white"
+                      disabled={!prevPage}
+                      className="w-[41px] h-[41px] bg-white rounded-[7.455px]"
                     >
-                      {page.value}
+                      <Image
+                        src="/svg/icons/arrow-left.svg"
+                        alt="arrow-left"
+                        width={14.909}
+                        height={14.909}
+                      />
                     </IconButton>
-                  )}
-                />
+                  </Pagination.PrevTrigger>
 
-                <Pagination.NextTrigger asChild>
-                  <IconButton
-                    disabled={!nextPage}
-                    className="w-[41px] h-[41px] bg-white rounded-[7.455px]"
-                  >
-                    <Image
-                      src="/svg/icons/arrow-right.svg"
-                      alt="arrow-right"
-                      width={14.909}
-                      height={14.909}
-                    />
-                  </IconButton>
-                </Pagination.NextTrigger>
-              </ButtonGroup>
-            </Pagination.Root>
-          </div>
+                  <Pagination.Items
+                    render={(page) => (
+                      <IconButton
+                        _selected={{
+                          bg: "#0274FF",
+                          color: "white",
+                        }}
+                        _currentPage={{
+                          bg: "#0274FF",
+                          color: "white",
+                        }}
+                        className="w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white"
+                      >
+                        {page.value}
+                      </IconButton>
+                    )}
+                  />
+
+                  <Pagination.NextTrigger asChild>
+                    <IconButton
+                      disabled={!nextPage}
+                      className="w-[41px] h-[41px] bg-white rounded-[7.455px]"
+                    >
+                      <Image
+                        src="/svg/icons/arrow-right.svg"
+                        alt="arrow-right"
+                        width={14.909}
+                        height={14.909}
+                      />
+                    </IconButton>
+                  </Pagination.NextTrigger>
+                </ButtonGroup>
+              </Pagination.Root>
+            </div>
+          )}
         </div>
 
         <Footer />

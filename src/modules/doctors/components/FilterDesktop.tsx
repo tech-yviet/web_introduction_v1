@@ -40,7 +40,7 @@ const CustomOption = (props: any) => {
   return (
     <components.Option
       {...props}
-      className="border-b hover:cursor-pointer text-[#1F2A37] font-inter px-[31px]"
+      className="border-b hover:cursor-pointer text-[#000] font-inter !px-[31px] !py-[11px]"
     />
   );
 };
@@ -49,7 +49,7 @@ const CustomMenuList = (props: any) => {
   return (
     <components.MenuList
       {...props}
-      className="scrollbar-hide  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)]"
+      className="scrollbar-hide w-full  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)]"
     />
   );
 };
@@ -59,6 +59,15 @@ const CustomPlaceholder = (props: any) => {
     <components.Placeholder {...props}>
       <div className="text-[#B9BDC1] font-inter">{props.children}</div>
     </components.Placeholder>
+  );
+};
+
+const CustomMenu = (props: any) => {
+  return (
+    <components.Menu
+      {...props}
+      className="!mx-0 !w-[314px] !backdrop-blur-lg !bg-[#F6F6F6]/80"
+    />
   );
 };
 
@@ -447,6 +456,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             Option: CustomOption,
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
+            Menu: CustomMenu,
           }}
           onChange={(e) => {
             if (!!e) {
@@ -472,6 +482,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             Option: CustomOption,
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
+            Menu: CustomMenu,
           }}
           onChange={(e) => {
             if (!!e) {
@@ -506,6 +517,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             Option: CustomOption,
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
+            Menu: CustomMenu,
           }}
           noOptionsMessage={() => "Không tìm thấy kết quả"}
           loadingMessage={() => "Đang tìm kiếm..."}
@@ -523,6 +535,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             Option: CustomOption,
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
+            Menu: CustomMenu,
           }}
         />
 
@@ -547,21 +560,22 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             Option: CustomOption,
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
+            Menu: CustomMenu,
           }}
           className="mt-[24px]"
         />
 
-        <div className="mt-[24px] flex gap-2 font-roboto">
+        <div className="mt-[24px] flex gap-3 font-roboto">
           <Button
             onClick={handleResetFilter}
-            className="w-1/2 text-center rounded-[100px] bg-[#EEE] text-[#1F2A37] font-medium hover:opacity-80"
+            className="px-[24px] py-[12px] min-w-[150px] text-center rounded-[100px] bg-[#EEE] text-[#1F2A37] font-medium hover:opacity-80"
           >
             Xóa lọc
           </Button>
 
           <Button
             onClick={handleApplyFilter}
-            className="w-1/2 text-center rounded-[100px] bg-[#0274FF] text-white font-medium hover:opacity-80"
+            className="px-[24px] py-[12px] min-w-[150px] text-center rounded-[100px] bg-[#0274FF] text-white font-medium hover:opacity-80"
           >
             Lọc
           </Button>
