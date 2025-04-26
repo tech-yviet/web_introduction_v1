@@ -85,7 +85,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
         mainSpecialtyFilter.some((item) => item === specialty.name) || isAll;
 
       return {
-        id: `${index}`,
+        id: `${index}-${specialty.name}`,
         name: specialty.description,
         value: specialty.name,
         isSelected: isSelected,
@@ -120,25 +120,47 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     if (filter.value === ALL_FILTER_ID) {
       const hasAnyChecked = specialtiesFilter
         .filter((f) => f.value !== ALL_FILTER_ID)
-        .some((f) => checkedFilters[f.id]);
+        .some((f) => checkedFilters[f.value]);
 
-      const newCheckedFilters = {} as Record<string, boolean>;
+      const newCheckedFilters = { ...checkedFilters } as Record<
+        string,
+        boolean
+      >;
+
       specialtiesFilter.forEach((specialty) => {
-        newCheckedFilters[specialty.id] = !hasAnyChecked;
+        if (specialty.value !== ALL_FILTER_ID) {
+          newCheckedFilters[specialty.value] = !hasAnyChecked;
+        }
       });
 
       setCheckedFilters(newCheckedFilters);
 
       if (!hasAnyChecked) {
-        dispatch(doctorsA.resetFilter());
-        dispatch(doctorsA.getDoctors());
+        const visibleSpecialties = specialtiesFilter
+          .filter((f) => f.value !== ALL_FILTER_ID)
+          .map((f) => f.value);
+        dispatch(
+          doctorsA.setMainSpecialtyFilter([
+            ...mainSpecialtyFilter,
+            ...visibleSpecialties,
+          ])
+        );
+        dispatch(doctorsA.getDoctorsByFilter());
       } else {
-        dispatch(doctorsA.getDoctors());
+        const remainingSpecialties = mainSpecialtyFilter.filter(
+          (value) =>
+            !specialtiesFilter
+              .filter((f) => f.value !== ALL_FILTER_ID)
+              .map((f) => f.value)
+              .includes(value)
+        );
+        dispatch(doctorsA.setMainSpecialtyFilter(remainingSpecialties));
+        dispatch(doctorsA.getDoctorsByFilter());
       }
     } else {
       const newCheckedFilters = {
         ...checkedFilters,
-        [filter.id]: !checkedFilters[filter.id],
+        [filter.value]: !checkedFilters[filter.value],
       } as Record<string, boolean>;
 
       const allFilter = specialtiesFilter.find(
@@ -147,18 +169,21 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
       if (allFilter) {
         const allOthersChecked = specialtiesFilter
           .filter((f) => f.value !== ALL_FILTER_ID)
-          .every((f) => newCheckedFilters[f.id]);
+          .every((f) => newCheckedFilters[f.value]);
 
-        newCheckedFilters[allFilter.id] = allOthersChecked;
+        newCheckedFilters[allFilter.value] = allOthersChecked;
       }
 
       setCheckedFilters(newCheckedFilters);
 
-      const selectedSpecialties = specialtiesFilter
-        .filter((f) => f.value !== ALL_FILTER_ID && newCheckedFilters[f.id])
-        .map((f) => f.value);
+      const updatedSpecialties =
+        filter.value === ALL_FILTER_ID
+          ? []
+          : newCheckedFilters[filter.value]
+          ? [...mainSpecialtyFilter, filter.value]
+          : mainSpecialtyFilter.filter((item) => item !== filter.value);
 
-      dispatch(doctorsA.setMainSpecialtyFilter(selectedSpecialties));
+      dispatch(doctorsA.setMainSpecialtyFilter(updatedSpecialties));
       dispatch(doctorsA.getDoctorsByFilter());
     }
   };
@@ -377,8 +402,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                           filter.value === ALL_FILTER_ID
                             ? specialtiesFilter
                                 .filter((f) => f.value !== ALL_FILTER_ID)
-                                .some((f) => checkedFilters[f.id])
-                            : checkedFilters[filter.id]
+                                .some((f) => checkedFilters[f.value])
+                            : checkedFilters[filter.value]
                         }
                         onCheckedChange={() => handleCheckboxChange(filter)}
                       >
@@ -389,17 +414,17 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                             className={`w-6 h-6 rounded-md ${
                               specialtiesFilter
                                 .filter((f) => f.value !== ALL_FILTER_ID)
-                                .some((f) => checkedFilters[f.id])
+                                .some((f) => checkedFilters[f.value])
                                 ? "bg-[#0274FF]"
                                 : "bg-white border border-[rgba(185,189,193,0.50)]"
                             }`}
                           >
                             {specialtiesFilter
                               .filter((f) => f.value !== ALL_FILTER_ID)
-                              .some((f) => checkedFilters[f.id]) &&
+                              .some((f) => checkedFilters[f.value]) &&
                               (specialtiesFilter
                                 .filter((f) => f.value !== ALL_FILTER_ID)
-                                .every((f) => checkedFilters[f.id]) ? (
+                                .every((f) => checkedFilters[f.value]) ? (
                                 <MdOutlineCheck
                                   size={20}
                                   className="text-white"
@@ -408,7 +433,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                                 <FiMinus size={20} className="text-white" />
                               ))}
                           </Checkbox.Control>
-                        ) : checkedFilters[filter.id] ? (
+                        ) : checkedFilters[filter.value] ? (
                           <Checkbox.Control
                             className={`w-6 h-6 rounded-md bg-[#0274FF]`}
                           >
