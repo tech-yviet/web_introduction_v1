@@ -110,12 +110,51 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   };
 
   const handleCheckboxChange = (filter: any) => {
-    setCheckedFilters((prev) => ({
-      ...prev,
-      [filter.id]: !prev[filter.id],
-    }));
+    if (filter.value === "ALL") {
+      const newState = !checkedFilters[filter.id];
+      const newCheckedFilters = {
+        ...checkedFilters,
+      } as Record<string, boolean>;
 
-    handleSelectMainSpecialty(filter.value);
+      specialtiesFilter.forEach((specialty) => {
+        newCheckedFilters[specialty.id] = newState;
+      });
+
+      setCheckedFilters(newCheckedFilters);
+
+      if (newState) {
+        dispatch(doctorsA.resetFilter());
+        dispatch(doctorsA.getDoctors());
+      } else {
+        dispatch(doctorsA.setMainSpecialtyFilter([]));
+        dispatch(doctorsA.getDoctorsByFilter());
+      }
+    } else {
+      const newCheckedFilters = {
+        ...checkedFilters,
+        [filter.id]: !checkedFilters[filter.id],
+      } as Record<string, boolean>;
+
+      const allFilter = specialtiesFilter.find((f) => f.value === "ALL");
+      if (allFilter) {
+        const allOthersChecked = specialtiesFilter
+          .filter((f) => f.value !== "ALL")
+          .every((f) => newCheckedFilters[f.id]);
+
+        newCheckedFilters[allFilter.id] = allOthersChecked;
+      }
+
+      setCheckedFilters(newCheckedFilters);
+
+      // Get all selected specialties (excluding "ALL")
+      const selectedSpecialties = specialtiesFilter
+        .filter((f) => f.value !== "ALL" && newCheckedFilters[f.id])
+        .map((f) => f.value);
+
+      // Update filters with selected specialties
+      dispatch(doctorsA.setMainSpecialtyFilter(selectedSpecialties));
+      dispatch(doctorsA.getDoctorsByFilter());
+    }
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,7 +165,6 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setSearchMainSpecialty(e.target.value);
-
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -330,7 +368,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                         key={filter.id}
                         className="flex hover:cursor-pointer gap-3"
                         checked={checkedFilters[filter.id]}
-                        onChange={() => handleCheckboxChange(filter)}
+                        onCheckedChange={() => handleCheckboxChange(filter)}
                       >
                         <Checkbox.HiddenInput />
 
@@ -339,16 +377,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                             className={`w-6 h-6 rounded-md bg-[#0274FF]`}
                           >
                             <Image
-                              src={
-                                checkedFilters[filter.id]
-                                  ? "/svg/icons/choose.svg"
-                                  : "/svg/icons/no-choose.svg"
-                              }
-                              alt={
-                                checkedFilters[filter.id]
-                                  ? "choose"
-                                  : "no-choose"
-                              }
+                              src="/svg/icons/choose.svg"
+                              alt="choose"
                               width={24}
                               height={24}
                             />
