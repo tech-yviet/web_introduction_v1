@@ -19,6 +19,7 @@ import FooterDesktop from "@/layouts/components/FooterDesktop";
 import Select from "react-select";
 import CardDoctor from "./components/CardDoctor";
 import isEmpty from "lodash/isEmpty";
+import { FilterDesktop } from "./components/FilterDesktop";
 
 const LazyMobileDrawer = dynamic(
   () => import("@/components/drawer/MobileDrawer"),
@@ -112,7 +113,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   const handleCheckboxChange = (filter: any) => {
     if (filter.value === "ALL") {
       const newState = !checkedFilters[filter.id];
-   
+
       const newCheckedFilters = {
         ...checkedFilters,
       } as Record<string, boolean>;
@@ -396,219 +397,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl px-[26px] py-[20px] min-h-[542px] mt-[24px]">
-                <div className="text-[#1F2A37] text-[18px] font-medium">
-                  Tuỳ chọn nâng cao
-                </div>
-
-                <Select
-                  isSearchable={true}
-                  components={{
-                    IndicatorSeparator: () => null,
-                    DropdownIndicator: () => {
-                      return (
-                        <div className="pr-[12px]">
-                          <Image
-                            src="/svg/icons/arrow-down-ori.svg"
-                            alt="arrow-down"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                      );
-                    },
-                    Placeholder: () => null,
-                    Input: (props) => {
-                      return (
-                        <div className="w-full h-full font-inter py-2 pl-[4px]">
-                          <input
-                            type="text"
-                            placeholder="Ngày đặt lịch hẹn"
-                            className="outline-none w-full"
-                            {...props}
-                          />
-                        </div>
-                      );
-                    },
-                  }}
-                  className=" mt-[24px] rounded-lg"
-                />
-
-                <Select
-                  isSearchable={true}
-                  components={{
-                    IndicatorSeparator: () => null,
-                    DropdownIndicator: () => {
-                      return (
-                        <div className="pr-[12px]">
-                          <Image
-                            src="/svg/icons/arrow-down-ori.svg"
-                            alt="arrow-down"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                      );
-                    },
-                    Placeholder: () => null,
-                    Input: (props) => {
-                      return (
-                        <div className="w-full h-full font-inter py-2 pl-[4px]">
-                          <input
-                            type="text"
-                            placeholder="Tỉnh/Thành phố"
-                            className="outline-none w-full"
-                            {...props}
-                          />
-                        </div>
-                      );
-                    },
-                  }}
-                  className=" mt-[24px] rounded-lg"
-                />
-
-                <Select
-                  isSearchable={true}
-                  components={{
-                    IndicatorSeparator: () => null,
-                    DropdownIndicator: () => {
-                      return (
-                        <div className="pr-[12px]">
-                          <Image
-                            src="/svg/icons/arrow-down-ori.svg"
-                            alt="arrow-down"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                      );
-                    },
-                    Placeholder: () => null,
-                    Input: (props) => {
-                      return (
-                        <div className="w-full h-full font-inter py-2 pl-[4px]">
-                          <input
-                            type="text"
-                            placeholder="Quận/Huyện"
-                            className="outline-none w-full"
-                            {...props}
-                          />
-                        </div>
-                      );
-                    },
-                  }}
-                  className=" mt-[24px] rounded-lg"
-                />
-
-                <Select
-                  isSearchable={true}
-                  components={{
-                    IndicatorSeparator: () => null,
-                    DropdownIndicator: () => {
-                      return (
-                        <div className="pr-[12px]">
-                          <Image
-                            src="/svg/icons/arrow-down-ori.svg"
-                            alt="arrow-down"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                      );
-                    },
-                    Placeholder: () => null,
-                    Input: (props) => {
-                      return (
-                        <div className="w-full h-full font-inter py-2 pl-[4px]">
-                          <input
-                            type="text"
-                            placeholder="Bệnh viện/ Phòng khám công tác"
-                            className="outline-none w-full"
-                            {...props}
-                          />
-                        </div>
-                      );
-                    },
-                  }}
-                  className=" mt-[24px] rounded-lg"
-                />
-
-                <Select
-                  isSearchable={true}
-                  components={{
-                    IndicatorSeparator: () => null,
-                    DropdownIndicator: () => {
-                      return (
-                        <div className="pr-[12px]">
-                          <Image
-                            src="/svg/icons/arrow-down-ori.svg"
-                            alt="arrow-down"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                      );
-                    },
-                    Placeholder: () => null,
-                    Input: (props) => {
-                      return (
-                        <div className="w-full h-full font-inter py-2 pl-[4px]">
-                          <input
-                            type="text"
-                            placeholder="Điểm đánh giá"
-                            className="outline-none w-full"
-                            {...props}
-                          />
-                        </div>
-                      );
-                    },
-                  }}
-                  className=" mt-[24px] rounded-lg"
-                />
-
-                <Select
-                  isSearchable={true}
-                  components={{
-                    IndicatorSeparator: () => null,
-                    DropdownIndicator: () => {
-                      return (
-                        <div className="pr-[12px]">
-                          <Image
-                            src="/svg/icons/arrow-down-ori.svg"
-                            alt="arrow-down"
-                            width={24}
-                            height={24}
-                          />
-                        </div>
-                      );
-                    },
-                    Placeholder: () => null,
-                    Input: (props) => {
-                      return (
-                        <div className="w-full h-full font-inter py-2 pl-[4px]">
-                          <input
-                            type="text"
-                            placeholder="Giới tính"
-                            className="outline-none w-full"
-                            {...props}
-                          />
-                        </div>
-                      );
-                    },
-                  }}
-                  className=" mt-[24px] rounded-lg"
-                />
-
-                <div className="mt-[24px] flex gap-2 font-roboto">
-                  <Button className="w-1/2 text-center rounded-[100px] bg-[#EEE] text-[#1F2A37] font-medium hover:opacity-80">
-                    Xóa lọc
-                  </Button>
-
-                  <Button className="w-1/2 text-center rounded-[100px] bg-[#0274FF] text-white font-medium hover:opacity-80">
-                    Lọc
-                  </Button>
-                </div>
-              </div>
+              <FilterDesktop />
             </div>
 
             {!isEmpty(doctors) ? (
