@@ -110,6 +110,18 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     dispatch(doctorsA.setDoctorNameFilter(e.target.value));
   };
 
+  // TODO search main specialty
+  const handleSearchMainSpecialtyInput = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const keyword = e.target.value.toLowerCase();
+    console.log("🚀 ~ e:", keyword);
+
+    const updatedMainSpecialtyFilter = mainSpecialties.filter((item) =>
+      item.description.toLowerCase().includes(keyword)
+    );
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       dispatch(doctorsA.getDoctorsByFilter());
@@ -284,6 +296,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                       type="text"
                       placeholder="Tìm nhanh chuyên khoa"
                       className="outline-none"
+                      onChange={(e) => handleSearchMainSpecialtyInput(e)}
                     />
                   </div>
                 </div>
