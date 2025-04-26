@@ -52,6 +52,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     {}
   );
 
+  const [searchMainSpecialty, setSearchMainSpecialty] = useState<string>("");
+
   useEffect(() => {
     dispatch(doctorsA.init());
 
@@ -64,20 +66,13 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     dispatch(appA.toggleDrawerMenuMobile());
   };
 
-  const handleCheckboxChange = (filterId: string) => {
-    setCheckedFilters((prev) => ({
-      ...prev,
-      [filterId]: !prev[filterId],
-    }));
-  };
-
   const specialtiesFilter = useMemo(() => {
     const mergedMainSpecialties = [
       { description: "Tất cả", name: "ALL" },
       ...mainSpecialties,
     ];
 
-    return mergedMainSpecialties.map((specialty, index) => {
+    let specialties = mergedMainSpecialties.map((specialty, index) => {
       const isAll = specialty.name === "ALL" && !!isEmpty(mainSpecialtyFilter);
       const isSelected =
         mainSpecialtyFilter.some((item) => item === specialty.name) || isAll;
@@ -89,7 +84,15 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
         isSelected: isSelected,
       };
     });
-  }, [mainSpecialties, mainSpecialtyFilter]);
+
+    if (!!searchMainSpecialty) {
+      specialties = specialties.filter((specialty) =>
+        specialty.name.toLowerCase().includes(searchMainSpecialty.toLowerCase())
+      );
+    }
+
+    return specialties;
+  }, [mainSpecialties, mainSpecialtyFilter, searchMainSpecialty]);
 
   const handleSelectMainSpecialty = (value: string) => {
     if (value === "ALL") {
@@ -106,20 +109,24 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     }
   };
 
+  const handleCheckboxChange = (filter: any) => {
+    setCheckedFilters((prev) => ({
+      ...prev,
+      [filter.id]: !prev[filter.id],
+    }));
+
+    handleSelectMainSpecialty(filter.value);
+  };
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(doctorsA.setDoctorNameFilter(e.target.value));
   };
 
-  // TODO search main specialty
   const handleSearchMainSpecialtyInput = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const keyword = e.target.value.toLowerCase();
-    console.log("🚀 ~ e:", keyword);
+    setSearchMainSpecialty(e.target.value);
 
-    const updatedMainSpecialtyFilter = mainSpecialties.filter((item) =>
-      item.description.toLowerCase().includes(keyword)
-    );
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -291,14 +298,29 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                     />
                   </div>
 
-                  <div>
+                  <div className="flex-1">
                     <input
                       type="text"
                       placeholder="Tìm nhanh chuyên khoa"
                       className="outline-none"
                       onChange={(e) => handleSearchMainSpecialtyInput(e)}
+                      value={searchMainSpecialty}
                     />
                   </div>
+
+                  {!!searchMainSpecialty && (
+                    <button
+                      onClick={() => setSearchMainSpecialty("")}
+                      className="pr-2"
+                    >
+                      <Image
+                        src="/svg/icons/close.svg"
+                        alt="close"
+                        width={10}
+                        height={10}
+                      />
+                    </button>
+                  )}
                 </div>
 
                 <div className="max-h-[300px] overflow-auto mt-[31px]">
@@ -308,7 +330,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                         key={filter.id}
                         className="flex hover:cursor-pointer gap-3"
                         checked={checkedFilters[filter.id]}
-                        onChange={() => handleCheckboxChange(filter.id)}
+                        onChange={() => handleCheckboxChange(filter)}
                       >
                         <Checkbox.HiddenInput />
 
