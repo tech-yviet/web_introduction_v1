@@ -112,6 +112,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   const handleCheckboxChange = (filter: any) => {
     if (filter.value === "ALL") {
       const newState = !checkedFilters[filter.id];
+   
       const newCheckedFilters = {
         ...checkedFilters,
       } as Record<string, boolean>;
@@ -146,12 +147,10 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
       setCheckedFilters(newCheckedFilters);
 
-      // Get all selected specialties (excluding "ALL")
       const selectedSpecialties = specialtiesFilter
         .filter((f) => f.value !== "ALL" && newCheckedFilters[f.id])
         .map((f) => f.value);
 
-      // Update filters with selected specialties
       dispatch(doctorsA.setMainSpecialtyFilter(selectedSpecialties));
       dispatch(doctorsA.getDoctorsByFilter());
     }
