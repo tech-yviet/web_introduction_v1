@@ -72,7 +72,9 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
   const specialtiesFilter = useMemo(() => {
     const mergedMainSpecialties = [
-      { description: "Tất cả", name: ALL_FILTER_ID },
+      ...(!!searchMainSpecialty
+        ? []
+        : [{ description: "Tất cả", name: ALL_FILTER_ID }]),
       ...mainSpecialties,
     ];
 
@@ -131,8 +133,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
         dispatch(doctorsA.resetFilter());
         dispatch(doctorsA.getDoctors());
       } else {
-        dispatch(doctorsA.setMainSpecialtyFilter([]));
-        dispatch(doctorsA.getDoctorsByFilter());
+        dispatch(doctorsA.getDoctors());
       }
     } else {
       const newCheckedFilters = {
