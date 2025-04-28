@@ -5,6 +5,7 @@ import "./globals.css";
 import { Provider } from "@/components/ui/provider";
 import Header from "@/layouts/Header";
 import { ReduxProvider } from "@/core/providers/ReduxProvider";
+import Footer from "@/layouts/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,8 +39,11 @@ export default function RootLayout({
       <body className={`${inter.variable} ${roboto.variable} antialiased`}>
         <Provider>
           <ReduxProvider>
-            <Header />
-            {children}
+            <div className="bg-mobile-gradient md:bg-desktop-gradient overflow-x-scroll overflow-y-hidden ">
+              <Header />
+              {children}
+              <Footer />
+            </div>
           </ReduxProvider>
         </Provider>
       </body>

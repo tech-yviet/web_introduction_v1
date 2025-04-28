@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import HeaderDesktop from "./components/HeaderDesktop";
 
 export const Header = () => {
   const router = useRouter();
@@ -32,6 +33,8 @@ export const Header = () => {
           </button>
         </div>
       </div>
+
+      <HeaderDesktop />
     </>
   );
 };
