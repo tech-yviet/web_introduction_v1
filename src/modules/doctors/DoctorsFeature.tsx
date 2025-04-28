@@ -4,7 +4,6 @@ import { FC, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA, doctorsS } from "@/store/modules/doctors";
-import Footer from "@/layouts/Footer";
 import {
   Button,
   ButtonGroup,
@@ -14,8 +13,6 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { appA } from "@/store/modules/app";
-import HeaderDesktop from "@/layouts/components/HeaderDesktop";
-import FooterDesktop from "@/layouts/components/FooterDesktop";
 import CardDoctor from "./components/CardDoctor";
 import isEmpty from "lodash/isEmpty";
 import { FilterDesktop } from "./components/FilterDesktop";
@@ -210,9 +207,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
   return (
     <>
-      <HeaderDesktop isFixed={true} />
-
-      <div className="pt-[113px] md:pt-[94px] bg-doctors-gradient-mobile  flex flex-col font-roboto">
+      <div className="pt-[113px] md:pt-[94px] flex flex-col font-roboto mb-[40px]">
         <div className="flex-1 px-4 md:w-[1200px] md:mx-auto  md:px-[28px]">
           <div className="hidden md:flex">
             <div className="flex items-center gap-2 bg-white px-4 py-[10px] rounded-bl-[12px] rounded-tl-[12px]">

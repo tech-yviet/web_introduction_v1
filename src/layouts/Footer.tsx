@@ -11,7 +11,7 @@ export const Footer = () => {
 
   return (
     <>
-      <div className="min-h-[510px] mt-[39px] bg-white pt-[20px] pb-[12.29px]  bg-footer rounded-t-[20px] font-inter md:hidden">
+      <div className="min-h-[510px] bg-white pt-[20px] pb-[12.29px]  bg-footer rounded-t-[20px] font-inter md:hidden">
         <div className="pl-[26px] pr-[21.89px]">
           <div className="flex items-center gap-[10px]">
             <Image

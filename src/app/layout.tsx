@@ -3,9 +3,7 @@ import { Inter, Roboto } from "next/font/google";
 import "react-datepicker/dist/react-datepicker.css";
 import "./globals.css";
 import { Provider } from "@/components/ui/provider";
-import Header from "@/layouts/Header";
 import { ReduxProvider } from "@/core/providers/ReduxProvider";
-import Footer from "@/layouts/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,13 +36,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${roboto.variable} antialiased`}>
         <Provider>
-          <ReduxProvider>
-            <div className="bg-mobile-gradient md:bg-desktop-gradient overflow-scroll scrollbar-hide ">
-              <Header />
-              {children}
-              <Footer />
-            </div>
-          </ReduxProvider>
+          <ReduxProvider>{children}</ReduxProvider>
         </Provider>
       </body>
     </html>
