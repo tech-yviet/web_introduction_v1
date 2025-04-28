@@ -3,7 +3,6 @@ import { Inter, Roboto } from "next/font/google";
 import "react-datepicker/dist/react-datepicker.css";
 import "./globals.css";
 import { Provider } from "@/components/ui/provider";
-import Header from "@/layouts/Header";
 import { ReduxProvider } from "@/core/providers/ReduxProvider";
 
 const inter = Inter({
@@ -37,10 +36,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${roboto.variable} antialiased`}>
         <Provider>
-          <ReduxProvider>
-            <Header />
-            {children}
-          </ReduxProvider>
+          <ReduxProvider>{children}</ReduxProvider>
         </Provider>
       </body>
     </html>

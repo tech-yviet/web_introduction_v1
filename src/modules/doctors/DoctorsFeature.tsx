@@ -4,7 +4,6 @@ import { FC, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { connect, ConnectedProps, dispatch, RootState } from "@/store";
 import { doctorsA, doctorsS } from "@/store/modules/doctors";
-import Footer from "@/layouts/Footer";
 import {
   Button,
   ButtonGroup,
@@ -14,8 +13,6 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { appA } from "@/store/modules/app";
-import HeaderDesktop from "@/layouts/components/HeaderDesktop";
-import FooterDesktop from "@/layouts/components/FooterDesktop";
 import CardDoctor from "./components/CardDoctor";
 import isEmpty from "lodash/isEmpty";
 import { FilterDesktop } from "./components/FilterDesktop";
@@ -210,9 +207,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
   return (
     <>
-      <HeaderDesktop isFixed={true} />
-
-      <div className="pt-[113px] md:pt-[94px] bg-doctors-gradient-mobile  flex flex-col font-roboto overflow-x-scroll overflow-y-hidden">
+      <div className="pt-[113px] md:pt-[94px] flex flex-col font-roboto mb-[40px]">
         <div className="flex-1 px-4 md:w-[1200px] md:mx-auto  md:px-[28px]">
           <div className="hidden md:flex">
             <div className="flex items-center gap-2 bg-white px-4 py-[10px] rounded-bl-[12px] rounded-tl-[12px]">
@@ -478,9 +473,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
           {!isEmpty(doctors) && (
             <div className="mt-4 flex justify-end">
               <Pagination.Root
-                count={200}
+                count={totalPages}
                 pageSize={pageSize}
-                defaultPage={1}
                 page={Number(currentPage || 0) + 1}
                 onPageChange={(page) => {
                   console.log(page);
@@ -503,18 +497,20 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
                   <Pagination.Context>
                     {({ pages }) =>
-                      pages.map((page, index) =>
-                        page.type === "page" ? (
+                      pages.map((page, index) => {
+                        return page.type === "page" ? (
                           <Pagination.Item key={index} {...page}>
                             <IconButton
-                              _selected={{
-                                bg: "#0274FF",
-                                color: "white",
-                              }}
-                              _currentPage={{
-                                bg: "#0274FF",
-                                color: "white",
-                              }}
+                              bg={
+                                page.value === currentPage + 1
+                                  ? "#0274FF"
+                                  : "white"
+                              }
+                              color={
+                                page.value === currentPage + 1
+                                  ? "white"
+                                  : "#3590FF"
+                              }
                               className="w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white"
                             >
                               {page.value}
@@ -522,8 +518,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                           </Pagination.Item>
                         ) : (
                           <Pagination.Ellipsis key={index} index={index} />
-                        )
-                      )
+                        );
+                      })
                     }
                   </Pagination.Context>
 
@@ -546,8 +542,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
           )}
         </div>
 
-        <Footer />
-        <FooterDesktop />
+        {/* <Footer />
+        <FooterDesktop /> */}
 
         <LazyMobileDrawer />
         <LazyFilterMobileDrawer />

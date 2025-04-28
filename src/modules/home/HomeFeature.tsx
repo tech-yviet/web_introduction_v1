@@ -5,12 +5,10 @@ import Categories from "./components/Categories";
 import Branding from "./components/Branding";
 import Introduction from "./components/Introduction/Introduction";
 import Future from "./components/Future";
-import Footer from "@/layouts/Footer";
-import FooterDesktop from "@/layouts/components/FooterDesktop";
 
 const HomeFeature = () => {
   return (
-    <div className="h-full md:min-w-[1200px] lg:max-w-full relative overflow-hidden ">
+    <div className="h-full md:min-w-[1200px] lg:max-w-full relative mb-[40px] overflow-hidden">
       <Hero />
 
       <div className="md:hidden font-roboto">
@@ -25,9 +23,6 @@ const HomeFeature = () => {
       <Branding />
       <Introduction />
       <Future />
-
-      <Footer />
-      <FooterDesktop />
 
       <div className="fixed bottom-10 right-2 md:right-10 z-20">
         <Image

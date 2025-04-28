@@ -46,10 +46,8 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
 
   return (
     <div
-      className={`hidden md:flex items-center justify-center w-full z-50 font-roboto ${
-        isScrolled || isFixed
-          ? "fixed top-0 right-0 left-0 bg-gradient-8 shadow-lg rounded-b-[20px] h-[66px]"
-          : ""
+      className={`hidden md:fixed top-0 right-0 left-0  md:flex items-center justify-center w-full z-50 font-roboto  h-[66px] ${
+        isScrolled || isFixed ? "bg-gradient-8 shadow-lg rounded-b-[20px] " : ""
       }`}
     >
       <div
@@ -81,7 +79,7 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
               >
                 Trang chủ
               </button>
- 
+
               <div className="relative">
                 <Menu.Root
                   open={isMenuOpen}
@@ -111,9 +109,9 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
                     </Button>
                   </Menu.Trigger>
                   <Portal>
-                    <Menu.Positioner className="w-[229px] z-[9999]">
+                    <Menu.Positioner className="w-[229px]">
                       <div
-                        className="absolute w-full h-4 -top-4"
+                        className="absolute w-full h-4 -top-4 z-50"
                         onPointerEnter={() => setIsMenuOpen(true)}
                       />
                       <Menu.Content
@@ -158,9 +156,10 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
 
               <button
                 className={cn(
-                  "px-4 py-2 text-center border border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px]",
+                  "px-4 py-2 text-center border text-white border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px]",
                   {
-                    "bg-white text-[#0274FF] box-shadow-button-gradient hover:opacity-80": isFixed,
+                    "bg-white text-[#0274FF] box-shadow-button-gradient hover:opacity-80":
+                      isFixed,
                   }
                 )}
               >
