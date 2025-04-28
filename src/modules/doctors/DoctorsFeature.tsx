@@ -212,7 +212,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
     <>
       <HeaderDesktop isFixed={true} />
 
-      <div className="pt-[113px] md:pt-[94px] bg-doctors-gradient-mobile  flex flex-col font-roboto md:w-fit lg:w-full">
+      <div className="pt-[113px] md:pt-[94px] bg-doctors-gradient-mobile  flex flex-col font-roboto overflow-x-scroll overflow-y-hidden">
         <div className="flex-1 px-4 md:w-[1200px] md:mx-auto  md:px-[28px]">
           <div className="hidden md:flex">
             <div className="flex items-center gap-2 bg-white px-4 py-[10px] rounded-bl-[12px] rounded-tl-[12px]">
@@ -371,7 +371,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                     <input
                       type="text"
                       placeholder="Tìm nhanh chuyên khoa"
-                      className="outline-none"
+                      className="outline-none bg-white"
                       onChange={(e) => handleSearchMainSpecialtyInput(e)}
                       value={searchMainSpecialty}
                     />
@@ -444,7 +444,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                             className={`w-6 h-6 rounded-md bg-white border border-[rgba(185,189,193,0.50)]`}
                           />
                         )}
-                        <Checkbox.Label className="text-sm">
+                        <Checkbox.Label className="text-sm text-[#1F2A37]">
                           {filter.name}
                         </Checkbox.Label>
                       </Checkbox.Root>
@@ -478,10 +478,13 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
           {!isEmpty(doctors) && (
             <div className="mt-4 flex justify-end">
               <Pagination.Root
-                count={totalPages || 1}
+                count={200}
                 pageSize={pageSize}
                 defaultPage={1}
                 page={Number(currentPage || 0) + 1}
+                onPageChange={(page) => {
+                  console.log(page);
+                }}
               >
                 <ButtonGroup variant="ghost" size="sm" className="gap-1">
                   <Pagination.PrevTrigger asChild>
@@ -498,23 +501,31 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                     </IconButton>
                   </Pagination.PrevTrigger>
 
-                  <Pagination.Items
-                    render={(page) => (
-                      <IconButton
-                        _selected={{
-                          bg: "#0274FF",
-                          color: "white",
-                        }}
-                        _currentPage={{
-                          bg: "#0274FF",
-                          color: "white",
-                        }}
-                        className="w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white"
-                      >
-                        {page.value}
-                      </IconButton>
-                    )}
-                  />
+                  <Pagination.Context>
+                    {({ pages }) =>
+                      pages.map((page, index) =>
+                        page.type === "page" ? (
+                          <Pagination.Item key={index} {...page}>
+                            <IconButton
+                              _selected={{
+                                bg: "#0274FF",
+                                color: "white",
+                              }}
+                              _currentPage={{
+                                bg: "#0274FF",
+                                color: "white",
+                              }}
+                              className="w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white"
+                            >
+                              {page.value}
+                            </IconButton>
+                          </Pagination.Item>
+                        ) : (
+                          <Pagination.Ellipsis key={index} index={index} />
+                        )
+                      )
+                    }
+                  </Pagination.Context>
 
                   <Pagination.NextTrigger asChild>
                     <IconButton
