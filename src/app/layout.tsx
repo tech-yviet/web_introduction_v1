@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${roboto.variable} antialiased`}>
         <Provider>
           <ReduxProvider>
-            <div className="bg-mobile-gradient md:bg-desktop-gradient overflow-x-scroll overflow-y-hidden ">
+            <div className="bg-mobile-gradient md:bg-desktop-gradient overflow-scroll scrollbar-hide ">
               <Header />
               {children}
               <Footer />
