@@ -473,9 +473,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
           {!isEmpty(doctors) && (
             <div className="mt-4 flex justify-end">
               <Pagination.Root
-                count={200}
+                count={totalPages}
                 pageSize={pageSize}
-                defaultPage={1}
                 page={Number(currentPage || 0) + 1}
                 onPageChange={(page) => {
                   console.log(page);
@@ -498,18 +497,20 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
 
                   <Pagination.Context>
                     {({ pages }) =>
-                      pages.map((page, index) =>
-                        page.type === "page" ? (
+                      pages.map((page, index) => {
+                        return page.type === "page" ? (
                           <Pagination.Item key={index} {...page}>
                             <IconButton
-                              _selected={{
-                                bg: "#0274FF",
-                                color: "white",
-                              }}
-                              _currentPage={{
-                                bg: "#0274FF",
-                                color: "white",
-                              }}
+                              bg={
+                                page.value === currentPage + 1
+                                  ? "#0274FF"
+                                  : "white"
+                              }
+                              color={
+                                page.value === currentPage + 1
+                                  ? "white"
+                                  : "#3590FF"
+                              }
                               className="w-[41px] h-[41px] bg-white rounded-[7.455px] text-[#3590FF] hover:bg-[#0274FF] hover:text-white"
                             >
                               {page.value}
@@ -517,8 +518,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                           </Pagination.Item>
                         ) : (
                           <Pagination.Ellipsis key={index} index={index} />
-                        )
-                      )
+                        );
+                      })
                     }
                   </Pagination.Context>
 
