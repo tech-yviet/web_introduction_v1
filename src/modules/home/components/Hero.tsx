@@ -1,9 +1,9 @@
 "use client";
+
 import { dispatch } from "@/store";
 import { appA } from "@/store/modules/app";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import HeaderDesktop from "@/layouts/components/HeaderDesktop";
 import Search from "../components/Search";
 import { Button } from "@chakra-ui/react";
 

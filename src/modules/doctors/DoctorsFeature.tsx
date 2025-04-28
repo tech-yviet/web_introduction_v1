@@ -542,9 +542,6 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
           )}
         </div>
 
-        {/* <Footer />
-        <FooterDesktop /> */}
-
         <LazyMobileDrawer />
         <LazyFilterMobileDrawer />
       </div>
