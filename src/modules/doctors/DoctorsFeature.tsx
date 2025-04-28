@@ -14,6 +14,7 @@ import FilterMobileSpecialties from "./components/FilterMobileSpecialties";
 import NavigationTabs from "./components/NavigationTabs";
 import FilterSpecialties from "./components/FilterSpecialties";
 import PaginationComponent from "./components/PaginationComponent";
+import { useRouter } from "next/navigation";
 
 const LazyMobileDrawer = dynamic(
   () => import("@/components/drawer/MobileDrawer"),
@@ -45,6 +46,8 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   prevPage,
   nextPage,
 }) => {
+  const router = useRouter();
+
   const [checkedFilters, setCheckedFilters] = useState<Record<string, boolean>>(
     {}
   );
@@ -241,6 +244,9 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
                     key={doctor.doctorId}
                     doctor={doctor}
                     index={index}
+                    onClick={() => {
+                      router.push(`/doctors/${doctor.doctorId}`);
+                    }}
                   />
                 ))}
               </div>
