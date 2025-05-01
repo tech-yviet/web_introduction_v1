@@ -1,4 +1,5 @@
-const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+const API_ENDPOINT =
+  process.env.NEXT_PUBLIC_API_ENDPOINT || "http://157.66.101.32:9200";
 
 export const BACKEND_API = {
   domain: API_ENDPOINT,
