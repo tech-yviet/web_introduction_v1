@@ -43,7 +43,7 @@ const FilterSpecialties = ({
           <input
             type="text"
             placeholder="Tìm nhanh chuyên khoa"
-            className="outline-none bg-white"
+            className="outline-none bg-white text-black"
             onChange={(e) => handleSearchMainSpecialtyInput(e)}
             value={searchMainSpecialty}
           />

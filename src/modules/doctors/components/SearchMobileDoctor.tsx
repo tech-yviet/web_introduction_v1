@@ -33,7 +33,7 @@ const SearchMobileDoctor = ({
           <input
             type="text"
             placeholder="Tìm Bác sĩ - Điều dưỡng - NVYT"
-            className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base "
+            className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base text-black"
             onChange={handleSearch}
             value={doctorNameFilter}
             onKeyDown={handleKeyDown}
