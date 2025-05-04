@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const FooterDesktop = () => {
   return (
-    <div className="hidden md:block mt-[40px] min-w-[1200px] bg-footer h-[372px] rounded-t-[32px] pt-[49px] px-[44px] font-inter">
+    <div className="hidden md:block mt-[40px] min-w-[1200px] bg-footer h-[372px] rounded-t-[32px] pt-[49px] px-[30px] font-inter">
       <div className="flex gap-8 px-[44px] md:max-w-[1200px] md:mx-auto">
         <div className="w-1/4">
           <div className="flex items-center gap-[18px]">
@@ -19,7 +19,7 @@ const FooterDesktop = () => {
             </div>
           </div>
 
-          <div className="mt-4 pl-[12.84px] text-[#3A3541] text-xs leading-[26.978px]">
+          <div className="mt-4 text-[#3A3541] text-sm leading-[26.978px]">
             <div className="font-bold">CÔNG TY TNHH BO VISION</div>
             <div>
               <span className="font-bold">Địa chỉ:</span> 9/8 Đường 223, xã Hòa
@@ -111,7 +111,7 @@ const FooterDesktop = () => {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-[44px]">
+      <div className="max-w-[1200px] mx-auto px-[30px]">
         <div className="mt-[18px] border-t border-white pl-[47.21px] pr-[21.88px] pt-[12.98px]  flex items-center justify-between">
           <div className="flex items-end gap-[7.2px]">
             <div>

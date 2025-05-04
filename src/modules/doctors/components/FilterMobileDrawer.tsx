@@ -460,7 +460,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
           <Drawer.Positioner autoFocus={false}>
             <Drawer.Content
               autoFocus={false}
-              className="max-h-[95vh] px-[16px] rounded-t-[16px]"
+              className="max-h-[95vh] px-[16px] rounded-t-[16px] bg-white"
             >
               <Drawer.Header
                 autoFocus={false}
@@ -505,7 +505,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         minDate={new Date()}
                         customInput={
                           <div
-                            className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2 px-3"
+                            className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2 px-3 text-black"
                             onClick={(e) => {
                               if (!!orderDate) {
                                 e.preventDefault();
@@ -515,7 +515,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           >
                             <input
                               type="text"
-                              className="w-full outline-none border-none"
+                              className="w-full outline-none border-none text-black bg-transparent"
                               placeholder="Tất cả"
                               autoFocus={false}
                               value={
