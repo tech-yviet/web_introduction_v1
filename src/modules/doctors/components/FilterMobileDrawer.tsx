@@ -505,7 +505,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         minDate={new Date()}
                         customInput={
                           <div
-                            className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2 px-3"
+                            className="w-full flex items-center justify-between rounded-lg border border-[#B9BDC1] py-2 px-3 text-black"
                             onClick={(e) => {
                               if (!!orderDate) {
                                 e.preventDefault();

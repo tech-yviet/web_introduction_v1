@@ -49,7 +49,7 @@ const CustomMenuList = (props: any) => {
   return (
     <components.MenuList
       {...props}
-      className="scrollbar-hide w-full  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)]"
+      className="scrollbar-hide w-full  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)] text-black"
     />
   );
 };
@@ -278,7 +278,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
               >
                 <input
                   type="text"
-                  className="w-full outline-none border-none placeholder:text-[#B9BDC1]"
+                  className="w-full outline-none border-none bg-transparent placeholder:text-[#B9BDC1] text-black"
                   placeholder="Ngày đặt lịch hẹn"
                   autoFocus={false}
                   value={
