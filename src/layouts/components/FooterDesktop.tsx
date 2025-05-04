@@ -19,7 +19,7 @@ const FooterDesktop = () => {
             </div>
           </div>
 
-          <div className="mt-4 pl-[12.84px] text-[#3A3541] text-xs leading-[26.978px]">
+          <div className="mt-4 text-[#3A3541] text-sm leading-[26.978px]">
             <div className="font-bold">CÔNG TY TNHH BO VISION</div>
             <div>
               <span className="font-bold">Địa chỉ:</span> 9/8 Đường 223, xã Hòa
