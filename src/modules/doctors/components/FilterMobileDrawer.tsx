@@ -460,7 +460,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
           <Drawer.Positioner autoFocus={false}>
             <Drawer.Content
               autoFocus={false}
-              className="max-h-[95vh] px-[16px] rounded-t-[16px]"
+              className="max-h-[95vh] px-[16px] rounded-t-[16px] bg-white"
             >
               <Drawer.Header
                 autoFocus={false}
@@ -515,7 +515,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           >
                             <input
                               type="text"
-                              className="w-full outline-none border-none"
+                              className="w-full outline-none border-none text-black bg-transparent"
                               placeholder="Tất cả"
                               autoFocus={false}
                               value={
