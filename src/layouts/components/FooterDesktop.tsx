@@ -5,7 +5,7 @@ import Link from "next/link";
 const FooterDesktop = () => {
   return (
     <div className="hidden md:block mt-[40px] min-w-[1200px] bg-footer h-[372px] rounded-t-[32px] pt-[49px] px-[30px] font-inter">
-      <div className="flex gap-8 px-[44px] md:max-w-[1200px] md:mx-auto">
+      <div className="flex gap-8 px-[30px] md:max-w-[1200px] md:mx-auto">
         <div className="w-1/4">
           <div className="flex items-center gap-[18px]">
             <Image
@@ -112,7 +112,7 @@ const FooterDesktop = () => {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-[30px]">
-        <div className="mt-[18px] border-t border-white pl-[47.21px] pr-[21.88px] pt-[12.98px]  flex items-center justify-between">
+        <div className="mt-[18px] border-t border-white pl-[30px] pr-[21.88px] pt-[12.98px]  flex items-center justify-between">
           <div className="flex items-end gap-[7.2px]">
             <div>
               <Image
