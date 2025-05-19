@@ -61,7 +61,7 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
               onClick={handleNavigateToHome}
               className="flex items-center gap-3"
             >
-              <Image src="/svg/logo-pc.svg" alt="logo" width={50} height={50} />
+              <Image src="/svg/logo-pc.svg" alt="logo" width={40} height={40} />
 
               <span className="text-xl font-black tracking-[0.2px] uppercase text-white font-inter">
                 Y Viet
@@ -156,10 +156,10 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
 
               <button
                 className={cn(
-                  "px-4 py-2 text-center border text-white border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px]",
+                  "px-4 py-2 text-center border text-white border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px] hover:opacity-80",
                   {
                     "bg-white text-[#0274FF] box-shadow-button-gradient hover:opacity-80":
-                      isFixed,
+                      isFixed || isScrolled,
                   }
                 )}
               >

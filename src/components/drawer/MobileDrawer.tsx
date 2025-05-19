@@ -1,59 +1,69 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { dispatch, useAppSelector } from "@/store";
 import { appA, appS } from "@/store/modules/app";
 import { Button, Drawer, Portal, Accordion } from "@chakra-ui/react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { PATH_PAGE } from "@/core/routes";
-
-const items = [
-  {
-    id: "1",
-    title: "Thuốc - Sản phẩm",
-    link: "/",
-    icon: "/svg/icons/circle-thuoc.svg",
-  },
-  {
-    id: "2",
-    title: "Tư vấn - Dịch vụ",
-    link: "/",
-    icon: "/svg/icons/circle-tuvan.svg",
-  },
-  {
-    id: "3",
-    title: "Bác sĩ - Điều dưỡng - NVYT",
-    link: PATH_PAGE.doctors,
-    icon: "/svg/icons/circle-bacsi.svg",
-  },
-  {
-    id: "4",
-    title: "Bệnh viện - Phòng khám",
-    link: "/",
-    icon: "/svg/icons/circle-benhvien.svg",
-  },
-  {
-    id: "5",
-    title: "Trung tâm xét nghiệm",
-    link: "/",
-    icon: "/svg/icons/circle-trungtam.svg",
-  },
-  {
-    id: "6",
-    title: "Nhà thuốc - Cửa hàng",
-    link: "/",
-    icon: "/svg/icons/circle-nhathuoc.svg",
-  },
-];
+import { cn } from "@/utils/className";
 
 const MobileDrawer = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const [isNearTop, setIsNearTop] = useState(true);
   const isOpenDrawerMenuMobile = useAppSelector(
     appS.selectIsOpenDrawerMenuMobile
   );
+
+  const items = useMemo(() => {
+    return [
+      {
+        id: "1",
+        title: "Thuốc - Sản phẩm",
+        link: "/",
+        icon: "/svg/icons/circle-thuoc.svg",
+        isActive: pathname === "/thuoc-san-pham",
+      },
+      {
+        id: "2",
+        title: "Tư vấn - Dịch vụ",
+        link: "/",
+        icon: "/svg/icons/circle-tuvan.svg",
+        isActive: pathname === "/tuvan-dich-vu",
+      },
+      {
+        id: "3",
+        title: "Bác sĩ - Điều dưỡng - NVYT",
+        link: PATH_PAGE.doctors,
+        icon: "/svg/icons/circle-bacsi.svg",
+        isActive: pathname === PATH_PAGE.doctors,
+      },
+      {
+        id: "4",
+        title: "Bệnh viện - Phòng khám",
+        link: "/",
+        icon: "/svg/icons/circle-benhvien.svg",
+        isActive: pathname === "/benh-vien-phong-kham",
+      },
+      {
+        id: "5",
+        title: "Trung tâm xét nghiệm",
+        link: "/",
+        icon: "/svg/icons/circle-trungtam.svg",
+        isActive: pathname === "/trung-tam-xet-nghiem",
+      },
+      {
+        id: "6",
+        title: "Nhà thuốc - Cửa hàng",
+        link: "/",
+        icon: "/svg/icons/circle-nhathuoc.svg",
+        isActive: pathname === "/nha-thuoc-cua-hang",
+      },
+    ];
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,18 +92,19 @@ const MobileDrawer = () => {
         <Drawer.Backdrop />
         <Drawer.Positioner>
           <Drawer.Content className="w-[290px] pt-[15px] font-inter bg-[rgba(255,255,255,0.97)] rounded-tl-[16px] rounded-bl-[16px]">
-            <Drawer.Body className="px-[18px]">
+            <Drawer.Body className="px-[18px] pt-0">
               <div>
                 <div className="flex justify-end">
                   <Button
-                    className="rounded-xl border border-[rgba(2,116,255,0.50)] hover:opacity-70"
+                    size="2xs"
+                    className="rounded-[8px] border border-[rgba(2,116,255,0.50)] hover:opacity-70"
                     onClick={handleClose}
                   >
                     <Image
                       src="/svg/icons/eva_close-outline.svg"
                       alt="logo"
-                      width={18}
-                      height={18}
+                      width={12}
+                      height={12}
                     />
                   </Button>
                 </div>
@@ -115,7 +126,12 @@ const MobileDrawer = () => {
                 <div className="mt-[24px]">
                   <div
                     onClick={() => handleClickItem("/")}
-                    className="flex items-start gap-[10px] px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group"
+                    className={cn(
+                      "flex items-start gap-[10px] px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group",
+                      {
+                        "bg-[#EAF2FF]": pathname === "/",
+                      }
+                    )}
                   >
                     <div>
                       <Image
@@ -125,14 +141,34 @@ const MobileDrawer = () => {
                         height={18}
                       />
                     </div>
-                    <div className="font-roboto text-sm font-semibold text-[#1F2A37]  group-hover:text-[#0A6DFD]">
+                    <div
+                      className={cn(
+                        "font-roboto text-sm font-semibold text-[#1F2A37]  group-hover:text-[#0A6DFD]",
+                        {
+                          "text-[#0A6DFD]": pathname === "/",
+                        }
+                      )}
+                    >
                       Trang chủ
                     </div>
                   </div>
 
                   <Accordion.Root collapsible defaultValue={["b"]}>
                     <Accordion.Item value="detail">
-                      <Accordion.ItemTrigger className="px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer w-full flex items-center justify-between">
+                      <Accordion.ItemTrigger
+                        className={cn(
+                          "px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer w-full flex items-center justify-between",
+                          {
+                            "bg-[#EAF2FF]":
+                              pathname === PATH_PAGE.doctors ||
+                              pathname === "/thuoc-san-pham" ||
+                              pathname === "/tuvan-dich-vu" ||
+                              pathname === "/benh-vien-phong-kham" ||
+                              pathname === "/trung-tam-xet-nghiem" ||
+                              pathname === "/nha-thuoc-cua-hang",
+                          }
+                        )}
+                      >
                         <div className="flex items-center gap-[10px]">
                           <div>
                             <Image
@@ -142,7 +178,20 @@ const MobileDrawer = () => {
                               height={18}
                             />
                           </div>
-                          <div className="font-roboto text-sm font-semibold text-[#1F2A37] group-hover:text-[#0A6DFD]">
+                          <div
+                            className={cn(
+                              "font-roboto text-sm font-semibold text-[#1F2A37] group-hover:text-[#0A6DFD]",
+                              {
+                                "text-[#0A6DFD]":
+                                  pathname === PATH_PAGE.doctors ||
+                                  pathname === "/thuoc-san-pham" ||
+                                  pathname === "/tuvan-dich-vu" ||
+                                  pathname === "/benh-vien-phong-kham" ||
+                                  pathname === "/trung-tam-xet-nghiem" ||
+                                  pathname === "/nha-thuoc-cua-hang",
+                              }
+                            )}
+                          >
                             Danh sách chi tiết
                           </div>
                         </div>
@@ -155,7 +204,14 @@ const MobileDrawer = () => {
                           onClick={() => handleClickItem(item.link)}
                         >
                           <Accordion.ItemContent>
-                            <Accordion.ItemBody className="px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer flex items-center gap-[10px]">
+                            <Accordion.ItemBody
+                              className={cn(
+                                "px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer flex items-center gap-[10px]",
+                                {
+                                  "bg-[#EAF2FF]": item.isActive,
+                                }
+                              )}
+                            >
                               <div>
                                 <Image
                                   src={item.icon}
@@ -165,7 +221,14 @@ const MobileDrawer = () => {
                                 />
                               </div>
 
-                              <div className="font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD]">
+                              <div
+                                className={cn(
+                                  "font-roboto text-sm text-[#1F2A37] group-hover:text-[#0A6DFD]",
+                                  {
+                                    "text-[#0A6DFD]": item.isActive,
+                                  }
+                                )}
+                              >
                                 {item.title}
                               </div>
                             </Accordion.ItemBody>

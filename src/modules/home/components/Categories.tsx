@@ -148,18 +148,18 @@ const Categories = () => {
                     delay: index * 0.1 + 0.5,
                     ease: "easeOut",
                   }}
-                  className="mt-[7.23px] bg-[#E9EBED] rounded-[37.5px] py-[3px] px-[9px] h-[15px] text-[5.625px] font-roboto font-medium text-[#4B4B4B] md:mt-[30px] md:w-[154px] md:h-[48px] md:text-base md:font-semibold group-hover:bg-button-hover-2 group-hover:text-white"
+                  className="mt-[7.23px] bg-[#E9EBED] rounded-[37.5px] py-[3px] px-[9px] w-[48.38px] h-[15px] text-[5.625px] font-roboto font-medium text-[#4B4B4B] md:mt-[30px] md:w-[154px] md:h-[48px] md:text-base md:font-semibold group-hover:bg-button-hover-2 group-hover:text-white"
                 >
                   Xem thêm
                 </motion.button>
               </motion.div>
             );
           })}
-        </div>
+        </div> 
       </div>
 
       {!!isNearTop && (
-        <div className="fixed top-[40px] left-0 right-0 bg-white z-50 md:hidden font-inter p-[10px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px] ">
+        <div className="fixed top-[40px] left-0 right-0 bg-white z-50 md:hidden font-inter py-[6.5px] px-[10px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px] ">
           <Search
             placeholder="Tìm thuốc, dịch vụ, Bác sĩ, Phòng k..."
             inputClassName="bg-transparent outline-none w-full text-sm font-normal leading-[22px] w-[227px] truncate font-roboto"

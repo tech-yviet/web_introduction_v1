@@ -60,7 +60,7 @@ const Introduction = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="rounded-[3113.76px] border-[0.331px] text-white px-[10px] py-[8px] flex items-center gap-1 hover:cursor-pointer max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max"
+        className="rounded-[3113.76px] border-[0.311px] text-white px-[10px] py-[8px] flex items-center justify-center gap-1 hover:cursor-pointer max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max md:border"
       >
         <div className="text-[9.868px] font-medium leading-[4.917px] md:text-sm md:font-semibold md:leading-4">
           Cập nhật phiên bản mới nhất của{" "}
@@ -116,7 +116,7 @@ const Introduction = () => {
         >
           <button
             onClick={handleChangeFindDoctor}
-            className={`hover:cursor-pointer hover:opacity-80 px-4 py-2 rounded-[32px] text-[10px] font-medium leading-[6.228px] md:rounded-[20px] md:text-[14px] md:leading-[20px] ${
+            className={`hover:cursor-pointer hover:opacity-80 px-[14px]  py-[7px] h-[27px] w-[83px] rounded-[32px] text-[10px] font-medium leading-[6.228px] md:rounded-[20px] md:text-[14px] md:leading-[20px] md:w-[105px] md:h-[36px] md:px-[15.5px] md:py-2  ${
               isFindDoctor
                 ? "bg-[rgba(255,255,255,0.38)] shadow-[0px_0.311px_0.623px_-0.311px_rgba(0,0,0,0.10),_0px_0.311px_0.934px_0px_rgba(0,0,0,0.10)]"
                 : "border-[0.089px] shadow-[0px_0.311px_0.623px_-0.311px_rgba(0,0,0,0.10),_0px_0.311px_0.934px_0px_rgba(0,0,0,0.10)]"
@@ -127,7 +127,7 @@ const Introduction = () => {
 
           <button
             onClick={handleChangeFindMedicine}
-            className={`hover:cursor-pointer hover:opacity-80 px-4 py-2 rounded-[32px] text-[10px] font-medium leading-[6.228px] md:rounded-[20px] md:text-[14px] md:leading-[20px] ${
+            className={`hover:cursor-pointer hover:opacity-80 px-[14px]  py-[7px] rounded-[32px] text-[10px] font-medium leading-[6.228px] md:rounded-[20px] md:text-[14px] md:leading-[20px] md:w-[105px] md:h-[36px] md:px-[15.5px] md:py-2 ${
               !isFindDoctor
                 ? "bg-[rgba(255,255,255,0.38)] shadow-[0px_0.311px_0.623px_-0.311px_rgba(0,0,0,0.10),_0px_0.311px_0.934px_0px_rgba(0,0,0,0.10)]"
                 : "border-[0.089px] shadow-[0px_0.311px_0.623px_-0.311px_rgba(0,0,0,0.10),_0px_0.311px_0.934px_0px_rgba(0,0,0,0.10)]"

@@ -41,14 +41,14 @@ const Hero = () => {
   };
 
   return (
-    <div className="bg-[url('/img/hero-baner.jpg')] bg-cover bg-center bg-no-repeat h-[170px] md:w-full md:h-[639px] mt-[40px] md:mt-0">
-      <div className="bg-hero-banner h-full w-full pl-5 pr-2.5 pb-[15px] pt-[9px] text-white flex flex-col gap-4">
+    <div className="bg-[url('/img/hero-baner.jpg')] bg-cover bg-center bg-no-repeat h-[170px] rounded-b-[12.683px] md:rounded-b-[32px] md:w-full md:h-[639px] mt-[40px] md:mt-0 font-inter">
+      <div className="bg-hero-banner h-full w-full pl-5 pr-2.5 pb-[15px] pt-[17px] text-white flex flex-col gap-4 rounded-b-[12.683px] md:rounded-b-[32px]">
         <div className="w-full md:max-w-[1200px] h-full mx-auto ">
-          <div className="relative md:mt-[66px] md:px-[70px]">
+          <div className="relative md:mt-[116px] md:px-[70px]">
             <div className="flex flex-col gap-[7.11px]">
-              <div className="flex items-center gap-[7.41px] md">
+              <div className="flex items-center gap-[7.41px] md:gap-[20px]">
                 <div className="w-[16.693px] h-[0.464px] bg-white md:w-[45.501px] md:h-[1.264px]"></div>
-                <div className="text-[4px] font-extrabold uppercase tracking-[1.391px] md:text-[11.5px] md:tracking-[3.792px]">
+                <div className="text-[4px] font-extrabold uppercase tracking-[1.391px] md:text-[11.5px] md:tracking-[3.792px] font-inter">
                   Smart Health Solutions
                 </div>
               </div>
@@ -61,7 +61,7 @@ const Hero = () => {
             </div>
 
             <Button
-              className="absolute top-0 right-0 md:hidden"
+              className="absolute -top-[12px] -right-[6px] md:hidden"
               onClick={handleToggleMobileDrawer}
             >
               <Image
@@ -74,7 +74,7 @@ const Hero = () => {
 
             <div className="hidden md:flex md:mt-[33px] items-center gap-8">
               <Search
-                inputClassName="w-full text-base font-normal leading-[22px] text-black bg-transparent outline-none"
+                inputClassName="w-full text-base font-normal leading-[22px] text-black bg-transparent outline-none placeholder:font-normal placeholder:text-[#B9BDC1]"
                 placeholder="Nhập để tìm thuốc, sản phẩm, dịch vụ, Bác sĩ, Bệnh viện, Phòng khám,..."
                 className="py-3 px-4 flex items-center bg-white rounded-[40px] w-[729px] h-[48px] "
               />
@@ -86,7 +86,7 @@ const Hero = () => {
           </div>
 
           <div className="flex  items-end gap-[9px] mt-[16px] md:mt-[50px] md:gap-[33px] md:px-[70px] relative">
-            <div className="flex flex-col md:justify-between gap-[7.84px] w-[120px] h-[60px] px-[12.04px] py-[6.78px] rounded-[5.42 3px] bg-[rgba(0,_0,_0,_0.38)] md:w-[354px] md:h-[178px] md:px-[35.5px] md:rounded-2xl md:gap-[23.11px] md:pt-8 md:pb-10">
+            <div className="flex flex-col md:justify-between gap-[7.84px] w-[120px] h-[60px] px-[12.04px] py-[6.78px] rounded-[5.42 3px] bg-[rgba(0,_0,_0,_0.38)] md:w-[354px] md:h-[178px] md:px-[35.5px] md:rounded-2xl md:gap-[23.11px] md:pt-8 md:pb-10 font-inter">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[4.07px] md:gap-4 md:h-auto">
                   <div className="text-xs font-bold md:text-[36px]">150⁺</div>
@@ -114,7 +114,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-[2.72px] justify-center md:gap-2">
+              <div className="flex items-center gap-[2.72px] justify-center py-[2px] md:gap-2 hover:cursor-pointer group hover:bg-white hover:text-[#1F2A37] rounded-[32px]  md:py-[10px] transition-all duration-300">
                 <div className="text-[6px] font-semibold leading-[9.152px] tracking-[0.102px] md:text-[18px] md:leading-[27px] md:tracking-[0.3px]">
                   Mở ứng dụng Y Viet
                 </div>
@@ -125,13 +125,20 @@ const Hero = () => {
                     alt="externalLink"
                     width={9.381}
                     height={5.85}
-                    className="md:w-[28.635px] md:h-[17.959px]"
+                    className="md:w-[28.635px] md:h-[17.959px] group-hover:hidden"
+                  />
+                  <Image
+                    src="/svg/externalLink-black.svg"
+                    alt="externalLinkHover"
+                    width={9.381}
+                    height={5.85}
+                    className="md:w-[28.635px] md:h-[17.959px] hidden group-hover:block"
                   />
                 </button>
               </div>
             </div>
 
-            <div className="bg-hero-banner-2 flex-1 h-[28px] rounded-[5.135px] flex items-center md:h-[86px] md:rounded-2xl overflow-hidden">
+            <div className="bg-hero-banner-2 flex-1 h-[28px] rounded-[5.135px] flex items-center md:h-[86px] md:rounded-2xl overflow-hidden font-inter">
               <div className="w-[54.88px] flex items-center justify-center md:w-[171px]">
                 <div>
                   <div className="text-[4.5px] font-bold md:text-sm">

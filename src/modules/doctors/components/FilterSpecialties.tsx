@@ -26,7 +26,7 @@ const FilterSpecialties = ({
   return (
     <div className="bg-white rounded-xl px-[26px] py-[20px] max-h-[484px]">
       <div className="text-[#1F2A37] text-[18px] font-medium">
-        Tìm kiếm chuyên gia
+        Tìm kiếm chuyên khoa
       </div>
 
       <div className="mt-[15px] flex items-center gap-2 rounded-xl border border-[#B9BDC1] px-3 py-[8px]">
