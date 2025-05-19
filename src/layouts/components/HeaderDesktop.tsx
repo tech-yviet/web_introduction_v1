@@ -159,7 +159,7 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
                   "px-4 py-2 text-center border text-white border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px] hover:opacity-80",
                   {
                     "bg-white text-[#0274FF] box-shadow-button-gradient hover:opacity-80":
-                      isFixed,
+                      isFixed || isScrolled,
                   }
                 )}
               >
