@@ -74,7 +74,7 @@ const Hero = () => {
 
             <div className="hidden md:flex md:mt-[33px] items-center gap-8">
               <Search
-                inputClassName="w-full text-base font-normal leading-[22px] text-black bg-transparent outline-none"
+                inputClassName="w-full text-base font-normal leading-[22px] text-black bg-transparent outline-none placeholder:font-normal placeholder:text-[#B9BDC1]"
                 placeholder="Nhập để tìm thuốc, sản phẩm, dịch vụ, Bác sĩ, Bệnh viện, Phòng khám,..."
                 className="py-3 px-4 flex items-center bg-white rounded-[40px] w-[729px] h-[48px] "
               />
