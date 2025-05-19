@@ -34,7 +34,7 @@ const HomeFeature = () => {
         />
       </div>
 
-      <div className="absolute top-[302px] -left-[175px] bg-[url('/svg/wave-pattern-mobile.svg')]  w-[582.317px] h-[475.346px] md:bg-[url('/svg/wave-pattern-desktop.svg')] md:w-[1909.376px] md:h-[1629.617px] md:top-[815px] md:-left-[188px]"></div>
+      <div className="absolute top-[375px] -left-[175px] bg-[url('/svg/wave-pattern-mobile.svg')]  w-[582.317px] h-[475.346px] md:bg-[url('/svg/wave-pattern-desktop.svg')] md:w-[1909.376px] md:h-[1629.617px] md:top-[815px] md:-left-[188px] z-0"></div>
     </div>
   );
 };
