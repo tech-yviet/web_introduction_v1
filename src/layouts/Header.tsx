@@ -11,7 +11,7 @@ export const Header = ({ isFixed = false }: { isFixed?: boolean }) => {
     <>
       <div className="fixed top-0 left-0 right-0 bg-white z-50 flex items-center justify-between  px-[9px] py-[7.5px] h-[40px] md:hidden font-inter">
         <button
-          className="flex items-center gap-[3px]"
+          className="flex items-center gap-2"
           onClick={() => router.push("/")}
         >
           <Image src="/svg/y-viet.svg" alt="logo" width={30} height={30} />
