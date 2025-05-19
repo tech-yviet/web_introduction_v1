@@ -28,7 +28,7 @@ export const Header = ({ isFixed = false }: { isFixed?: boolean }) => {
             />
           </button>
 
-          <button className="bg-button-gradient box-shadow-button-gradient px-4 py-[2.5px] rounded-md h-[25px] flex justify-center items-center text-[#FAFAFA] text-[11px] font-semibold leading-[20px]">
+          <button className="bg-button-gradient box-shadow-button-gradient px-4 py-[2.5px] rounded-md h-[25px] flex justify-center items-center text-[#FAFAFA] text-[11px] font-semibold leading-[20px] hover:opacity-80">
             Mở ứng dụng
           </button>
         </div>
