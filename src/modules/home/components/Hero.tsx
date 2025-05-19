@@ -114,7 +114,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-[2.72px] justify-center md:gap-2">
+              <div className="flex items-center gap-[2.72px] justify-center py-[2px] md:gap-2 hover:cursor-pointer group hover:bg-white hover:text-[#1F2A37] rounded-[32px] md:w-[270px] md:py-[10px] transition-all duration-300">
                 <div className="text-[6px] font-semibold leading-[9.152px] tracking-[0.102px] md:text-[18px] md:leading-[27px] md:tracking-[0.3px]">
                   Mở ứng dụng Y Viet
                 </div>
@@ -125,7 +125,14 @@ const Hero = () => {
                     alt="externalLink"
                     width={9.381}
                     height={5.85}
-                    className="md:w-[28.635px] md:h-[17.959px]"
+                    className="md:w-[28.635px] md:h-[17.959px] group-hover:hidden"
+                  />
+                  <Image
+                    src="/svg/externalLink-black.svg"
+                    alt="externalLinkHover"
+                    width={9.381}
+                    height={5.85}
+                    className="md:w-[28.635px] md:h-[17.959px] hidden group-hover:block"
                   />
                 </button>
               </div>
