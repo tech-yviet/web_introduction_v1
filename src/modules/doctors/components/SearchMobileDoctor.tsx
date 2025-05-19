@@ -17,7 +17,7 @@ const SearchMobileDoctor = ({
   doctorNameFilter,
 }: SearchMobileDoctorProps) => {
   return (
-    <div className="fixed top-[40px] left-0 right-0 z-50 font-inter px-[10px] py-[10.5px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px] md:static md:bg-white-1 md:mt-[36px] md:rounded-[40px] md:max-w-[886px] md:mx-auto md:px-0">
+    <div className="fixed top-[40px] left-0 right-0 z-50 font-inter px-[10px] py-[10.5px] bg-gradient-6 rounded-b-[16px] flex items-center gap-[15px] md:static md:bg-white-1 md:mt-[36px] md:rounded-[40px] md:max-w-[886px] md:mx-auto md:px-0 md:h-[48px]">
       <div className="p-3 flex items-center  bg-white rounded-[40px] flex-1 h-[32px] md:px-4">
         <div className="mr-[8px]">
           <Image
@@ -33,7 +33,7 @@ const SearchMobileDoctor = ({
           <input
             type="text"
             placeholder="Tìm Bác sĩ - Điều dưỡng - NVYT"
-            className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base text-black"
+            className="bg-transparent outline-none text-sm font-roboto font-normal leading-[22px] w-full min-w-[190px] truncate md:text-base text-black placeholder:text-[#B9BDC1]"
             onChange={handleSearch}
             value={doctorNameFilter}
             onKeyDown={handleKeyDown}

@@ -112,7 +112,7 @@ const FooterDesktop = () => {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-[30px]">
-        <div className="mt-[18px] border-t border-white pl-[30px] pr-[21.88px] pt-[12.98px]  flex items-center justify-between">
+        <div className="mt-[18px] border-t border-white pl-[47.01px] pr-[82.81px] pt-[12.98px]  flex items-center justify-between">
           <div className="flex items-end gap-[7.2px]">
             <div>
               <Image
