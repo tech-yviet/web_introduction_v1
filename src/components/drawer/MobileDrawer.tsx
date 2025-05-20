@@ -158,7 +158,6 @@ const MobileDrawer = () => {
                   <Accordion.Root
                     collapsible
                     onValueChange={(val) => {
-                      console.log("val:: ", val);
                       if (val.value.includes("detail")) {
                         setIsAccordionOpen(true);
                       } else {
