@@ -14,6 +14,8 @@ const MobileDrawer = () => {
   const pathname = usePathname();
 
   const [isNearTop, setIsNearTop] = useState(true);
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+
   const isOpenDrawerMenuMobile = useAppSelector(
     appS.selectIsOpenDrawerMenuMobile
   );
@@ -153,19 +155,25 @@ const MobileDrawer = () => {
                     </div>
                   </div>
 
-                  <Accordion.Root collapsible defaultValue={["b"]}>
+                  <Accordion.Root
+                    collapsible
+                    onValueChange={(val) => {
+                      console.log("val:: ", val);
+                      if (val.value.includes("detail")) {
+                        setIsAccordionOpen(true);
+                      } else {
+                        setIsAccordionOpen(false);
+                      }
+                    }}
+                  >
                     <Accordion.Item value="detail">
                       <Accordion.ItemTrigger
                         className={cn(
                           "px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer w-full flex items-center justify-between",
                           {
                             "bg-[#EAF2FF]":
-                              pathname === PATH_PAGE.doctors ||
-                              pathname === "/thuoc-san-pham" ||
-                              pathname === "/tuvan-dich-vu" ||
-                              pathname === "/benh-vien-phong-kham" ||
-                              pathname === "/trung-tam-xet-nghiem" ||
-                              pathname === "/nha-thuoc-cua-hang",
+                              !isAccordionOpen &&
+                              items.some((item) => item.isActive),
                           }
                         )}
                       >
@@ -183,12 +191,8 @@ const MobileDrawer = () => {
                               "font-roboto text-sm font-semibold text-[#1F2A37] group-hover:text-[#0A6DFD]",
                               {
                                 "text-[#0A6DFD]":
-                                  pathname === PATH_PAGE.doctors ||
-                                  pathname === "/thuoc-san-pham" ||
-                                  pathname === "/tuvan-dich-vu" ||
-                                  pathname === "/benh-vien-phong-kham" ||
-                                  pathname === "/trung-tam-xet-nghiem" ||
-                                  pathname === "/nha-thuoc-cua-hang",
+                                  !isAccordionOpen &&
+                                  items.some((item) => item.isActive),
                               }
                             )}
                           >
