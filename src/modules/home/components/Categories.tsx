@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import Search from "./Search";
 import { PATH_PAGE } from "@/core/routes";
 import { useRouter } from "next/navigation";
+import { ReactSVG } from "react-svg";
+
 const categories = [
   {
     id: "1",
@@ -106,12 +108,15 @@ const Categories = () => {
                     ease: "easeOut",
                   }}
                 >
-                  <Image
+                  <ReactSVG
                     src={c.image}
-                    width={51}
-                    height={51}
-                    alt={c.title}
-                    className="md:w-[160px] md:h-[160px]"
+                    className="w-[51px] h-[51px] md:w-[160px] md:h-[160px]"
+                    beforeInjection={(svg) => {
+                      svg.setAttribute("width", "100%");
+                      svg.setAttribute("height", "100%");
+                    }}
+                    // loading={() => <span>Loading...</span>}
+                    fallback={() => <></>}
                   />
                 </motion.div>
 
@@ -155,7 +160,7 @@ const Categories = () => {
               </motion.div>
             );
           })}
-        </div> 
+        </div>
       </div>
 
       {!!isNearTop && (

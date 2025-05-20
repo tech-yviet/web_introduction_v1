@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-
+import { ReactSVG } from "react-svg";
 const IntroductionDoctor = () => {
   return (
     <div className="mt-[40px] px-[10px] text-white font-inter md:mt-[87px] md:px-[50px]">
       <div className="flex gap-5 md:px-[54px] md:justify-between md:gap-[58px]">
-        <motion.div 
+        <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -37,19 +37,30 @@ const IntroductionDoctor = () => {
           </ul>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
         >
-          <Image
+          {/* <Image
             src="/svg/introduction-mobile-1.svg"
             alt="image-1"
             width={439.207}
             height={658.81}
             className="absolute top-[21px] left-0 z-10 md:top-[5px]"
+          /> */}
+
+          <ReactSVG
+            src="/svg/introduction-mobile-1.svg"
+            className="absolute md:w-[439.207px] md:h-[658.81px] top-[21px] left-0 z-10 md:top-[5px]"
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "100%");
+              svg.setAttribute("height", "100%");
+            }}
+            loading={() => <span>Loading...</span>}
+            fallback={() => <></>}
           />
 
           <Image
@@ -63,19 +74,30 @@ const IntroductionDoctor = () => {
       </div>
 
       <div className="flex gap-5 mt-[33px] md:mt-[185px] md:justify-between md:gap-[58px] md:px-[61px]">
-        <motion.div 
+        <motion.div
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
         >
-          <Image
+          {/* <Image
             src="/svg/introduction-mobile-2.svg"
             alt="image-2"
             width={439.207}
             height={658.81}
             className="absolute top-[21px] left-0 z-10 md:top-[5px]"
+          /> */}
+
+          <ReactSVG
+            src="/svg/introduction-mobile-2.svg"
+            className="absolute md:w-[439.207px] md:h-[658.81px] top-[21px] left-0 z-10 md:top-[5px]"
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "100%");
+              svg.setAttribute("height", "100%");
+            }}
+            loading={() => <span>Loading...</span>}
+            fallback={() => <></>}
           />
 
           <Image
@@ -87,7 +109,7 @@ const IntroductionDoctor = () => {
           />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}

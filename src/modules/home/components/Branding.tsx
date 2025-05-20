@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+
+import { ReactSVG } from "react-svg";
 
 const Branding = () => {
   return (
@@ -9,12 +11,15 @@ const Branding = () => {
           <div className="inline-block w-[15px] h-[15px] bg-white rounded-full relative top-[17px] md:w-[40px] md:h-[40px] md:top-[59px]"></div>
         </div>
 
-        <Image
+        <ReactSVG
           src="/svg/ai-brain.svg"
-          alt="yviet"
-          width={193.617}
-          height={193.617}
-          className="absolute z-10 top-[40%] left-[51%] -translate-x-1/2 -translate-y-1/2 object-cover md:w-[600px] md:h-[600px] md:left-[52%]"
+          className="absolute z-10 top-[40%] left-[51%] -translate-x-1/2 -translate-y-1/2 w-[193.617px] h-[193.617px] md:w-[600px] md:h-[600px] md:left-[52%]"
+          beforeInjection={(svg) => {
+            svg.setAttribute("width", "100%");
+            svg.setAttribute("height", "100%");
+          }}
+          // loading={() => <span>Loading...</span>}
+          fallback={() => <></>}
         />
 
         <div className="absolute  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[65px] text-center font-black leading-[65px] tracking-[1.3px] z-10 flex items-center font-inter md:text-[202px] text-transparent text-stroke md:text-stroke-5">

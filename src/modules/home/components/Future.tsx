@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import { ReactSVG } from "react-svg";
 
 const Future = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -137,15 +138,26 @@ const Future = () => {
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="mt-[82px] md:mt-[196px]">
-          <Image
+          {/* <Image
             src="/svg/future/iPhone-14.svg"
             alt="iPhone-14"
             width={796.5}
             height={501.397}
+          /> */}
+
+          <ReactSVG
+            src="/svg/future/iPhone-14.svg"
+            className="md:w-[796.5px] md:h-[501.397px]"
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "100%");
+              svg.setAttribute("height", "100%");
+            }}
+            // loading={() => <span>Loading...</span>}
+            fallback={() => <></>}
           />
         </div>
       </motion.div>
@@ -159,12 +171,23 @@ const Future = () => {
           className="w-[68.157px] h-[68.157px] bg-[radial-gradient(50%_50%_at_50%_50%,_#BAEFF8_0%,_#95D5FA_100%)] shadow-[3.529px_2.823px_1.412px_0px_#BAE6FF_inset] rounded-[13.7px] px-[11.64px] pt-[9.53px] pb-[9.69px] absolute top-[12px] right-[87px] md:w-[161.934px] md:h-[161.934px] md:rounded-[32.549px] md:shadow-[8.384px_6.707px_3.354px_0px_#BAE6FF_inset] md:pl-[25.15px] md:pt-[22.64px] md:right-[321px] md:top-[26px]"
         >
           <div>
-            <Image
+            {/* <Image
               src="/svg/future/chuyenkhoa.svg"
               alt="icon-1"
               width={30.348}
               height={28.985}
               className="md:w-[72.104px] md:h-[68.865px]"
+            /> */}
+
+            <ReactSVG
+              src="/svg/future/chuyenkhoa.svg"
+              className="w-[30.348px] h-[28.985px] md:w-[72.104px] md:h-[68.865px]"
+              beforeInjection={(svg) => {
+                svg.setAttribute("width", "100%");
+                svg.setAttribute("height", "100%");
+              }}
+              // loading={() => <span>Loading...</span>}
+              fallback={() => <></>}
             />
           </div>
 
@@ -183,12 +206,23 @@ const Future = () => {
           className="w-[66.102px] h-[66.102px] bg-[url('/svg/future/bg-hoidap.svg')] bg-cover bg-center shadow-[3.529px_2.823px_1.412px_0px_#8CCCF1_inset] rounded-[13.7px] pl-[10px] pt-[19.5px] pb-[9.69px] absolute top-[84px] left-[24px] md:w-[157.051px] md:h-[157.051px] md:rounded-[32.549px] md:shadow-[8.384px_6.707px_3.354px_0px_#8CCCF1_inset] md:pt-[48.59px] md:pl-[30.18px] md:left-[266px] md:top-[203px]"
         >
           <div>
-            <Image
+            {/* <Image
               src="/svg/future/hoidap.svg"
               alt="icon-2"
               width={24.702}
               height={18.851}
               className="md:w-[58.689px] md:h-[56.053px]"
+            /> */}
+
+            <ReactSVG
+              src="/svg/future/hoidap.svg"
+              className="w-[24.702px] h-[18.851px] md:w-[58.689px] md:h-[56.053px]"
+              beforeInjection={(svg) => {
+                svg.setAttribute("width", "100%");
+                svg.setAttribute("height", "100%");
+              }}
+              // loading={() => <span>Loading...</span>}
+              fallback={() => <></>}
             />
           </div>
 
@@ -207,12 +241,23 @@ const Future = () => {
           className="w-[78.089px] h-[78.089px] bg-[url('/svg/future/bg-ai-support.svg')] bg-cover bg-center shadow-[3.529px_2.823px_1.412px_0px_rgba(125,171,203,0.40)_inset] rounded-[13.7px] pl-[10px] pt-[16px] pb-[9.69px] absolute top-[121px] left-[100px] md:w-[185.532px] md:h-[185.532px] md:shadow-none md:pt-[43.23px] md:pl-[28.04px] md:top-[284px] md:left-[446px]"
         >
           <div className="pl-2">
-            <Image
+            {/* <Image
               src="/svg/future/ai-support.svg"
               alt="icon-3"
               width={19.084}
               height={26.938}
               className="md:w-[45.314px] md:h-[63.401px]"
+            /> */}
+
+            <ReactSVG
+              src="/svg/future/ai-support.svg"
+              className="w-[19.084px] h-[26.938px] md:w-[45.314px] md:h-[63.401px]"
+              beforeInjection={(svg) => {
+                svg.setAttribute("width", "100%");
+                svg.setAttribute("height", "100%");
+              }}
+              // loading={() => <span>Loading...</span>}
+              fallback={() => <></>}
             />
           </div>
 
@@ -231,12 +276,23 @@ const Future = () => {
           className="w-[61.649px] h-[61.649px] bg-[url('/svg/future/bg-bacsi.svg')] bg-cover bg-center shadow-[3.529px_2.823px_1.412px_0px_rgba(134,205,255,0.30)_inset] rounded-[13.7px] pl-[14.32px] pt-[14.96px] pb-[9.69px] absolute top-[104px] left-[190px] md:w-[146.473px] md:h-[146.473px] md:shadow-none md:pt-[35.55px] md:pl-[31.71px] md:top-[247px] md:left-[659px]"
         >
           <div>
-            <Image
+            {/* <Image
               src="/svg/future/bacsi.svg"
               alt="icon-4"
               width={27.338}
               height={26.109}
               className="md:w-[64.951px] md:h-[62.033px]"
+            /> */}
+
+            <ReactSVG
+              src="/svg/future/bacsi.svg"
+              className="w-[27.338px] h-[26.109px] md:w-[64.951px] md:h-[62.033px]"
+              beforeInjection={(svg) => {
+                svg.setAttribute("width", "100%");
+                svg.setAttribute("height", "100%");
+              }}
+              // loading={() => <span>Loading...</span>}
+              fallback={() => <></>}
             />
           </div>
 
@@ -256,12 +312,23 @@ const Future = () => {
         >
           <div>
             <div className="pl-[3.19px]">
-              <Image
+              {/* <Image
                 src="/svg/future/giaiphap.svg"
                 alt="icon-5"
                 width={33.171}
                 height={30.348}
                 className="md:w-[78.812px] md:h-[72.104px]"
+              /> */}
+
+              <ReactSVG
+                src="/svg/future/giaiphap.svg"
+                className="w-[33.171px] h-[30.348px] md:w-[78.812px] md:h-[72.104px]"
+                beforeInjection={(svg) => {
+                  svg.setAttribute("width", "100%");
+                  svg.setAttribute("height", "100%");
+                }}
+                // loading={() => <span>Loading...</span>}
+                fallback={() => <></>}
               />
             </div>
 
@@ -281,12 +348,23 @@ const Future = () => {
           className="w-[78.089px] h-[78.089px] bg-[url('/svg/future/bg-luutru.svg')] bg-cover bg-center shadow-[8.384px_6.707px_3.354px_0px_rgba(127, 226, 240, 0.40)_inset] rounded-[13.7px] pl-[13.06px] pt-[17.15px] pb-[9.69px] absolute top-[85px] left-[262px] md:w-[185.532px] md:h-[185.532px] md:pt-[36px] md:pl-[20.12px] md:pb-[30.82px] md:top-[200px] md:left-[830px]"
         >
           <div className="pl-[3.19px] md:pl-0">
-            <Image
+            {/* <Image
               src="/svg/future/luutru.svg"
               alt="icon-6"
               width={31.85}
               height={30.419}
               className="md:w-[75.672px] md:h-[72.273px]"
+            /> */}
+
+            <ReactSVG
+              src="/svg/future/luutru.svg"
+              className="w-[31.85px] h-[30.419px] md:w-[75.672px] md:h-[72.273px]"
+              beforeInjection={(svg) => {
+                svg.setAttribute("width", "100%");
+                svg.setAttribute("height", "100%");
+              }}
+              // loading={() => <span>Loading...</span>}
+              fallback={() => <></>}
             />
           </div>
 
