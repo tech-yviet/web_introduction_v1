@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ReactSVG } from "react-svg";
 
 const IntroductionMedicine = () => {
   return (
@@ -12,12 +13,23 @@ const IntroductionMedicine = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
         >
-          <Image
+          {/* <Image
             src="/svg/introduction/introduction-mobile-3.svg"
             alt="image-2"
             width={439.207}
             height={658.81}
             className="absolute top-0 left-0 z-10 md:top-[5px]"
+          /> */}
+
+          <ReactSVG
+            src="/svg/introduction/introduction-mobile-3.svg"
+            className="absolute w-[136.772px] md:w-[439.207px] md:h-[658.81px] top-[21px] left-0 z-10 md:top-[5px]"
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "100%");
+              svg.setAttribute("height", "100%");
+            }}
+            // loading={() => <span>Loading...</span>}
+            fallback={() => <></>}
           />
 
           <Image
@@ -101,12 +113,23 @@ const IntroductionMedicine = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
         >
-          <Image
+          {/* <Image
             src="/svg/introduction/introduction-mobile-4.svg"
             alt="image-1"
             width={439.207}
             height={658.81}
             className="absolute top-[16px] left-0 z-10 md:top-[5px]"
+          /> */}
+
+          <ReactSVG
+            src="/svg/introduction/introduction-mobile-4.svg"
+            className="absolute w-[136.772px] md:w-[439.207px] md:h-[658.81px] top-[21px] left-0 z-10 md:top-[5px]"
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "100%");
+              svg.setAttribute("height", "100%");
+            }}
+            // loading={() => <span>Loading...</span>}
+            fallback={() => <></>}
           />
 
           <Image
