@@ -61,7 +61,7 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
               onClick={handleNavigateToHome}
               className="flex items-center gap-3"
             >
-              <Image src="/svg/logo-pc.svg" alt="logo" width={40} height={40} />
+              <Image src="/svg/logo-pc-2.svg" alt="logo" width={40} height={40} />
 
               <span className="text-xl font-extrabold tracking-[0.2px] uppercase text-white font-inter">
                 Y Viet

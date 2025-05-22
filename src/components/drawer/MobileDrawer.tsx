@@ -114,7 +114,7 @@ const MobileDrawer = () => {
                 <div>
                   <Button className="flex items-center gap-2">
                     <Image
-                      src="/svg/y-viet.svg"
+                      src="/svg/logo-header-mobile.svg"
                       alt="logo"
                       width={41}
                       height={41}
