@@ -87,9 +87,10 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
                 >
                   <Menu.Trigger asChild>
                     <Button
+                      size="xs"
                       onPointerEnter={() => setIsMenuOpen(true)}
                       className={cn(
-                        "gap-2 items-center justify-center px-6 py-2.5 rounded-[78.638px] text-[15px] font-medium leading-[15.726px] text-white font-roboto",
+                        "gap-2 items-center justify-center px-6 py-2.5 rounded-[78.638px] text-[15px] font-medium leading-[15.726px] text-white font-roboto h-[35px]",
                         {
                           "bg-button-hover": isMenuOpen,
                           "bg-button-gradient-2": isDoctors,
