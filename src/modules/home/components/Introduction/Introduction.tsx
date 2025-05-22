@@ -122,18 +122,22 @@ const Introduction = () => {
                 : "border-[0.089px] shadow-[0px_0.311px_0.623px_-0.311px_rgba(0,0,0,0.10),_0px_0.311px_0.934px_0px_rgba(0,0,0,0.10)]"
             }`}
           >
-            Tìm Bác sĩ
+            <span className="text-[10px] font-medium leading-[6.228px] md:text-[14px] md:leading-[20px]">
+              Tìm Bác sĩ
+            </span>
           </button>
 
           <button
             onClick={handleChangeFindMedicine}
-            className={`hover:cursor-pointer hover:opacity-80 px-[14px]  py-[7px] rounded-[32px] text-[10px] font-medium leading-[6.228px] md:rounded-[20px] md:text-[14px] md:leading-[20px] md:w-[105px] md:h-[36px] md:px-[15.5px] md:py-2 ${
+            className={`hover:cursor-pointer hover:opacity-80 px-[14px] h-[27px] py-[7px] rounded-[32px] text-[10px] font-medium leading-[6.228px] md:rounded-[20px] md:text-[14px] md:leading-[20px] md:w-[105px] md:h-[36px] md:px-[15.5px] md:py-2 ${
               !isFindDoctor
                 ? "bg-[rgba(255,255,255,0.38)] shadow-[0px_0.311px_0.623px_-0.311px_rgba(0,0,0,0.10),_0px_0.311px_0.934px_0px_rgba(0,0,0,0.10)]"
                 : "border-[0.089px] shadow-[0px_0.311px_0.623px_-0.311px_rgba(0,0,0,0.10),_0px_0.311px_0.934px_0px_rgba(0,0,0,0.10)]"
             }`}
           >
-            Tìm thuốc
+            <span className="text-[10px] font-medium leading-[6.228px] md:text-[14px] md:leading-[20px]">
+              Tìm thuốc
+            </span>
           </button>
         </motion.div>
       </div>
