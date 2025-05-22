@@ -153,9 +153,11 @@ const Categories = () => {
                     delay: index * 0.1 + 0.5,
                     ease: "easeOut",
                   }}
-                  className="mt-[7.23px] bg-[#E9EBED] rounded-[37.5px] py-[3px] px-[9px] w-[48.38px] h-[15px] text-[5.625px] font-roboto font-medium text-[#4B4B4B] md:mt-[30px] md:w-[154px] md:h-[48px] md:text-base md:font-semibold group-hover:bg-button-hover-2 group-hover:text-white"
+                  className="mt-[7.23px] bg-[#E9EBED] rounded-[37.5px] py-[3px] px-[9px] w-[48.38px] h-[15px] md:mt-[30px] md:w-[154px] md:h-[48px] md:text-base md:font-semibold group-hover:bg-button-hover-2 group-hover:text-white"
                 >
-                  Xem thêm
+                  <span className="font-roboto font-medium text-[#4B4B4B] text-[5.625px] md:text-base md:font-semibold">
+                    Xem thêm
+                  </span>
                 </motion.button>
               </motion.div>
             );
