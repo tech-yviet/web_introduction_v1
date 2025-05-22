@@ -61,9 +61,14 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
               onClick={handleNavigateToHome}
               className="flex items-center gap-3"
             >
-              <Image src="/svg/logo-pc.svg" alt="logo" width={40} height={40} />
+              <Image
+                src="/svg/logo-pc-2.svg"
+                alt="logo"
+                width={40}
+                height={40}
+              />
 
-              <span className="text-xl font-black tracking-[0.2px] uppercase text-white font-inter">
+              <span className="text-xl font-extrabold tracking-[0.2px] uppercase text-white font-inter">
                 Y Viet
               </span>
             </button>
@@ -87,9 +92,10 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
                 >
                   <Menu.Trigger asChild>
                     <Button
+                      size="xs"
                       onPointerEnter={() => setIsMenuOpen(true)}
                       className={cn(
-                        "gap-2 items-center justify-center px-6 py-2.5 rounded-[78.638px] text-[15px] font-medium leading-[15.726px] text-white font-roboto",
+                        "gap-2 items-center justify-center px-6 py-2.5 rounded-[78.638px] text-[15px] font-medium leading-[15.726px] text-white font-roboto h-[35px] outline-none focus:outline-none",
                         {
                           "bg-button-hover": isMenuOpen,
                           "bg-button-gradient-2": isDoctors,
@@ -156,9 +162,9 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
 
               <button
                 className={cn(
-                  "px-4 py-2 text-center border text-white border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px] hover:opacity-80",
+                  "px-4 py-2 text-center border text-white border-white rounded-md bg-button text-[15px] font-medium leading-5 w-[128px] hover:bg-white hover:text-black transition-all",
                   {
-                    "bg-white text-[#0274FF] box-shadow-button-gradient hover:opacity-80":
+                    "bg-white text-[#0274FF] box-shadow-button-gradient hover:opacity-80 hover:text-[#0274FF]":
                       isFixed || isScrolled,
                   }
                 )}

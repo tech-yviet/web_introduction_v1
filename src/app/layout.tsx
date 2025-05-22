@@ -6,14 +6,14 @@ import { Provider } from "@/components/ui/provider";
 import { ReduxProvider } from "@/core/providers/ReduxProvider";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   variable: "--font-inter",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
 const roboto = Roboto({
-  subsets: ["latin"],
+  subsets: ['latin', 'vietnamese'],
   variable: "--font-roboto",
   weight: ["100", "300", "400", "500", "700", "900"],
   display: "swap",
