@@ -86,7 +86,7 @@ const Hero = () => {
           </div>
 
           <div className="flex  items-end gap-[9px] mt-[16px] md:mt-[50px] md:gap-[33px] md:px-[70px] relative">
-            <div className="flex flex-col md:justify-between gap-[7.84px] w-[120px] h-[60px] px-[12.04px] py-[6.78px] rounded-[5.42 3px] bg-[rgba(0,_0,_0,_0.38)] md:w-[354px] md:h-[178px] md:px-[35.5px] md:rounded-2xl md:gap-[23.11px] md:pt-8 md:pb-10 font-inter">
+            <div className="flex flex-col md:justify-between gap-[7.84px] w-[120px] h-[60px] px-[12.04px] py-[6.78px] rounded-[5.423px] bg-[rgba(0,_0,_0,_0.38)] md:w-[354px] md:h-[178px] md:px-[35.5px] md:rounded-2xl md:gap-[23.11px] md:pt-8 md:pb-10 font-inter">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[4.07px] md:gap-4 md:h-auto">
                   <div className="text-xs font-bold md:text-[36px]">150⁺</div>
