@@ -63,7 +63,7 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
             >
               <Image src="/svg/logo-pc.svg" alt="logo" width={40} height={40} />
 
-              <span className="text-xl font-black tracking-[0.2px] uppercase text-white font-inter">
+              <span className="text-xl font-extrabold tracking-[0.2px] uppercase text-white font-inter">
                 Y Viet
               </span>
             </button>
