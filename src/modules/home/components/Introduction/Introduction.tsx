@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import IntroductionDoctor from "./IntroductionDoctor";
 import IntroductionMedicine from "./IntroductionMedicine";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Introduction = () => {
   const refToScroll = useRef(null);
@@ -60,7 +60,7 @@ const Introduction = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="rounded-[3113.76px] border-[0.311px] text-white px-[10px] py-[8px] flex items-center justify-center gap-1 hover:cursor-pointer max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max md:border"
+        className="rounded-[3113.76px] border-[0.311px] text-white px-[10px] py-[8px] flex items-center justify-center gap-1 group hover:cursor-pointer hover:bg-white hover:text-black transition-all duration-300 max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max md:border"
       >
         <div className="text-[9.868px] font-medium leading-[4.917px] md:text-sm md:font-semibold md:leading-4">
           Cập nhật phiên bản mới nhất của{" "}
@@ -73,7 +73,7 @@ const Introduction = () => {
             alt="arrow-right"
             width={8.879}
             height={8.879}
-            className="md:w-3 md:h-3"
+            className="md:w-3 md:h-3 group-hover:brightness-0"
           />
         </div>
       </motion.div>
