@@ -64,7 +64,7 @@ export const Footer = () => {
               className="w-full"
             >
               <Accordion.Item value="support">
-                <Accordion.ItemTrigger className="h-[45px] border-t-[0.5px] border-white px-[5px] py-[10px] w-full">
+                <Accordion.ItemTrigger className="h-[45px] border-t-[0.5px] rounded-none border-white px-[5px] py-[10px] w-full outline-none focus:outline-none">
                   <div className="w-full">
                     <div className="text-sm font-inter font-bold text-[#2E64D6]">
                       Hỗ trợ khách hàng
@@ -79,7 +79,7 @@ export const Footer = () => {
                       <Accordion.ItemBody
                         className={`${
                           index === 0 ? "mt-[4px]" : "mt-[6px]"
-                        } py-0 px-[5px] rounded-lg hover:cursor-pointer `}
+                        } py-0 px-[5px] rounded-none hover:cursor-pointer `}
                       >
                         <div className="font-inter text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[24px]">
                           {item.title}
@@ -110,7 +110,7 @@ export const Footer = () => {
                 value="detail"
                 className="border-y-[0.5px] border-white"
               >
-                <Accordion.ItemTrigger className=" px-[5px]  py-[10px] w-full h-[45px]">
+                <Accordion.ItemTrigger className=" px-[5px]  py-[10px] w-full h-[45px]  rounded-none outline-none focus:outline-none">
                   <div className="w-full">
                     <div className="text-sm font-inter font-bold text-[#2E64D6] leading-[24px]">
                       Danh sách chi tiết

@@ -61,7 +61,12 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
               onClick={handleNavigateToHome}
               className="flex items-center gap-3"
             >
-              <Image src="/svg/logo-pc-2.svg" alt="logo" width={40} height={40} />
+              <Image
+                src="/svg/logo-pc-2.svg"
+                alt="logo"
+                width={40}
+                height={40}
+              />
 
               <span className="text-xl font-extrabold tracking-[0.2px] uppercase text-white font-inter">
                 Y Viet
@@ -90,7 +95,7 @@ const HeaderDesktop = ({ isFixed = false }: { isFixed?: boolean }) => {
                       size="xs"
                       onPointerEnter={() => setIsMenuOpen(true)}
                       className={cn(
-                        "gap-2 items-center justify-center px-6 py-2.5 rounded-[78.638px] text-[15px] font-medium leading-[15.726px] text-white font-roboto h-[35px]",
+                        "gap-2 items-center justify-center px-6 py-2.5 rounded-[78.638px] text-[15px] font-medium leading-[15.726px] text-white font-roboto h-[35px] outline-none focus:outline-none",
                         {
                           "bg-button-hover": isMenuOpen,
                           "bg-button-gradient-2": isDoctors,

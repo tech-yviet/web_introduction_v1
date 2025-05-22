@@ -14,6 +14,11 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        inter: ['var(--font-inter)', 'sans-serif'],
+        roboto: ['var(--font-roboto)', 'sans-serif'],
+        primary: ['var(--font-inter)', 'var(--font-roboto)', 'sans-serif'],
+      },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },

@@ -207,7 +207,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
   return (
     <>
       <div className="pt-[113px] md:pt-[94px] flex flex-col font-roboto mb-[40px]">
-        <div className="flex-1 px-4 md:w-[1200px] md:mx-auto  md:px-[28px]">
+        <div className="flex-1 md:w-[1200px] md:mx-auto  ">
           <NavigationTabs />
 
           <SearchMobileDoctor
@@ -223,7 +223,7 @@ const $DoctorsFeature: FC<PropsFromRedux> = ({
             handleSelectMainSpecialty={handleSelectMainSpecialty}
           />
 
-          <div className="md:mt-[36px] md:flex gap-6 h-full font-inter">
+          <div className="md:mt-[36px] md:flex gap-6 h-full font-inter  px-4  md:px-[28px]">
             <div className="hidden md:block w-[32%]">
               <FilterSpecialties
                 specialtiesFilter={specialtiesFilter}
