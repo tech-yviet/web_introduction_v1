@@ -64,7 +64,7 @@ export const Footer = () => {
               className="w-full"
             >
               <Accordion.Item value="support">
-                <Accordion.ItemTrigger className="h-[45px] border-t-[0.5px] border-white px-[12.85px] py-[10px] w-full">
+                <Accordion.ItemTrigger className="h-[45px] border-t-[0.5px] border-white px-[5px] py-[10px] w-full">
                   <div className="w-full">
                     <div className="text-sm font-inter font-bold text-[#2E64D6]">
                       Hỗ trợ khách hàng
@@ -79,7 +79,7 @@ export const Footer = () => {
                       <Accordion.ItemBody
                         className={`${
                           index === 0 ? "mt-[4px]" : "mt-[6px]"
-                        } py-0 px-3  rounded-lg hover:cursor-pointer `}
+                        } py-0 px-[5px] rounded-lg hover:cursor-pointer `}
                       >
                         <div className="font-inter text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[24px]">
                           {item.title}
@@ -90,15 +90,15 @@ export const Footer = () => {
                 ))}
 
                 <Accordion.ItemContent>
-                  <Accordion.ItemBody className="mt-[6px] py-0 px-3 rounded-lg hover:cursor-pointer ">
-                    <div className="font-inter text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[24px]">
+                  <Accordion.ItemBody className="mt-[6px] py-0 px-[5px] rounded-lg hover:cursor-pointer ">
+                    <div className="font-inter  text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[24px]">
                       <span className="font-bold">Hotline:</span> 0827 222 115
                     </div>
                   </Accordion.ItemBody>
                 </Accordion.ItemContent>
 
                 <Accordion.ItemContent className="pb-[23.85px]">
-                  <Accordion.ItemBody className="mt-[6px] py-0 px-3 rounded-lg hover:cursor-pointer ">
+                  <Accordion.ItemBody className="mt-[6px] py-0 px-[5px] rounded-lg hover:cursor-pointer ">
                     <div className="font-inter text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[24px]">
                       <span className="font-bold">Email:</span> info@yviet.ai.vn
                     </div>
@@ -110,7 +110,7 @@ export const Footer = () => {
                 value="detail"
                 className="border-y-[0.5px] border-white"
               >
-                <Accordion.ItemTrigger className="px-[12.85px] py-[10px] w-full h-[45px]">
+                <Accordion.ItemTrigger className=" px-[5px]  py-[10px] w-full h-[45px]">
                   <div className="w-full">
                     <div className="text-sm font-inter font-bold text-[#2E64D6] leading-[24px]">
                       Danh sách chi tiết
@@ -135,7 +135,7 @@ export const Footer = () => {
                           ? "mb-[24px] py-0"
                           : "py-0"
                       }
-                      px-3 hover:text-[#0274ff]  rounded-lg hover:cursor-pointer `}
+                       px-[5px] hover:text-[#0274ff]  rounded-lg hover:cursor-pointer `}
                       >
                         <div className="font-inter text-sm text-[#1F2A37] hover:text-[#0A6DFD] leading-[24px]">
                           {item.title}
