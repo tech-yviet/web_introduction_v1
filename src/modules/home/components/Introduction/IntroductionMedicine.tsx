@@ -29,7 +29,7 @@ const IntroductionMedicine = () => {
               svg.setAttribute("height", "100%");
             }}
             // loading={() => <span>Loading...</span>}
-            fallback={() => <></>}
+            // fallback={() => <></>}
           />
 
           <Image
@@ -129,7 +129,7 @@ const IntroductionMedicine = () => {
               svg.setAttribute("height", "100%");
             }}
             // loading={() => <span>Loading...</span>}
-            fallback={() => <></>}
+            // fallback={() => <></>}
           />
 
           <Image
