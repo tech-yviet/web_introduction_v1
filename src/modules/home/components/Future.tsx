@@ -23,9 +23,9 @@ const Future = () => {
   const animationChuyenKhoa = useMemo(() => {
     return {
       initial: isMobile
-        ? { x: -50, y: 200, opacity: 0 }
-        : { x: -100, y: 500, opacity: 0 },
-      whileInView: { x: 0, y: 0, opacity: 1 },
+        ? { x: "-50%", y: "200%", opacity: 0 }
+        : { x: "-100%", y: "500%", opacity: 0 },
+      whileInView: { x: "0%", y: "0%", opacity: 1 },
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
@@ -38,9 +38,9 @@ const Future = () => {
   const animationHoiDap = useMemo(() => {
     return {
       initial: isMobile
-        ? { x: 50, y: 100, opacity: 0 }
-        : { x: 100, y: 200, opacity: 0 },
-      whileInView: { x: 0, y: 0, opacity: 1 },
+        ? { x: "50%", y: "100%", opacity: 0 }
+        : { x: "100%", y: "200%", opacity: 0 },
+      whileInView: { x: "0%", y: "0%", opacity: 1 },
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
@@ -53,9 +53,9 @@ const Future = () => {
   const animationAI = useMemo(() => {
     return {
       initial: isMobile
-        ? { x: 20, y: 50, opacity: 0 }
-        : { x: 50, y: 200, opacity: 0 },
-      whileInView: { x: 0, y: 0, opacity: 1 },
+        ? { x: "20%", y: "50%", opacity: 0 }
+        : { x: "50%", y: "200%", opacity: 0 },
+      whileInView: { x: "0%", y: "0%", opacity: 1 },
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
@@ -68,9 +68,9 @@ const Future = () => {
   const animationBacSi = useMemo(() => {
     return {
       initial: isMobile
-        ? { x: -30, y: 100, opacity: 0 }
-        : { x: -50, y: 200, opacity: 0 },
-      whileInView: { x: 0, y: 0, opacity: 1 },
+        ? { x: "-30%", y: "100%", opacity: 0 }
+        : { x: "-50%", y: "200%", opacity: 0 },
+      whileInView: { x: "0%", y: "0%", opacity: 1 },
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
@@ -83,9 +83,9 @@ const Future = () => {
   const animationGiaiPhap = useMemo(() => {
     return {
       initial: isMobile
-        ? { x: 0, y: 50, opacity: 0 }
-        : { x: -10, y: 100, opacity: 0 },
-      whileInView: { x: 0, y: 0, opacity: 1 },
+        ? { x: "0%", y: "50%", opacity: 0 }
+        : { x: "-10%", y: "100%", opacity: 0 },
+      whileInView: { x: "0%", y: "0%", opacity: 1 },
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
@@ -98,9 +98,9 @@ const Future = () => {
   const animationLuutru = useMemo(() => {
     return {
       initial: isMobile
-        ? { x: -50, y: 150, opacity: 0 }
-        : { x: -100, y: 300, opacity: 0 },
-      whileInView: { x: 0, y: 0, opacity: 1 },
+        ? { x: "-50%", y: "150%", opacity: 0 }
+        : { x: "-100%", y: "300%", opacity: 0 },
+      whileInView: { x: "0%", y: "0%", opacity: 1 },
       viewport: { once: true, amount: isMobile ? 0.1 : 0.3 },
       transition: {
         duration: 1.5,
@@ -114,32 +114,33 @@ const Future = () => {
     <div className="max-w-[375px] mx-auto mt-[65px] font-inter px-[20px] text-white relative md:max-w-[1200px] md:mx-auto md:mt-[180px] md:pl-[270px] md:pr-[20px]">
       <div>
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
+          initial={{ x: "-50%", opacity: 0 }}
+          whileInView={{ x: "0%", opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-          className="text-[28px] font-bold leading-[110%] w-[176px] text-right md:w-[408px] md:text-[65px]"
+          // transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+          className="text-[28px] duration-300 font-bold leading-[110%] w-[176px] text-right md:w-[408px] md:text-[65px]"
         >
           Future <br />
           Applications
         </motion.div>
 
         <motion.div
-          initial={{ y: 10, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ y: "10%", opacity: 0 }}
+          whileInView={{ y: "0%", opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5, ease: "easeOut", delay: 0.7 }}
-          className="bg-[rgba(255,255,255,0.20)] mt-[13px] ml-[78.37px] px-[5.08px] py-1 rounded-[11.292px] w-[112px]  text-[6px] text-center font-medium md:mt-[32.07px] md:rounded-[26.829px] md:w-[253.203px] md:h-[46.113px] md:text-[13px] md:flex md:items-center md:justify-center md:ml-[169.03px]"
+          // transition={{ duration: 1.5, ease: "easeOut", delay: 0.7 }}
+          className="bg-[rgba(255,255,255,0.20)] duration-300 mt-[13px] ml-[78.37px] px-[5.08px] py-1 rounded-[11.292px] w-[112px]  text-[6px] text-center font-medium md:mt-[32.07px] md:rounded-[26.829px] md:w-[253.203px] md:h-[46.113px] md:text-[13px] md:flex md:items-center md:justify-center md:ml-[169.03px]"
         >
           Prepare for the New Age of Health
         </motion.div>
       </div>
 
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ y: "50%", opacity: 0 }}
+        whileInView={{ y: "0%", opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        // transition={{ duration: 1, ease: "easeOut" }}
+        className="duration-300"
       >
         <div className="mt-[82px] md:mt-[196px]">
           {/* <Image
@@ -327,8 +328,6 @@ const Future = () => {
                   svg.setAttribute("width", "100%");
                   svg.setAttribute("height", "100%");
                 }}
-                // loading={() => <span>Loading...</span>}
-                fallback={() => <></>}
               />
             </div>
 

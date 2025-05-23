@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 const roboto = Roboto({
-  subsets: ['latin', 'vietnamese'],
+  subsets: ["latin", "vietnamese"],
   variable: "--font-roboto",
   weight: ["100", "300", "400", "500", "700", "900"],
   display: "swap",
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${roboto.variable} antialiased`}>
-        <Provider>
+        <Provider forcedTheme="light" enableSystem={false}>
           <ReduxProvider>{children}</ReduxProvider>
         </Provider>
       </body>

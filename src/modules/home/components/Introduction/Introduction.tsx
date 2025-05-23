@@ -56,11 +56,10 @@ const Introduction = () => {
     <div className="max-w-[375px] mx-auto px-[7px] md:max-w-[1200px] md:mx-auto md:mt-[52px] relative z-10 font-inter">
       <motion.div
         ref={refToScroll}
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ y: "250%", opacity: 0 }}
+        whileInView={{ y: "0%", opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="rounded-[3113.76px] border-[0.311px] text-white px-[10px] py-[8px] flex items-center justify-center gap-1 group hover:cursor-pointer hover:bg-white hover:text-black transition-all duration-300 max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max md:border"
+        className="rounded-[3113.76px] border-[0.311px] text-white px-[10px] py-[8px] flex items-center justify-center gap-1 group hover:cursor-pointer hover:bg-white hover:text-black transition-colors duration-300 max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max md:border"
       >
         <div className="text-[9.868px] font-medium leading-[4.917px] md:text-sm md:font-semibold md:leading-4">
           Cập nhật phiên bản mới nhất của{" "}
@@ -80,22 +79,20 @@ const Introduction = () => {
 
       <div className="mt-4 text-white">
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ y: "200%", opacity: 0 }}
+          whileInView={{ y: "0%", opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
           ref={refToScroll}
-          className="font-roboto text-center text-[30px] font-black leading[120%] text-shadow md:mt-8 md:text-[96px] md:text-shadow-2"
+          className="font-roboto duration-300 text-center text-[30px] font-black leading[120%] text-shadow md:mt-8 md:text-[96px] md:text-shadow-2"
         >
           Kết nối cùng Y Viet
         </motion.div>
 
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ y: "250%", opacity: 0 }}
+          whileInView={{ y: "0%", opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-3 text-center text-[8px] font-medium leading-[11px] mx-auto md:mt-8 md:text-[20px] md:leading-[28px] md:w-auto"
+          className="mt-3 text-center duration-300 text-[8px] font-medium leading-[11px] mx-auto md:mt-8 md:text-[20px] md:leading-[28px] md:w-auto"
         >
           <div>
             Điểm dừng đầu tiên để bạn kết nối các dịch vụ tư vấn y khoa chất
@@ -108,11 +105,10 @@ const Introduction = () => {
         </motion.div>
 
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ y: "300%", opacity: 0 }}
+          whileInView={{ y: "0%", opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-[11px] flex items-center justify-center gap-2 md:mt-8 md:gap-4"
+          className="mt-[11px] flex items-center justify-center gap-2 duration-300 md:mt-8 md:gap-4"
         >
           <button
             onClick={handleChangeFindDoctor}
