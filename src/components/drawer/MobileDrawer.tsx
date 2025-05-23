@@ -8,6 +8,7 @@ import { Button, Drawer, Portal, Accordion } from "@chakra-ui/react";
 import { useRouter, usePathname } from "next/navigation";
 import { PATH_PAGE } from "@/core/routes";
 import { cn } from "@/utils/className";
+import { ReactSVG } from "react-svg";
 
 const MobileDrawer = () => {
   const router = useRouter();
@@ -136,11 +137,20 @@ const MobileDrawer = () => {
                     )}
                   >
                     <div>
-                      <Image
+                      {/* <Image
                         src="/svg/icons/home.svg"
                         alt="home"
                         width={18}
                         height={18}
+                      /> */}
+
+                      <ReactSVG
+                        src="/svg/icons/home.svg"
+                        className="w-[18px] h-[18px]"
+                        beforeInjection={(svg) => {
+                          svg.setAttribute("width", "100%");
+                          svg.setAttribute("height", "100%");
+                        }}
                       />
                     </div>
                     <div
@@ -178,11 +188,20 @@ const MobileDrawer = () => {
                       >
                         <div className="flex items-center gap-[10px]">
                           <div>
-                            <Image
+                            {/* <Image
                               src="/svg/icons/list-detail.svg"
                               alt="danh sach chi tiet"
                               width={18}
                               height={18}
+                            /> */}
+
+                            <ReactSVG
+                              src="/svg/icons/list-detail.svg"
+                              className="w-[18px] h-[18px]"
+                              beforeInjection={(svg) => {
+                                svg.setAttribute("width", "100%");
+                                svg.setAttribute("height", "100%");
+                              }}
                             />
                           </div>
                           <div
@@ -216,11 +235,20 @@ const MobileDrawer = () => {
                               )}
                             >
                               <div>
-                                <Image
+                                {/* <Image
                                   src={item.icon}
                                   alt={item.title}
                                   width={20}
                                   height={20}
+                                /> */}
+
+                                <ReactSVG
+                                  src={item.icon}
+                                  className="w-[20px] h-[20px]"
+                                  beforeInjection={(svg) => {
+                                    svg.setAttribute("width", "100%");
+                                    svg.setAttribute("height", "100%");
+                                  }}
                                 />
                               </div>
 
@@ -243,11 +271,20 @@ const MobileDrawer = () => {
 
                   <div className="flex items-center gap-[10px] px-4 py-3 hover:bg-[#EAF2FF] rounded-lg hover:cursor-pointer group">
                     <div>
-                      <Image
+                      {/* <Image
                         src="/svg/icons/dangkydoitac.svg"
                         alt="dang ky doi tac"
                         width={18}
                         height={18}
+                      /> */}
+
+                      <ReactSVG
+                        src="/svg/icons/dangkydoitac.svg"
+                        className="w-[18px] h-[18px]"
+                        beforeInjection={(svg) => {
+                          svg.setAttribute("width", "100%");
+                          svg.setAttribute("height", "100%");
+                        }}
                       />
                     </div>
                     <div className="font-roboto text-sm font-semibold text-[#1F2A37]  group-hover:text-[#0A6DFD]">

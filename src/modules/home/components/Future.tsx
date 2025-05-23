@@ -327,8 +327,6 @@ const Future = () => {
                   svg.setAttribute("width", "100%");
                   svg.setAttribute("height", "100%");
                 }}
-                // loading={() => <span>Loading...</span>}
-                fallback={() => <></>}
               />
             </div>
 
