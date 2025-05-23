@@ -59,8 +59,8 @@ const Introduction = () => {
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="rounded-[3113.76px] border-[0.311px] text-white px-[10px] py-[8px] flex items-center justify-center gap-1 group hover:cursor-pointer hover:bg-white hover:text-black transition-all duration-300 max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max md:border"
+        transition={{ delay: 0.2 }}
+        className="rounded-[3113.76px] border-[0.311px] text-white px-[10px] py-[8px] flex items-center justify-center gap-1 group hover:cursor-pointer hover:bg-white hover:text-black transition-colors duration-300 max-w-[245px] mx-auto md:px-[33.5px] md:py-[10px] md:max-w-max md:border"
       >
         <div className="text-[9.868px] font-medium leading-[4.917px] md:text-sm md:font-semibold md:leading-4">
           Cập nhật phiên bản mới nhất của{" "}
@@ -83,7 +83,7 @@ const Introduction = () => {
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ delay: 0.3 }}
           ref={refToScroll}
           className="font-roboto text-center text-[30px] font-black leading[120%] text-shadow md:mt-8 md:text-[96px] md:text-shadow-2"
         >
@@ -94,7 +94,7 @@ const Introduction = () => {
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ delay: 0.4 }}
           className="mt-3 text-center text-[8px] font-medium leading-[11px] mx-auto md:mt-8 md:text-[20px] md:leading-[28px] md:w-auto"
         >
           <div>
@@ -111,7 +111,7 @@ const Introduction = () => {
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ delay: 0.5 }}
           className="mt-[11px] flex items-center justify-center gap-2 md:mt-8 md:gap-4"
         >
           <button
