@@ -83,14 +83,9 @@ const Categories = () => {
             return (
               <motion.div
                 key={c.id}
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                // transition={{
-                  // duration: 0.5,
-                  // delay: index * 0.1,
-                  // ease: "easeOut",
-                // }}
-                className={`w-[24%] bg-[rgba(255,255,255,0.21)] hover:bg-[rgba(255,255,255,0.7)] rounded-xl px-[3px] pt-[10px] pb-[13.48px] text-white flex flex-col items-center hover:cursor-pointer group md:rounded-[40px] md:pt-[30px] md:pb-[37px] md:px-[12px] md:min-h-[453px] ${
+                initial={{ opacity: 0, y: "120%" }}
+                animate={{ opacity: 1, y: "0%" }}
+                className={`w-[24%] duration-${index * 100} bg-[rgba(255,255,255,0.21)] hover:bg-[rgba(255,255,255,0.7)] rounded-xl px-[3px] pt-[10px] pb-[13.48px] text-white flex flex-col items-center hover:cursor-pointer group md:rounded-[40px] md:pt-[30px] md:pb-[37px] md:px-[12px] md:min-h-[453px] ${
                   !!isEven
                     ? "mb-[10.52px] md:mb-[33px]"
                     : "mt-[10.52px] md:mt-[33px]"

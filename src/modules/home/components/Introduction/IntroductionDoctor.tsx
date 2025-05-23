@@ -6,11 +6,10 @@ const IntroductionDoctor = () => {
     <div className="mt-[40px] px-[10px] text-white font-inter md:mt-[87px] md:px-[50px]">
       <div className="flex gap-5 md:px-[54px] md:justify-between md:gap-[58px]">
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative pl-[39px] pt-[21px] md:pl-[95px] md:pt-[67px]"
+          initial={{ x: "-20%" }}
+          whileInView={{ x: "0%" }}
+          viewport={{ once: true }}
+          className="relative duration-300 pl-[39px] pt-[21px] md:pl-[95px] md:pt-[67px]"
         >
           <div className="absolute top-0 left-0 text-[47px] text-white font-bold leading-[47.231px] opacity-[0.1] md:text-[150px] md:leading-[151.67px]">
             01
@@ -38,11 +37,10 @@ const IntroductionDoctor = () => {
         </motion.div>
 
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
+          initial={{ x: "20%" }}
+          whileInView={{ x: "0%" }}
+          viewport={{ once: true }}
+          className="pt-[21px] min-w-[136px] relative duration-300 md:min-w-[439.207px] lg:pt-0"
         >
           {/* <Image
             src="/svg/introduction-mobile-1.svg"
@@ -63,23 +61,31 @@ const IntroductionDoctor = () => {
             // fallback={() => <></>}
           />
 
-          <Image
+          {/* <Image
             src="/svg/shadow-introduction-1.svg"
             alt="shadow-image-1"
             width={567.098}
             height={401.028}
             className="absolute top-[71px] -left-[8px] md:top-[218px] md:left-[10px]"
+          /> */}
+
+          <ReactSVG
+            src="/svg/shadow-introduction-1.svg"
+            className="absolute top-[71px] -left-[8px] md:top-[218px] md:left-[10px]"
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "100%");
+              svg.setAttribute("height", "100%");
+            }}
           />
         </motion.div>
       </div>
 
       <div className="flex gap-5 mt-[33px] md:mt-[185px] md:justify-between md:gap-[58px] md:px-[61px]">
         <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="pt-[21px] min-w-[136px] relative md:min-w-[439.207px] lg:pt-0"
+          initial={{ x: "-20%" }}
+          whileInView={{ x: "0%" }}
+          viewport={{ once: true }}
+          className="pt-[21px] min-w-[136px] duration-300 relative md:min-w-[439.207px] lg:pt-0"
         >
           {/* <Image
             src="/svg/introduction-mobile-2.svg"
@@ -100,21 +106,29 @@ const IntroductionDoctor = () => {
             // fallback={() => <></>}
           />
 
-          <Image
+          {/* <Image
             src="/svg/shadow-introduction-2.svg"
             alt="shadow-image-2"
             width={567.098}
             height={401.028}
             className="absolute -top-[18px] left-0 md:-top-[135px]"
+          /> */}
+
+          <ReactSVG
+            src="/svg/shadow-introduction-2.svg"
+            className="absolute -top-[18px] left-0 md:-top-[135px]"
+            beforeInjection={(svg) => {
+              svg.setAttribute("width", "100%");
+              svg.setAttribute("height", "100%");
+            }}
           />
         </motion.div>
 
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative pl-[39px] pt-[21px] md:pl-[114px] md:pt-[67px]"
+          initial={{ x: "20%" }}
+          whileInView={{ x: "0%" }}
+          viewport={{ once: true }}
+          className="relative pl-[39px] duration-300 pt-[21px] md:pl-[114px] md:pt-[67px]"
         >
           <div className="absolute top-0 left-0 text-[47px] text-white font-bold leading-[47.231px] opacity-[0.1] md:text-[150px] md:leading-[151.67px]">
             02
