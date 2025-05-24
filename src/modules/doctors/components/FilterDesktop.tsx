@@ -14,6 +14,7 @@ import AsyncSelect from "react-select/async";
 import axiosInstance from "@/core/axiosInstance";
 import { API_DOCTORS } from "@/core/config";
 import debounce from "lodash/debounce";
+import { ReactSVG } from "react-svg";
 
 const CustomDropdownIndicator = (props: any) => {
   return (
@@ -68,6 +69,16 @@ const CustomMenu = (props: any) => {
       {...props}
       className="!mx-0 !w-[314px] !backdrop-blur-lg !bg-[#F6F6F6]/80"
     />
+  );
+};
+
+const CustomClearIndicator = (props: any) => {
+  return (
+    <components.ClearIndicator {...props} className="!p-0">
+      <button className="p-[7px] w-6 mr-3 bg-[#CECECE] text-white rounded-full">
+        <ReactSVG src="/svg/icons/close.svg" className="brightness-0 invert" />
+      </button>
+    </components.ClearIndicator>
   );
 };
 
@@ -289,17 +300,15 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
 
                 {!!orderDate && (
                   <button
-                    className="p-2 mr-1 z-10"
+                    className="p-[7px] w-6 mr-3 z-10 bg-[#CECECE] text-white rounded-full"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleSelectDate(null);
                     }}
                   >
-                    <Image
+                    <ReactSVG
                       src="/svg/icons/close.svg"
-                      alt="close"
-                      width={10}
-                      height={10}
+                      className="brightness-0 invert"
                     />
                   </button>
                 )}
@@ -458,6 +467,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
             Menu: CustomMenu,
+            ClearIndicator: CustomClearIndicator,
           }}
           onChange={(e) => {
             if (!!e) {
@@ -484,6 +494,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
             Menu: CustomMenu,
+            ClearIndicator: CustomClearIndicator,
           }}
           onChange={(e) => {
             if (!!e) {
@@ -519,6 +530,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
             Menu: CustomMenu,
+            ClearIndicator: CustomClearIndicator,
           }}
           noOptionsMessage={() => "Không tìm thấy kết quả"}
           loadingMessage={() => "Đang tìm kiếm..."}
@@ -537,6 +549,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
             Menu: CustomMenu,
+            ClearIndicator: CustomClearIndicator,
           }}
         />
 
@@ -562,6 +575,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
             MenuList: CustomMenuList,
             Placeholder: CustomPlaceholder,
             Menu: CustomMenu,
+            ClearIndicator: CustomClearIndicator,
           }}
           className="mt-[24px]"
         />
