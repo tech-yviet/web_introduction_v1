@@ -18,21 +18,21 @@ const CardDoctor: FC<CardDoctorProps> = ({ doctor, index, onClick }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="flex gap-[8.73px] bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group md:h-[136px]"
+      className="flex gap-[8.73px] overflow-hidden bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group md:h-[136px]"
       onClick={onClick}
     >
-      <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px] flex items-end">
+      <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px] flex items-end md:justify-center h-[93px] w-[93px] md:h-[112px] md:w-[132px]">
         <Image
           src={doctor?.urlAvatar}
           alt={`${doctor.fullName}`}
           width={88}
           height={88}
-          className="md:w-[107px] md:h-[107px]"
+          className="max-h-[88px] max-w-[88px] md:min-w-[107px] md:min-h-[107px] md:w-[107px] md:h-[107px] object-cover"
         />
       </div>
 
-      <div className="flex-1 flex flex-col justify-center">
-        <div className="text-[#1F2A37] font-medium mb-2 md:text-lg md:mb-[10px]">{`${doctor.fullName}`}</div>
+      <div className="flex-1 flex flex-col justify-center overflow-hidden">
+        <div className="text-[#1F2A37] font-medium mb-2 md:text-lg md:mb-[10px] text-nowrap truncate leading-[18.6px] md:leading-[24px]">{`${doctor.fullName}`}</div>
 
         <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E] md:text-sm md:gap-[6px]">
           <div className="flex items-center gap-[6.2px]">
@@ -60,7 +60,7 @@ const CardDoctor: FC<CardDoctorProps> = ({ doctor, index, onClick }) => {
               />
             </div>
 
-            <div>{doctor.unitName}</div>
+            <div className="truncate">{doctor.unitName}</div>
           </div>
 
           <div className="flex items-center gap-[17.68px] md:gap-[63.07px]">

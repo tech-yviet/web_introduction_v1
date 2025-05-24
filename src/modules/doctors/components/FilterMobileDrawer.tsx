@@ -14,6 +14,7 @@ import AsyncSelect from "react-select/async";
 import axiosInstance from "@/core/axiosInstance";
 import { API_DOCTORS } from "@/core/config";
 import debounce from "lodash/debounce";
+import { ReactSVG } from "react-svg";
 
 const CustomDropdownIndicator = (props: any) => {
   return (
@@ -49,9 +50,27 @@ const CustomMenuList = (props: any) => {
   return (
     <components.MenuList
       {...props}
-      className="scrollbar-hide  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)]"
+      className="scrollbar-hide  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)] !max-h-[355.5px]"
     />
   );
+};
+
+const CustomMenu = (props: any) => {
+  return <components.Menu {...props} className="!w-[335.5px]" />;
+};
+
+const CustomClearIndicator = (props: any) => {
+  return (
+    <components.ClearIndicator {...props} className="!p-0">
+      <button className="p-[7px] w-6 mr-3 bg-[#CECECE] text-white rounded-full">
+        <ReactSVG src="/svg/icons/close.svg" className="brightness-0 invert" />
+      </button>
+    </components.ClearIndicator>
+  );
+};
+
+const CustomInput = (props: any) => {
+  return <components.Input {...props} className="!text-base" />;
 };
 
 const datePickerCustomStyles = `
@@ -460,7 +479,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
           <Drawer.Positioner autoFocus={false}>
             <Drawer.Content
               autoFocus={false}
-              className="max-h-[95vh] px-[16px] rounded-t-[16px] bg-white"
+              className="max-h-[95dvh] px-[16px] rounded-t-[16px] bg-white"
             >
               <Drawer.Header
                 autoFocus={false}
@@ -489,6 +508,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                             handleSelectDate(date);
                           }
                         }}
+                        selected={
+                          !!orderDate ? dayjs(orderDate).toDate() : null
+                        }
                         showPopperArrow={false}
                         formatWeekDay={(day) => {
                           const weekDays: { [key: string]: string } = {
@@ -515,7 +537,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           >
                             <input
                               type="text"
-                              className="w-full outline-none border-none text-black bg-transparent"
+                              className="w-full outline-none border-none text-black bg-transparent text-base"
                               placeholder="Tất cả"
                               autoFocus={false}
                               value={
@@ -526,20 +548,18 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                             />
 
                             {!!orderDate && (
-                              <button
-                                className="p-2 mr-1 z-10"
+                              <div
+                                className="p-[7px] w-6 mr-3 z-20 bg-[#CECECE] text-white rounded-full hover:cursor-pointer"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleSelectDate(null);
                                 }}
                               >
-                                <Image
+                                <ReactSVG
                                   src="/svg/icons/close.svg"
-                                  alt="close"
-                                  width={10}
-                                  height={10}
+                                  className="brightness-0 invert"
                                 />
-                              </button>
+                              </div>
                             )}
 
                             <Image
@@ -710,6 +730,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -741,6 +764,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -768,6 +794,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -808,6 +837,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       noOptionsMessage={() => "Không tìm thấy kết quả"}
                       loadingMessage={() => "Đang tìm kiếm..."}
@@ -826,6 +858,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                     />
                   </div>
@@ -853,6 +888,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                     />
                   </div>
