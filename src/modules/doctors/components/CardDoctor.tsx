@@ -21,13 +21,13 @@ const CardDoctor: FC<CardDoctorProps> = ({ doctor, index, onClick }) => {
       className="flex gap-[8.73px] overflow-hidden bg-white rounded-[12.4px] border-doctors-card py-[6.35px] pl-[6.27px] box-shadow-doctors-card hover:cursor-pointer md:py-3 md:pl-3 md:pr-[20px] md:gap-[19.67px] hover:bg-card-doctor-hover-desktop transition-all duration-100 group md:h-[136px]"
       onClick={onClick}
     >
-      <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px] flex items-end h-[93px] w-[93px]">
+      <div className="bg-[#E6F1FF] rounded-[9.3px] px-[2.5px] pt-[5px] flex items-end md:justify-center h-[93px] w-[93px] md:h-[112px] md:w-[132px]">
         <Image
           src={doctor?.urlAvatar}
           alt={`${doctor.fullName}`}
           width={88}
           height={88}
-          className="max-h-[88px] max-w-[88px] md:w-[107px] md:h-[107px] object-cover"
+          className="max-h-[88px] max-w-[88px] md:min-w-[107px] md:min-h-[107px] md:w-[107px] md:h-[107px] object-cover"
         />
       </div>
 
