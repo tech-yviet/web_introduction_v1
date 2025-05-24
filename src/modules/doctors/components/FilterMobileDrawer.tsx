@@ -479,7 +479,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
           <Drawer.Positioner autoFocus={false}>
             <Drawer.Content
               autoFocus={false}
-              className="max-h-[95vh] px-[16px] rounded-t-[16px] bg-white"
+              className="max-h-[95dvh] px-[16px] rounded-t-[16px] bg-white"
             >
               <Drawer.Header
                 autoFocus={false}
