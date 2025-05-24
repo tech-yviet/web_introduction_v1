@@ -489,6 +489,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                             handleSelectDate(date);
                           }
                         }}
+                        selected={!!orderDate ? dayjs(orderDate).toDate() : null}
                         showPopperArrow={false}
                         formatWeekDay={(day) => {
                           const weekDays: { [key: string]: string } = {

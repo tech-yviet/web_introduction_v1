@@ -253,6 +253,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
               }
             }}
             showPopperArrow={false}
+            selected={!!orderDate ? dayjs(orderDate).toDate() : null}
             formatWeekDay={(day) => {
               const weekDays: { [key: string]: string } = {
                 Monday: "T2",
