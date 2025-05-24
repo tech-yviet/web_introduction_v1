@@ -69,6 +69,10 @@ const CustomClearIndicator = (props: any) => {
   );
 };
 
+const CustomInput = (props: any) => {
+  return <components.Input {...props} className="!text-base" />;
+};
+
 const datePickerCustomStyles = `
   .react-datepicker-wrapper {
     width: 100%;
@@ -533,7 +537,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                           >
                             <input
                               type="text"
-                              className="w-full outline-none border-none text-black bg-transparent"
+                              className="w-full outline-none border-none text-black bg-transparent text-base"
                               placeholder="Tất cả"
                               autoFocus={false}
                               value={
@@ -728,6 +732,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
                         Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -761,6 +766,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
                         Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -790,6 +796,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
                         Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -832,6 +839,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
                         Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                       noOptionsMessage={() => "Không tìm thấy kết quả"}
                       loadingMessage={() => "Đang tìm kiếm..."}
@@ -852,6 +860,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
                         Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                     />
                   </div>
@@ -881,6 +890,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
                         Menu: CustomMenu,
+                        Input: CustomInput,
                       }}
                     />
                   </div>
