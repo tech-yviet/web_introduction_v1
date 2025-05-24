@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ALL_FILTER_ID } from "../DoctorsFeature";
 import { MdOutlineCheck } from "react-icons/md";
 import { FiMinus } from "react-icons/fi";
+import { ReactSVG } from "react-svg";
 
 interface FilterSpecialtiesProps {
   specialtiesFilter: any[];
@@ -50,14 +51,15 @@ const FilterSpecialties = ({
         </div>
 
         {!!searchMainSpecialty && (
-          <button onClick={() => setSearchMainSpecialty("")} className="pr-2">
-            <Image
+          <div
+            className="p-[7px] w-6 pr-2  bg-[#CECECE] text-white rounded-full hover:cursor-pointer"
+            onClick={() => setSearchMainSpecialty("")}
+          >
+            <ReactSVG
               src="/svg/icons/close.svg"
-              alt="close"
-              width={10}
-              height={10}
+              className="brightness-0 invert"
             />
-          </button>
+          </div>
         )}
       </div>
 
