@@ -299,8 +299,8 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
                 />
 
                 {!!orderDate && (
-                  <button
-                    className="p-[7px] w-6 mr-3 z-10 bg-[#CECECE] text-white rounded-full"
+                  <div
+                    className="p-[7px] w-6 mr-3 z-20 bg-[#CECECE] text-white rounded-full hover:cursor-pointer"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleSelectDate(null);
@@ -310,7 +310,7 @@ const $FilterDesktop: FC<PropsFromRedux> = ({
                       src="/svg/icons/close.svg"
                       className="brightness-0 invert"
                     />
-                  </button>
+                  </div>
                 )}
 
                 <Image

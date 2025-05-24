@@ -14,6 +14,7 @@ import AsyncSelect from "react-select/async";
 import axiosInstance from "@/core/axiosInstance";
 import { API_DOCTORS } from "@/core/config";
 import debounce from "lodash/debounce";
+import { ReactSVG } from "react-svg";
 
 const CustomDropdownIndicator = (props: any) => {
   return (
@@ -51,6 +52,16 @@ const CustomMenuList = (props: any) => {
       {...props}
       className="scrollbar-hide  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)]"
     />
+  );
+};
+
+const CustomClearIndicator = (props: any) => {
+  return (
+    <components.ClearIndicator {...props} className="!p-0">
+      <button className="p-[7px] w-6 mr-3 bg-[#CECECE] text-white rounded-full">
+        <ReactSVG src="/svg/icons/close.svg" className="brightness-0 invert" />
+      </button>
+    </components.ClearIndicator>
   );
 };
 
@@ -489,7 +500,9 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                             handleSelectDate(date);
                           }
                         }}
-                        selected={!!orderDate ? dayjs(orderDate).toDate() : null}
+                        selected={
+                          !!orderDate ? dayjs(orderDate).toDate() : null
+                        }
                         showPopperArrow={false}
                         formatWeekDay={(day) => {
                           const weekDays: { [key: string]: string } = {
@@ -527,20 +540,18 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                             />
 
                             {!!orderDate && (
-                              <button
-                                className="p-2 mr-1 z-10"
+                              <div
+                                className="p-[7px] w-6 mr-3 z-20 bg-[#CECECE] text-white rounded-full hover:cursor-pointer"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleSelectDate(null);
                                 }}
                               >
-                                <Image
+                                <ReactSVG
                                   src="/svg/icons/close.svg"
-                                  alt="close"
-                                  width={10}
-                                  height={10}
+                                  className="brightness-0 invert"
                                 />
-                              </button>
+                              </div>
                             )}
 
                             <Image
@@ -711,6 +722,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -742,6 +754,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -769,6 +782,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -809,6 +823,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
                       }}
                       noOptionsMessage={() => "Không tìm thấy kết quả"}
                       loadingMessage={() => "Đang tìm kiếm..."}
@@ -827,6 +842,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
                       }}
                     />
                   </div>
@@ -854,6 +870,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Control: CustomControl,
                         Option: CustomOption,
                         MenuList: CustomMenuList,
+                        ClearIndicator: CustomClearIndicator,
                       }}
                     />
                   </div>
