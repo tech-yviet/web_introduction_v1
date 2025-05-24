@@ -32,7 +32,7 @@ const CardDoctor: FC<CardDoctorProps> = ({ doctor, index, onClick }) => {
       </div>
 
       <div className="flex-1 flex flex-col justify-center overflow-hidden">
-        <div className="text-[#1F2A37] font-medium mb-2 md:text-lg md:mb-[10px] text-nowrap truncate">{`${doctor.fullName}`}</div>
+        <div className="text-[#1F2A37] font-medium mb-2 md:text-lg md:mb-[10px] text-nowrap truncate leading-[18.6px] md:leading-[24px]">{`${doctor.fullName}`}</div>
 
         <div className="flex flex-col gap-[4.75px] font-inter text-xs text-[#8E8E8E] md:text-sm md:gap-[6px]">
           <div className="flex items-center gap-[6.2px]">
