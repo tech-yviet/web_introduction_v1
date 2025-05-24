@@ -14,7 +14,7 @@ export const Header = ({ isFixed = false }: { isFixed?: boolean }) => {
           className="flex items-center gap-2"
           onClick={() => router.push("/")}
         >
-          <Image src="/svg/y-viet.svg" alt="logo" width={30} height={30} />
+          <Image src="/svg/logo-header-mobile.svg" alt="logo" width={30} height={30} />
           <div className="text-[#1B63DE] font-extrabold uppercase">Y Viet</div>
         </button>
 
