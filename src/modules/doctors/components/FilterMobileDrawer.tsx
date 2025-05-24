@@ -50,9 +50,13 @@ const CustomMenuList = (props: any) => {
   return (
     <components.MenuList
       {...props}
-      className="scrollbar-hide  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)]"
+      className="scrollbar-hide  shadow-slate-200 shadow-[0_0_20px_4px_rgba(0,0,0,0.08)] !max-h-[355.5px]"
     />
   );
+};
+
+const CustomMenu = (props: any) => {
+  return <components.Menu {...props} className="!w-[335.5px]" />;
 };
 
 const CustomClearIndicator = (props: any) => {
@@ -723,6 +727,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Option: CustomOption,
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -755,6 +760,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Option: CustomOption,
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -783,6 +789,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Option: CustomOption,
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
                       }}
                       onChange={(e) => {
                         if (!!e) {
@@ -824,6 +831,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Option: CustomOption,
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
                       }}
                       noOptionsMessage={() => "Không tìm thấy kết quả"}
                       loadingMessage={() => "Đang tìm kiếm..."}
@@ -843,6 +851,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Option: CustomOption,
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
                       }}
                     />
                   </div>
@@ -871,6 +880,7 @@ const $FilterMobileDrawer: FC<PropsFromRedux> = ({
                         Option: CustomOption,
                         MenuList: CustomMenuList,
                         ClearIndicator: CustomClearIndicator,
+                        Menu: CustomMenu,
                       }}
                     />
                   </div>
